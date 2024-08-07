@@ -2,17 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { EventTable } from '@/components/event-table';
-
-type Ticket = {
-  TicketID: string;
-  'Número de Pedido': string;
-  'Entrada: Número': string;
-  'Pedido: Número': string;
-  'Evento: Nombre': string;
-  'Pedido: Estado': string;
-  'Pedido: Fecha': string;
-  [key: string]: string;
-};
+import { Ticket } from '@/types';  // Importa el tipo Ticket desde el archivo compartido
 
 const PREDEFINED_EVENT_IDS = ['101']; // Replace with the IDs you want to use
 

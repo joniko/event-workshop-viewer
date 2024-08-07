@@ -14,13 +14,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { DataTableToolbar } from "./DataTableToolbar";
 import { DataTablePagination } from "./DataTablePagination";
 import { DataTableColumnHeader } from "./DataTableColumnHeader";
-
-type Ticket = {
-  TicketID: string;
-  '# de Pedido': string;
-  'Apellido': string;
-  [key: string]: string;
-};
+import { Ticket } from '@/types';  // Importa el tipo Ticket desde el archivo compartido
 
 interface EventTableProps {
   data: Ticket[];
