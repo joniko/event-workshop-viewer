@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { EventTable } from '@/components/event-table';
 import { Ticket } from '@/types';  // Importa el tipo Ticket desde el archivo compartido
 
-const PREDEFINED_EVENT_IDS = ['101']; // Replace with the IDs you want to use
+const PREDEFINED_EVENT_IDS = ['26']; // Replace with the IDs you want to use
 
 export default function Home() {
   const [tickets, setTickets] = useState<Ticket[]>([]);
