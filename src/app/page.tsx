@@ -62,7 +62,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="container mx-auto py-10">
+    <main className="md:container md:mx-auto py-10">
       <h1 className="text-3xl font-bold mb-5">Talleres Cumbre 2024</h1>
       {loading && <p>Cargando...</p>}
       {error && <p className="text-red-500">Error: {error}</p>}
