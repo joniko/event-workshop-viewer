@@ -63,7 +63,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="md:container md:mx-auto py-0">
+    <main className="container flex flex-col px-0">
       <Image
         className="inset-1 w-full object-cover"
         src={eventImage}
