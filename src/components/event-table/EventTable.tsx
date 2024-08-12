@@ -85,7 +85,7 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow className="border-indigo-800" key={headerGroup.id}>
+              <TableRow className="border-indigo-300" key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <TableHead className="text-indigo-700" key={header.id}>
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
@@ -97,7 +97,7 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
           <TableBody>
             {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow className="border-indigo-800" key={row.id}>
+                <TableRow className="border-indigo-300" key={row.id}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell className="text-indigo-950" key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                   ))}
