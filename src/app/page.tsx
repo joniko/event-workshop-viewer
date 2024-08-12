@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image'
 import { EventTable } from '@/components/event-table';
 import { Ticket } from '@/types';  // Importa el tipo Ticket desde el archivo compartido
-
+import eventImage from '@/images/cumbre-generaciones-2024.jpg'
 const PREDEFINED_EVENT_IDS = ['26']; // Replace with the IDs you want to use
 
 export default function Home() {
@@ -62,8 +63,14 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="md:container md:mx-auto py-10">
-      <h1 className="text-3xl font-bold mb-5">Talleres Cumbre 2024</h1>
+    <main className="md:container md:mx-auto py-0">
+      <Image
+        className="inset-1 w-full object-cover"
+        src={eventImage}
+        alt=""
+        sizes="(min-width: 1024px) 18rem, (min-width: 768px) 16rem, 8rem"
+        unoptimized
+      />
       {loading && <p>Cargando...</p>}
       {error && <p className="text-red-500">Error: {error}</p>}
       {!loading && !error && tickets.length === 0 && <p>No tickets found for these events.</p>}

@@ -20,10 +20,9 @@ export function DataTableToolbar<TData>({
           placeholder="Buscar..."
           value={globalFilter}
           onChange={(event) => setGlobalFilter(event.target.value)}
-          className="h-8 w-full lg:w-96"
+          className="h-8 w-full py-4"
         />
       </div>
-      <DataTableViewOptions table={table} />
     </div>
   );
 }

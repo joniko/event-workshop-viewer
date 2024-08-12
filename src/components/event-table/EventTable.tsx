@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+
 import {
   useReactTable,
   getCoreRowModel,
@@ -15,6 +16,8 @@ import { DataTableToolbar } from "./DataTableToolbar";
 import { DataTablePagination } from "./DataTablePagination";
 import { DataTableColumnHeader } from "./DataTableColumnHeader";
 import { Ticket } from '@/types';  // Importa el tipo Ticket desde el archivo compartido
+
+
 
 interface EventTableProps {
   data: Ticket[];
@@ -76,15 +79,15 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
   });
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-1 bg-indigo-700 px-1 py-1">
       <DataTableToolbar table={table} globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
-      <div className="rounded-md border">
+      <div className="rounded-md border bg-indigo-100 border-indigo-800">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow className="border-indigo-800" key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
+                  <TableHead className="text-indigo-700" key={header.id}>
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 ))}
@@ -94,9 +97,9 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
           <TableBody>
             {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id}>
+                <TableRow className="border-indigo-800" key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                    <TableCell className="text-indigo-950" key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                   ))}
                 </TableRow>
               ))
