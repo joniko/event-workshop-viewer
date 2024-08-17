@@ -250,6 +250,8 @@ export default function Home() {
     "Evento: Nombre",
     "Pedido: Estado",
     "Pedido: Fecha",
+    "Asistente 2: Correo electrónico",
+    "Asistente 3: Correo electrónico",
   ];
 
   const fetchEventData = async (productId: string) => {
