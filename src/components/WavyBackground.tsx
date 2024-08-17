@@ -78,7 +78,7 @@ const WavyBackground = () => {
       </svg>
 
       {/* You can add your content here */}
-      <div className="relative z-10 mx-auto flex items-center justify-center pb-6">
+      <div className="relative z-10 mx-auto flex items-center justify-center pb-2 md:pb-6">
         <Image className="w-2/3" src={eventImage} alt="" unoptimized />
       </div>
     </div>
