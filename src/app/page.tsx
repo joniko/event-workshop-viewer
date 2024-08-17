@@ -269,7 +269,7 @@ export default function Home() {
         unoptimized
       />
       <div className="bg-indigo-700 p-2">
-        <div className="flex space-x-2 mb-2 font-bold">
+        <div className="flex space-x-2 mb-2 font-bold text-sm md:text-md lg:text-lg">
           <button
             className={`px-2 py-2 rounded-lg ${
               activeTab === "program" ? "text-white" : "text-indigo-200"
