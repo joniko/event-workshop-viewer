@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { EventTable } from "@/components/event-table";
 import { Ticket } from "@/types";
-import eventImage from "@/images/cumbre-generaciones-2024.jpg";
+import eventImage from "@/images/logo-cumbre.png";
 import {
   Table,
   TableBody,
@@ -288,7 +288,7 @@ export default function Home() {
   return (
     <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-4xl">
       <Image
-        className="inset-1 w-full object-cover"
+        className=" mx-auto rounded-b-lg bg-indigo-950/20 ring-1 ring-indigo-950/50 ring-inset"
         src={eventImage}
         alt=""
         sizes="(min-width: 1024px) 18rem, (min-width: 768px) 16rem, 8rem"
