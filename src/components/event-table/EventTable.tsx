@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo } from "react";
 
 import {
   useReactTable,
@@ -10,14 +10,19 @@ import {
   SortingState,
   VisibilityState,
   flexRender,
-} from '@tanstack/react-table';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+} from "@tanstack/react-table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { DataTableToolbar } from "./DataTableToolbar";
 import { DataTablePagination } from "./DataTablePagination";
 import { DataTableColumnHeader } from "./DataTableColumnHeader";
-import { Ticket } from '@/types';  // Importa el tipo Ticket desde el archivo compartido
-
-
+import { Ticket } from "@/types"; // Importa el tipo Ticket desde el archivo compartido
 
 interface EventTableProps {
   data: Ticket[];
@@ -25,10 +30,10 @@ interface EventTableProps {
 }
 
 export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
-  const [globalFilter, setGlobalFilter] = useState('');
+  const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>([
-    { id: 'Apellido', desc: false }
+    { id: "Apellido", desc: false },
   ]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(
     () =>
@@ -41,20 +46,28 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
   const columns = useMemo(() => {
     return Object.keys(data[0] || {}).map((key) => ({
       accessorKey: key,
-      header: ({ column }: { column: any }) => <DataTableColumnHeader column={column} title={key} />,
+      header: ({ column }: { column: any }) => (
+        <DataTableColumnHeader column={column} title={key} />
+      ),
     }));
   }, [data]);
 
   const visibleColumns = useMemo(() => {
-    return columns.filter(column => columnVisibility[column.accessorKey] !== false);
+    return columns.filter(
+      (column) => columnVisibility[column.accessorKey] !== false
+    );
   }, [columns, columnVisibility]);
 
   const filteredData = useMemo(() => {
     if (!globalFilter) return data;
-    return data.filter(row =>
-      visibleColumns.some(column => {
+    return data.filter((row) =>
+      visibleColumns.some((column) => {
         const value = row[column.accessorKey as keyof Ticket];
-        return value !== undefined && value !== null && String(value).toLowerCase().includes(globalFilter.toLowerCase());
+        return (
+          value !== undefined &&
+          value !== null &&
+          String(value).toLowerCase().includes(globalFilter.toLowerCase())
+        );
       })
     );
   }, [data, globalFilter, visibleColumns]);
@@ -74,13 +87,17 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
       pagination: {
         pageSize: 20,
       },
-      sorting: [{ id: 'Apellido', desc: false }],
+      sorting: [{ id: "Apellido", desc: false }],
     },
   });
 
   return (
-    <div className="space-y-1 bg-indigo-700 px-1 py-1">
-      <DataTableToolbar table={table} globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
+    <div className="space-y-1 bg-indigo-700 px-1 py-1 sm:mx-auto sm:w-full max-w-4xl">
+      <DataTableToolbar
+        table={table}
+        globalFilter={globalFilter}
+        setGlobalFilter={setGlobalFilter}
+      />
       <div className="rounded-md border bg-indigo-50 border-indigo-800">
         <Table>
           <TableHeader>
@@ -88,7 +105,12 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
               <TableRow className="border-slate-300" key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <TableHead className="text-indigo-700" key={header.id}>
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                   </TableHead>
                 ))}
               </TableRow>
@@ -99,13 +121,21 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
               table.getRowModel().rows.map((row) => (
                 <TableRow className="border-slate-300" key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell className="text-indigo-950" key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                    <TableCell className="text-indigo-950" key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </TableCell>
                   ))}
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
                   No se encontraron resultados.
                 </TableCell>
               </TableRow>
