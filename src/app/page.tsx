@@ -291,7 +291,7 @@ export default function Home() {
     <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-4xl">
       <WavyBackground />
       <div className="rounded-lg my-2 pb-1 px-1 bg-indigo-950/20 ring-1 ring-indigo-950/50 ring-inset">
-        <div className="flex space-x-8 font-bold text-md lg:text-xl px-4 md:px-1 justify-center">
+        <div className="flex space-x-2 md:space-x-8 font-bold text-md lg:text-xl px-4 md:px-1 justify-center">
           <button
             className={`px-2 py-4 rounded-lg ${
               activeTab === "program" ? "text-white" : "text-indigo-200"
