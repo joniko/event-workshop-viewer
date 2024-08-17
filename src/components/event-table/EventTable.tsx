@@ -92,7 +92,7 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
   });
 
   return (
-    <div className="space-y-1 bg-indigo-700 sm:mx-auto sm:w-full max-w-4xl">
+    <div className="space-y-1 sm:mx-auto sm:w-full max-w-4xl">
       <DataTableToolbar
         table={table}
         globalFilter={globalFilter}

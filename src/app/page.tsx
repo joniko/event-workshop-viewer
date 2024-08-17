@@ -93,10 +93,36 @@ const ConferenceProgram: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg">
-      <DaySchedule day="Viernes" schedule={program.viernes} />
-      <DaySchedule day="Sábado" schedule={program.sabado} />
-      <DaySchedule day="Domingo" schedule={program.domingo} />
+    <div className="space-y-1 rounded-md border bg-white border-indigo-800 sm:mx-auto sm:w-full max-w-4xl">
+      {Object.entries(program).map(([day, schedule]) => (
+        <div key={day} className="mb-8">
+          <h2 className="text-xl font-bold m-4 text-cumbre-purple">
+            {day.charAt(0).toUpperCase() + day.slice(1)}
+          </h2>
+          <div className="border-y border-indigo-200">
+            <Table>
+              <TableBody>
+                {schedule.map((item, index) => (
+                  <TableRow key={index} className="border-neutral-200">
+                    <TableCell className="text-custom-purple font-medium">
+                      {item.time}
+                    </TableCell>
+                    <TableCell
+                      className={`text-zinc-900 ${
+                        item.activity.toLowerCase().includes("sesión")
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
+                      {item.activity}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
@@ -268,8 +294,8 @@ export default function Home() {
         sizes="(min-width: 1024px) 18rem, (min-width: 768px) 16rem, 8rem"
         unoptimized
       />
-      <div className="bg-indigo-700 p-2">
-        <div className="flex space-x-2 mb-2 font-bold text-md lg:text-lg">
+      <div className="">
+        <div className="flex space-x-2 mb-2 font-bold text-md lg:text-2xl py-2 space-between">
           <button
             className={`px-2 py-2 rounded-lg ${
               activeTab === "program" ? "text-white" : "text-indigo-200"
