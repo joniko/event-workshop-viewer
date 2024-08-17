@@ -23,7 +23,7 @@ export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
   return (
-    <div className="flex items-center justify-between py-2 px-4 md:px-0">
+    <div className="flex items-center justify-between py-2 px-4">
       <div className="flex-1 text-sm text-indigo-200">
         {table.getFilteredRowModel().rows.length} resultados.
       </div>
