@@ -92,13 +92,13 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
   });
 
   return (
-    <div className="space-y-1 sm:mx-auto sm:w-full max-w-4xl">
+    <div className="md:space-y-1 sm:mx-auto sm:w-full max-w-4xl">
       <DataTableToolbar
         table={table}
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
       />
-      <div className="rounded-md border bg-white border-indigo-800">
+      <div className="md:rounded-md border bg-white border-indigo-800">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

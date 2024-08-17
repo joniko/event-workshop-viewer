@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Cumbre Generaciones 2024",
-  description: "Consulta el programa, ubicaciones, busca tus talleres, etc.",
+  description: "Consulta el programa, busca tus talleres y las ubicaciones.",
   openGraph: {
     images: [
       {

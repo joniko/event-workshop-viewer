@@ -93,7 +93,7 @@ const ConferenceProgram: React.FC = () => {
   };
 
   return (
-    <div className="space-y-1 rounded-md border bg-white border-indigo-800 sm:mx-auto sm:w-full max-w-4xl">
+    <div className="space-y-1 md:rounded-md border bg-white border-indigo-800 sm:mx-auto sm:w-full max-w-4xl">
       {Object.entries(program).map(([day, schedule]) => (
         <div key={day} className="mb-8">
           <h2 className="text-xl font-bold m-4 text-cumbre-purple">
@@ -192,7 +192,7 @@ const LocationsTab: React.FC = () => {
 
   return (
     <div className="space-y-1 bg-indigo-700 sm:mx-auto sm:w-full max-w-4xl">
-      <div className="rounded-md border bg-white border-indigo-800">
+      <div className="md:rounded-md border bg-white border-indigo-800">
         <Table>
           <TableHeader>
             <TableRow className="border-neutral-200">
@@ -296,73 +296,71 @@ export default function Home() {
         sizes="(min-width: 1024px) 18rem, (min-width: 768px) 16rem, 8rem"
         unoptimized
       />
-      <div className="">
-        <div className="flex space-x-2 mb-2 font-bold text-md lg:text-2xl py-2 space-between">
-          <button
-            className={`px-2 py-2 rounded-lg ${
-              activeTab === "program" ? "text-white" : "text-indigo-200"
-            }`}
-            onClick={() => setActiveTab("program")}
-          >
-            Programa
-          </button>
-          <button
-            className={`px-2 py-2 rounded-lg ${
-              activeTab === "locations" ? "text-white" : "text-indigo-200"
-            }`}
-            onClick={() => setActiveTab("locations")}
-          >
-            Ubicaciones
-          </button>
-          <button
-            className={`px-2 py-2 rounded-lg ${
-              activeTab === "tickets" ? "text-white" : "text-indigo-200"
-            }`}
-            onClick={() => setActiveTab("tickets")}
-          >
-            Talleres General
-          </button>
-          <button
-            className={`px-2 py-2 rounded-lg ${
-              activeTab === "workshops" ? "text-white" : "text-indigo-200"
-            }`}
-            onClick={() => setActiveTab("workshops")}
-          >
-            Talleres 3 ✕ 2
-          </button>
-        </div>
-
-        {activeTab === "program" && <ConferenceProgram />}
-        {activeTab === "locations" && <LocationsTab />}
-        {activeTab === "tickets" && (
-          <div>
-            {loading && <p className="text-indigo-100">Cargando...</p>}
-            {error && <p className="text-red-500">Error: {error}</p>}
-            {!loading && !error && tickets.length === 0 && (
-              <p className="text-indigo-100">
-                No se encontraron tickets para estos eventos.
-              </p>
-            )}
-            {!loading && !error && tickets.length > 0 && (
-              <EventTable data={tickets} hiddenColumns={hiddenColumns} />
-            )}
-          </div>
-        )}
-        {activeTab === "workshops" && (
-          <div>
-            {loading && <p className="text-indigo-100">Cargando...</p>}
-            {error && <p className="text-red-500">Error: {error}</p>}
-            {!loading && !error && workshops.length === 0 && (
-              <p className="text-indigo-100">
-                No se encontraron talleres para estos eventos.
-              </p>
-            )}
-            {!loading && !error && workshops.length > 0 && (
-              <EventTable data={workshops} hiddenColumns={hiddenColumns} />
-            )}
-          </div>
-        )}
+      <div className="flex space-x-2 mb-2 font-bold text-md lg:text-2xl py-2 space-between">
+        <button
+          className={`px-2 py-2 rounded-lg ${
+            activeTab === "program" ? "text-white" : "text-indigo-200"
+          }`}
+          onClick={() => setActiveTab("program")}
+        >
+          Programa
+        </button>
+        <button
+          className={`px-2 py-2 rounded-lg ${
+            activeTab === "locations" ? "text-white" : "text-indigo-200"
+          }`}
+          onClick={() => setActiveTab("locations")}
+        >
+          Ubicaciones
+        </button>
+        <button
+          className={`px-2 py-2 rounded-lg ${
+            activeTab === "tickets" ? "text-white" : "text-indigo-200"
+          }`}
+          onClick={() => setActiveTab("tickets")}
+        >
+          Talleres General
+        </button>
+        <button
+          className={`px-2 py-2 rounded-lg ${
+            activeTab === "workshops" ? "text-white" : "text-indigo-200"
+          }`}
+          onClick={() => setActiveTab("workshops")}
+        >
+          Talleres 3 ✕ 2
+        </button>
       </div>
+
+      {activeTab === "program" && <ConferenceProgram />}
+      {activeTab === "locations" && <LocationsTab />}
+      {activeTab === "tickets" && (
+        <div>
+          {loading && <p className="text-indigo-100">Cargando...</p>}
+          {error && <p className="text-red-500">Error: {error}</p>}
+          {!loading && !error && tickets.length === 0 && (
+            <p className="text-indigo-100">
+              No se encontraron tickets para estos eventos.
+            </p>
+          )}
+          {!loading && !error && tickets.length > 0 && (
+            <EventTable data={tickets} hiddenColumns={hiddenColumns} />
+          )}
+        </div>
+      )}
+      {activeTab === "workshops" && (
+        <div>
+          {loading && <p className="text-indigo-100">Cargando...</p>}
+          {error && <p className="text-red-500">Error: {error}</p>}
+          {!loading && !error && workshops.length === 0 && (
+            <p className="text-indigo-100">
+              No se encontraron talleres para estos eventos.
+            </p>
+          )}
+          {!loading && !error && workshops.length > 0 && (
+            <EventTable data={workshops} hiddenColumns={hiddenColumns} />
+          )}
+        </div>
+      )}
     </main>
   );
 }
