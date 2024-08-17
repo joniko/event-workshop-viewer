@@ -4,7 +4,7 @@ import eventImage from "@/images/logo-cumbre.png";
 
 const WavyBackground = () => {
   return (
-    <div className="relative w-full rounded-b-lg bg-indigo-950/20 ring-1 ring-indigo-950/50 ring-inset">
+    <div className="relative w-full">
       <svg
         className="absolute inset-0 w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
