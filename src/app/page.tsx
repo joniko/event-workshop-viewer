@@ -271,40 +271,32 @@ export default function Home() {
       <div className="bg-indigo-700 p-2">
         <div className="flex space-x-2 mb-2 font-bold">
           <button
-            className={`px-4 py-2 rounded-lg ${
-              activeTab === "program"
-                ? "bg-indigo-900 text-white"
-                : "bg-indigo-600 text-indigo-200"
+            className={`px-2 py-2 rounded-lg ${
+              activeTab === "program" ? "text-white" : "text-indigo-200"
             }`}
             onClick={() => setActiveTab("program")}
           >
             Programa
           </button>
           <button
-            className={`px-4 py-2 rounded-lg ${
-              activeTab === "locations"
-                ? "bg-indigo-900 text-white"
-                : "bg-indigo-600 text-indigo-200"
+            className={`px-2 py-2 rounded-lg ${
+              activeTab === "locations" ? "text-white" : "text-indigo-200"
             }`}
             onClick={() => setActiveTab("locations")}
           >
             Ubicaciones
           </button>
           <button
-            className={`px-4 py-2 rounded-lg ${
-              activeTab === "tickets"
-                ? "bg-indigo-900 text-white"
-                : "bg-indigo-600 text-indigo-200"
+            className={`px-2 py-2 rounded-lg ${
+              activeTab === "tickets" ? "text-white" : "text-indigo-200"
             }`}
             onClick={() => setActiveTab("tickets")}
           >
             Talleres General
           </button>
           <button
-            className={`px-4 py-2 rounded-lg ${
-              activeTab === "workshops"
-                ? "bg-indigo-900 text-white"
-                : "bg-indigo-600 text-indigo-200"
+            className={`px-2 py-2 rounded-lg ${
+              activeTab === "workshops" ? "text-white" : "text-indigo-200"
             }`}
             onClick={() => setActiveTab("workshops")}
           >
