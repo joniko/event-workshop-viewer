@@ -98,7 +98,7 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
       />
-      <div className="md:rounded-md border bg-white border-indigo-800">
+      <div className="rounded-md border bg-white border-indigo-800">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
