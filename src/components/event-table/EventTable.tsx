@@ -92,17 +92,17 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
   });
 
   return (
-    <div className="space-y-1 bg-indigo-700 px-1 py-1 sm:mx-auto sm:w-full max-w-4xl">
+    <div className="space-y-1 bg-indigo-700 sm:mx-auto sm:w-full max-w-4xl">
       <DataTableToolbar
         table={table}
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
       />
-      <div className="rounded-md border bg-indigo-50 border-indigo-800">
+      <div className="rounded-md border bg-white border-indigo-800">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow className="border-slate-300" key={headerGroup.id}>
+              <TableRow className="border-neutral-200" key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <TableHead className="text-indigo-700" key={header.id}>
                     {header.isPlaceholder
@@ -119,7 +119,7 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
           <TableBody>
             {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow className="border-slate-300" key={row.id}>
+                <TableRow className="border-neutral-200" key={row.id}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell className="text-indigo-950" key={cell.id}>
                       {flexRender(
