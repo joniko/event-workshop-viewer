@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import React from "react";
+import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -22,12 +23,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="es" className="h-full scroll-smooth" suppressHydrationWarning>
-      <body className="flex min-h-full bg-cumbre-purple antialiased dark:bg-indigo-900">
+    <html lang="es">
+      <body
+        className={`flex min-h-full bg-cumbre-purple antialiased dark:bg-indigo-900 ${inter.className}`}
+      >
         {children}
       </body>
     </html>
