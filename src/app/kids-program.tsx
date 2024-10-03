@@ -28,6 +28,25 @@ const TagComponent: React.FC<{ tag: "A" | "TJ" | "S" }> = ({ tag }) => {
   );
 };
 
+const TagLegend: React.FC = () => {
+  return (
+    <div className="flex flex-wrap gap-4 mt-8 text-sm p-4">
+      <div className="flex items-center">
+        <TagComponent tag="A" />
+        <span>Auditorio General.</span>
+      </div>
+      <div className="flex items-center">
+        <TagComponent tag="TJ" />
+        <span>Todos Juntos.</span>
+      </div>
+      <div className="flex items-center">
+        <TagComponent tag="S" />
+        <span>Separados en salones, por edades.</span>
+      </div>
+    </div>
+  );
+};
+
 const KidsProgram: React.FC = () => {
   const kidsSchedule: DaySchedule[] = [
     {
@@ -94,7 +113,7 @@ const KidsProgram: React.FC = () => {
       {kidsSchedule.map((day, dayIndex) => (
         <div key={dayIndex} className="mb-8">
           <h2 className="text-xl font-bold m-4 text-blue-500">{day.day}</h2>
-          <div className="border-y border-blue-200">
+          <div className="border-y border-zinc-200">
             <Table>
               <TableBody>
                 {day.schedule.map((item, itemIndex) => (
@@ -123,6 +142,7 @@ const KidsProgram: React.FC = () => {
           </div>
         </div>
       ))}
+      <TagLegend />
     </div>
   );
 };

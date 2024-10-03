@@ -64,7 +64,7 @@ const ConferenceProgram: React.FC = () => {
       {Object.entries(program).map(([day, schedule]) => (
         <div key={day} className="mb-8">
           <h2 className="text-xl font-bold m-4 text-blue-500">{day}</h2>
-          <div className="border-y border-blue-200">
+          <div className="border-y border-zinc-200">
             <Table>
               <TableBody>
                 {schedule.map((item, index) => (
