@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      fontSize: {
+        base: "16px",
+      },
       colors: {
         "cumbre-blue": "#591AFF",
         border: "hsl(var(--border))",

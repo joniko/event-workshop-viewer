@@ -17,7 +17,7 @@ const TagComponent: React.FC<{ tag: "A" | "TJ" | "S" }> = ({ tag }) => {
 
   return (
     <span
-      className={`${colors[tag]} text-white text-xs font-bold mr-2 px-2.5 py-0.5 rounded inline-block w-8 text-center`}
+      className={`${colors[tag]} text-white text-sm font-bold mr-2 px-2.5 py-0.5 rounded inline-block w-8 text-center`}
     >
       {tag}
     </span>
@@ -26,7 +26,7 @@ const TagComponent: React.FC<{ tag: "A" | "TJ" | "S" }> = ({ tag }) => {
 
 const TagLegend: React.FC = () => {
   return (
-    <div className="flex flex-wrap gap-4 mt-8 text-sm p-4">
+    <div className="flex flex-wrap gap-4 mt-8 text-base p-4">
       <div className="flex items-center">
         <TagComponent tag="A" />
         <span>Auditorio General.</span>
@@ -100,12 +100,12 @@ const KidsProgram: React.FC = () => {
   return (
     <div className="space-y-1 rounded-md border bg-white sm:mx-auto sm:w-full max-w-4xl">
       <Tabs.Root defaultValue={activeDay} onValueChange={setActiveDay}>
-        <Tabs.List className="flex border-b border-gray-200">
+        <Tabs.List className="flex text-center items-center justify-center bg-zinc-100 py-0.5">
           {Object.keys(kidsSchedule).map((day) => (
             <Tabs.Trigger
               key={day}
               value={day}
-              className="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 data-[state=active]:text-blue-500 data-[state=active]:border-blue-500"
+              className="px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 data-[state=active]:text-blue-500 data-[state=active]:border-blue-500"
             >
               {day}
             </Tabs.Trigger>
@@ -118,10 +118,10 @@ const KidsProgram: React.FC = () => {
                 <TableBody>
                   {schedule.map((item, index) => (
                     <TableRow key={index} className="border-neutral-200">
-                      <TableCell className="text-custom-blue font-medium w-24">
+                      <TableCell className="text-custom-blue  text-base w-24">
                         {item.time}
                       </TableCell>
-                      <TableCell className="text-zinc-900 flex items-center">
+                      <TableCell className="text-zinc-900 flex items-center  text-base">
                         <div className="w-8 mr-2">
                           {item.tag && <TagComponent tag={item.tag} />}
                         </div>

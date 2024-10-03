@@ -5,23 +5,16 @@ import { useRouter } from "next/navigation";
 import WavyBackground from "@/components/WavyBackground";
 import Program from "./program";
 import KidsProgram from "./kids-program";
-import Locations from "./locations";
-import Workshops from "./workshops";
 import Buffet from "./buffet";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import {
   Calendar,
-  Users,
-  MapPin,
-  Flag,
   Utensils,
-  PartyPopper, // Nuevo icono para Kids
-  Sun, // Nuevo icono para Argentinos
+  PartyPopper,
   Coffee,
   Store,
   Umbrella,
 } from "lucide-react";
-// Importar los iconos de react-icons/fa
 import { useSearchParams } from "next/navigation";
 
 const tabs = [
@@ -29,11 +22,6 @@ const tabs = [
     value: "program",
     label: "Cronograma",
     icon: <Calendar className="w-4 h-4 mr-2" />,
-  },
-  {
-    value: "workshops",
-    label: "Talleres",
-    icon: <Users className="w-4 h-4 mr-2" />,
   },
   {
     value: "buffet",
@@ -49,9 +37,7 @@ function HomeContent() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabValue>(() => {
     const tab = searchParams.get("tab");
-    return tab === "program" || tab === "workshops" || tab === "buffet"
-      ? tab
-      : "program";
+    return tab === "program" || tab === "buffet" ? tab : "program";
   });
   const [activeSubTab, setActiveSubTab] = useState<string>(() => {
     const subTab = searchParams.get("subTab");
@@ -61,8 +47,6 @@ function HomeContent() {
     switch (activeTab) {
       case "program":
         return "general";
-      case "workshops":
-        return "locations";
       case "buffet":
         return "cafeteria";
       default:
@@ -78,15 +62,12 @@ function HomeContent() {
   }, [activeTab, activeSubTab, router, searchParams]);
 
   const handleTabChange = (value: string) => {
-    if (value === "program" || value === "workshops" || value === "buffet") {
+    if (value === "program" || value === "buffet") {
       setActiveTab(value);
       // Establecer el sub-tab por defecto al cambiar de tab principal
       switch (value) {
         case "program":
           setActiveSubTab("general");
-          break;
-        case "workshops":
-          setActiveSubTab("locations");
           break;
         case "buffet":
           setActiveSubTab("cafeteria");
@@ -99,17 +80,17 @@ function HomeContent() {
     if (activeTab === "program") {
       return (
         <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
-          <TabsList className="flex w-full border-b">
+          <TabsList className="flex w-full  rounded-t-lg">
             <TabsTrigger
               value="general"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
+              className="flex-1 font-semibold hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <Calendar className="w-4 h-4 mr-2" />
               General
             </TabsTrigger>
             <TabsTrigger
               value="kids"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
+              className="flex-1 font-semibold hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <PartyPopper className="w-4 h-4 mr-2" />
               Kids
@@ -123,64 +104,27 @@ function HomeContent() {
           </TabsContent>
         </Tabs>
       );
-    } else if (activeTab === "workshops") {
-      return (
-        <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
-          <TabsList className="flex w-full bg-zinc-100">
-            <TabsTrigger
-              value="locations"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
-            >
-              <MapPin className="w-4 h-4 mr-2" />
-              Ubicaciones
-            </TabsTrigger>
-            <TabsTrigger
-              value="argentinos"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
-            >
-              <Sun className="w-4 h-4 mr-2" />
-              Argentinos
-            </TabsTrigger>
-            <TabsTrigger
-              value="extranjeros"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
-            >
-              <Flag className="w-4 h-4 mr-2" />
-              Extranjeros
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="locations">
-            <Locations />
-          </TabsContent>
-          <TabsContent value="argentinos">
-            <Workshops type="argentinos" />
-          </TabsContent>
-          <TabsContent value="extranjeros">
-            <Workshops type="extranjeros" />
-          </TabsContent>
-        </Tabs>
-      );
     } else if (activeTab === "buffet") {
       return (
-        <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
+        <Tabs value={activeSubTab} onValueChange={setActiveSubTab} className="">
           <TabsList className="flex w-full border-b">
             <TabsTrigger
               value="cafeteria"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
+              className="flex-1 font-semibold hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <Coffee className="w-4 h-4 mr-2" />
               Cafetería
             </TabsTrigger>
             <TabsTrigger
               value="quiosco"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
+              className="flex-1 font-semibold hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <Store className="w-4 h-4 mr-2" />
               Quiosco
             </TabsTrigger>
             <TabsTrigger
               value="carpa"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
+              className="flex-1 font-semibold hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <Umbrella className="w-4 h-4 mr-2" />
               Carpa
