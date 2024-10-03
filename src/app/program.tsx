@@ -32,7 +32,7 @@ const program: Record<string, ScheduleItem[]> = {
       activity: "Plenaria 1",
       downloadUrl:
         "https://drive.google.com/file/d/13esIaCbvKm0jxi7vuKgGJ0KCozcr-ffU/view?usp=sharing",
-      enabled: false,
+      enabled: true,
       plenaryName: "De huérfano a Hijo",
       speaker: "Fernanda Brunet",
     },
