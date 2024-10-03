@@ -61,7 +61,7 @@ const KidsProgram: React.FC = () => {
         { time: "17:30", activity: "Cierre" },
         { time: "19:00", activity: "Adoración", tag: "A" },
         { time: "20:00", activity: "Recreación" },
-        { time: "21:00", activity: "Snack", tag: "TJ" },
+        { time: "21:00", activity: "Snack" },
         { time: "21:30", activity: "Cierre general" },
         { time: "22:00", activity: "Retiro de los niños" },
       ],
@@ -106,7 +106,15 @@ const KidsProgram: React.FC = () => {
                       <div className="w-8 mr-2">
                         {item.tag && <TagComponent tag={item.tag} />}
                       </div>
-                      {item.activity}
+                      <span
+                        className={
+                          item.activity.toLowerCase().includes("taller")
+                            ? "font-bold"
+                            : ""
+                        }
+                      >
+                        {item.activity}
+                      </span>
                     </TableCell>
                   </TableRow>
                 ))}

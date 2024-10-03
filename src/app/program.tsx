@@ -76,7 +76,8 @@ const ConferenceProgram: React.FC = () => {
                     </TableCell>
                     <TableCell
                       className={`text-zinc-900 ${
-                        item.activity.toLowerCase().includes("sesión")
+                        item.activity.toLowerCase().includes("plenaria") ||
+                        item.activity.toLowerCase().includes("talleres")
                           ? "font-bold"
                           : ""
                       }`}
