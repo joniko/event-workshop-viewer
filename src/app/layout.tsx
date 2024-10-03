@@ -7,16 +7,16 @@ import eventImage from "@/images/bg-top.jpg";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Cumbre Generaciones 2024",
+  title: "TOMATULUGAR - PEC 2024",
   description: "Consulta el programa, busca tus talleres y las ubicaciones.",
-  metadataBase: new URL("https://cumbre.app"), // Reemplaza con tu dominio real
+  metadataBase: new URL("https://pec24.app"), // Reemplaza con tu dominio real
   openGraph: {
     images: [
       {
-        url: "/cumbre-generaciones-2024.jpg",
+        url: "/conferencia-tomatulugar-2024.jpg",
         width: 1200,
         height: 630,
-        alt: "Cumbre Generaciones 2024",
+        alt: "TOMATULUGAR - PEC 2024",
       },
     ],
   },
