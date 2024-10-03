@@ -9,7 +9,7 @@ interface ScheduleItem {
 
 const ConferenceProgram: React.FC = () => {
   const program: Record<string, ScheduleItem[]> = {
-    jueves: [
+    "Jueves 3 de Octubre": [
       { time: "13:00", activity: "Apertura del predio e inscripciones" },
       { time: "16:00", activity: "Apertura del auditorio principal" },
       { time: "18:00", activity: "Adoración" },
@@ -18,7 +18,7 @@ const ConferenceProgram: React.FC = () => {
       { time: "21:30", activity: "Anuncios" },
       { time: "22:00", activity: "Cierre" },
     ],
-    viernes: [
+    "Viernes 4 de Octubre": [
       { time: "08:00", activity: "Apertura del auditorio principal" },
       { time: "09:00", activity: "Adoración" },
       { time: "10:00", activity: "Plenaria 3" },
@@ -38,7 +38,7 @@ const ConferenceProgram: React.FC = () => {
       { time: "21:45", activity: "Anuncios" },
       { time: "22:00", activity: "Cierre" },
     ],
-    sabado: [
+    "Sábado 5 de Octubre": [
       { time: "08:00", activity: "Apertura del auditorio principal" },
       { time: "09:00", activity: "Adoración" },
       { time: "09:40", activity: "Plenaria 6" },
@@ -60,12 +60,10 @@ const ConferenceProgram: React.FC = () => {
   };
 
   return (
-    <div className="space-y-1 rounded-md border bg-white border-blue-800 sm:mx-auto sm:w-full max-w-4xl">
+    <div className="space-y-1 rounded-md border bg-white sm:mx-auto sm:w-full max-w-4xl">
       {Object.entries(program).map(([day, schedule]) => (
         <div key={day} className="mb-8">
-          <h2 className="text-xl font-bold m-4 text-blue-500">
-            {day.charAt(0).toUpperCase() + day.slice(1)}
-          </h2>
+          <h2 className="text-xl font-bold m-4 text-blue-500">{day}</h2>
           <div className="border-y border-blue-200">
             <Table>
               <TableBody>

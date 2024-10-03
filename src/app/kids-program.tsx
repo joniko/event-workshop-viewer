@@ -31,7 +31,7 @@ const TagComponent: React.FC<{ tag: "A" | "TJ" | "S" }> = ({ tag }) => {
 const KidsProgram: React.FC = () => {
   const kidsSchedule: DaySchedule[] = [
     {
-      day: "Jueves 3 de octubre",
+      day: "Jueves 3 de Octubre",
       schedule: [
         { time: "19:00", activity: "Adoración", tag: "A" },
         {
@@ -90,7 +90,7 @@ const KidsProgram: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-1 rounded-md border bg-white border-blue-800 sm:mx-auto sm:w-full max-w-4xl">
+    <div className="space-y-1 rounded-md border bg-white sm:mx-auto sm:w-full max-w-4xl">
       {kidsSchedule.map((day, dayIndex) => (
         <div key={dayIndex} className="mb-8">
           <h2 className="text-xl font-bold m-4 text-blue-500">{day.day}</h2>

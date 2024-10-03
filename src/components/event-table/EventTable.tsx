@@ -98,13 +98,13 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
       />
-      <div className="rounded-md border bg-white border-blue-800">
+      <div className=" bg-white">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow className="border-neutral-200" key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead className="text-blue-700" key={header.id}>
+                  <TableHead className="text-blue-500" key={header.id}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(

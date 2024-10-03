@@ -6,15 +6,35 @@ import Program from "./program";
 import KidsProgram from "./kids-program";
 import Locations from "./locations";
 import Workshops from "./workshops";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
+
+const tabs = [
+  {
+    value: "program",
+    label: "Programa General",
+  },
+  {
+    value: "kids",
+    label: "Programa KIDS",
+  },
+  {
+    value: "locations",
+    label: "Ubicaciones",
+  },
+  {
+    value: "workshops",
+    label: "Talleres",
+  },
+] as const;
+
+type TabValue = (typeof tabs)[number]["value"];
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<
-    "program" | "kids-program" | "locations" | "workshops"
-  >("program");
+  const [activeTab, setActiveTab] = useState<TabValue>("program");
 
-  const tabComponents = {
+  const tabComponents: Record<TabValue, React.ReactNode> = {
     program: <Program />,
-    "kids-program": <KidsProgram />,
+    kids: <KidsProgram />,
     locations: <Locations />,
     workshops: <Workshops />,
   };
@@ -22,24 +42,32 @@ export default function Home() {
   return (
     <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-4xl">
       <WavyBackground />
-      <div className="rounded-lg my-2 pb-1 px-1 bg-zinc-600">
-        <div className="flex space-x-2 md:space-x-4 font-bold text-sm lg:text-lg px-2 md:px-1 justify-center">
-          {Object.keys(tabComponents).map((tab) => (
-            <button
-              key={tab}
-              className={`px-2 py-4 rounded-lg ${
-                activeTab === tab ? "text-white" : "text-blue-200"
-              }`}
-              onClick={() => setActiveTab(tab as keyof typeof tabComponents)}
+      <div className="rounded-lg my-2 p-2 bg-zinc-400">
+        <Tabs
+          defaultValue="program"
+          onValueChange={(value: string) => setActiveTab(value as TabValue)}
+        >
+          <TabsList className="flex space-x-2 md:space-x-4 font-bold text-sm lg:text-lg justify-center">
+            {tabs.map((tab) => (
+              <TabsTrigger
+                key={tab.value}
+                value={tab.value}
+                className="px-3 py-2 rounded-md text-white hover:bg-zinc-500/50 transition-colors data-[state=active]:bg-zinc-500/50"
+              >
+                {tab.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {tabs.map((tab) => (
+            <TabsContent
+              key={tab.value}
+              value={tab.value}
+              className="mt-2 bg-white rounded-md"
             >
-              {tab === "kids-program"
-                ? "Programa KIDS"
-                : tab.charAt(0).toUpperCase() + tab.slice(1)}
-            </button>
+              {tabComponents[tab.value]}
+            </TabsContent>
           ))}
-        </div>
-
-        {tabComponents[activeTab]}
+        </Tabs>
       </div>
     </main>
   );

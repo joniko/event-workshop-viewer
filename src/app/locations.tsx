@@ -28,8 +28,8 @@ const LocationsTab: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-1 bg-blue-700 sm:mx-auto sm:w-full max-w-4xl">
-      <div className="rounded-md border bg-white border-blue-800">
+    <div className="space-y-1 sm:mx-auto sm:w-full max-w-4xl">
+      <div className="rounded-md border bg-white">
         <h1 className="text-2xl font-bold text-blue-600 m-4">Ubicaciones</h1>
         <Table>
           <TableHeader>
