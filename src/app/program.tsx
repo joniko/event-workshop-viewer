@@ -41,7 +41,7 @@ const program: Record<string, ScheduleItem[]> = {
       activity: "Plenaria 2",
       downloadUrl:
         "https://drive.google.com/file/d/1SrhScaU2q-3-JIdTAFL7Uihh_o_uysis/view?usp=sharing",
-      enabled: false,
+      enabled: true,
       plenaryName: "Preparen el camino",
       speaker: "Marcos Brunet",
     },
@@ -291,7 +291,7 @@ const ConferenceProgram: React.FC = () => {
                             </div>
                             {item.downloadUrl && item.enabled && (
                               <button
-                                className="ml-2 px-3 py-1.5 text-sm bg-blue-500 rounded text-white font-semibold whitespace-nowrap"
+                                className="ml-2 px-3 py-1.5 text-sm bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold whitespace-nowrap transition-colors"
                                 onClick={() =>
                                   window.open(item.downloadUrl, "_blank")
                                 }
@@ -300,6 +300,14 @@ const ConferenceProgram: React.FC = () => {
                               </button>
                             )}
                           </div>
+                          {item.enabled && item.plenaryName && item.speaker && (
+                            <div className="mt-2 text-sm text-gray-600">
+                              <p>
+                                <strong>{item.plenaryName}</strong>
+                              </p>
+                              <p>{item.speaker}</p>
+                            </div>
+                          )}
                           {item.workshops && renderWorkshops(item.workshops)}
                         </div>
                       </TableCell>
