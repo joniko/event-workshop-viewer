@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WavyBackground from "@/components/WavyBackground";
 import Program from "./program";
 import KidsProgram from "./kids-program";
@@ -15,6 +15,7 @@ import {
   Baby,
   Flag,
 } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const tabs = [
   {
@@ -32,8 +33,23 @@ const tabs = [
 type TabValue = (typeof tabs)[number]["value"];
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<TabValue>("program");
-  const [activeSubTab, setActiveSubTab] = useState<string>("general");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [activeTab, setActiveTab] = useState<TabValue>(() => {
+    const tab = searchParams.get("tab");
+    return tab === "program" || tab === "workshops" ? tab : "program";
+  });
+  const [activeSubTab, setActiveSubTab] = useState<string>(() => {
+    const subTab = searchParams.get("subTab");
+    return subTab || (activeTab === "program" ? "general" : "locations");
+  });
+
+  useEffect(() => {
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set("tab", activeTab);
+    newSearchParams.set("subTab", activeSubTab);
+    router.push(`?${newSearchParams.toString()}`, { scroll: false });
+  }, [activeTab, activeSubTab, router, searchParams]);
 
   const renderContent = () => {
     if (activeTab === "program") {
