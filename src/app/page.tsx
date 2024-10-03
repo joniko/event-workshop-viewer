@@ -1,319 +1,45 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { EventTable } from "@/components/event-table";
-import { Ticket } from "@/types";
+import React, { useState } from "react";
 import WavyBackground from "@/components/WavyBackground";
-
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
-const PREDEFINED_EVENT_IDS = ["26"];
-
-interface ScheduleItem {
-  time: string;
-  activity: string;
-  person?: string;
-}
-
-interface DayScheduleProps {
-  day: string;
-  schedule: ScheduleItem[];
-}
-
-const DaySchedule: React.FC<DayScheduleProps> = ({ day, schedule }) => (
-  <div className="mb-8">
-    <h2 className="text-xl font-bold mb-4 text-blue-600">{day}</h2>
-    <div className="space-y-2">
-      {schedule.map((item, index) => (
-        <div key={index} className="flex text-zinc-900">
-          <span className="w-20 font-semibold">{item.time}</span>
-          <span
-            className={`flex-grow ${
-              item.activity.toLowerCase().includes("sesión") ? "font-bold" : ""
-            }`}
-          >
-            {item.activity}
-          </span>
-          {item.person && (
-            <span className="text-blue-400 italic">{item.person}</span>
-          )}
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const ConferenceProgram: React.FC = () => {
-  const program: Record<string, ScheduleItem[]> = {
-    jueves: [
-      { time: "13:00", activity: "Apertura del predio e inscripciones" },
-      { time: "16:00", activity: "Apertura del auditorio principal" },
-      { time: "18:00", activity: "Adoración" },
-      { time: "19:15", activity: "Plenaria 1" },
-      { time: "19:45", activity: "Plenaria 2" },
-      { time: "21:30", activity: "Anuncios" },
-      { time: "22:00", activity: "Cierre" },
-    ],
-    viernes: [
-      { time: "08:00", activity: "Apertura del auditorio principal" },
-      { time: "09:00", activity: "Adoración" },
-      { time: "10:00", activity: "Plenaria 3" },
-      { time: "11:30", activity: "Break" },
-      { time: "11:45", activity: "Plenaria 4" },
-      {
-        time: "13:00",
-        activity: "Almuerzo + Espacio TOMATULUGAR",
-        person: "hasta 15:30",
-      },
-      { time: "15:00", activity: "Apertura del auditorio principal" },
-      { time: "15:30", activity: "Talleres" },
-      { time: "17:30", activity: "Receso + Espacio TOMATULUGAR" },
-      { time: "18:15", activity: "Apertura del auditorio principal" },
-      { time: "19:00", activity: "Adoración" },
-      { time: "20:30", activity: "Plenaria 5" },
-      { time: "21:45", activity: "Anuncios" },
-      { time: "22:00", activity: "Cierre" },
-    ],
-    sabado: [
-      { time: "08:00", activity: "Apertura del auditorio principal" },
-      { time: "09:00", activity: "Adoración" },
-      { time: "09:40", activity: "Plenaria 6" },
-      { time: "11:00", activity: "Break" },
-      { time: "11:15", activity: "Plenaria 7" },
-      { time: "12:40", activity: "Almuerzo + Espacio TOMATULUGAR" },
-      { time: "15:00", activity: "Apertura del auditorio principal" },
-      { time: "15:30", activity: "Talleres" },
-      {
-        time: "17:30",
-        activity: "Receso y Espacio TOMATULUGAR",
-        person: "hasta 19:00",
-      },
-      { time: "18:30", activity: "Apertura del auditorio principal" },
-      { time: "19:00", activity: "Adoración" },
-      { time: "19:30", activity: "Plenaria 8" },
-      { time: "21:00", activity: "Cierre de la conferencia" },
-    ],
-  };
-
-  return (
-    <div className="space-y-1 rounded-md border bg-white border-blue-800 sm:mx-auto sm:w-full max-w-4xl">
-      {Object.entries(program).map(([day, schedule]) => (
-        <div key={day} className="mb-8">
-          <h2 className="text-xl font-bold m-4 text-blue-500">
-            {day.charAt(0).toUpperCase() + day.slice(1)}
-          </h2>
-          <div className="border-y border-blue-200">
-            <Table>
-              <TableBody>
-                {schedule.map((item, index) => (
-                  <TableRow key={index} className="border-neutral-200">
-                    <TableCell className="text-custom-blue font-medium">
-                      {item.time}
-                    </TableCell>
-                    <TableCell
-                      className={`text-zinc-900 ${
-                        item.activity.toLowerCase().includes("sesión")
-                          ? "font-bold"
-                          : ""
-                      }`}
-                    >
-                      {item.activity}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-interface Workshop {
-  name: string;
-  location: string;
-}
-
-interface WorkshopDayProps {
-  day: string;
-  workshops: Workshop[];
-}
-
-const WorkshopDay: React.FC<WorkshopDayProps> = ({ day, workshops }) => (
-  <div className="mb-8">
-    <h2 className="text-xl font-bold mb-4 text-blue-600">{day}</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {workshops.map((workshop, index) => (
-        <div key={index} className="bg-white p-4 rounded-lg shadow">
-          <h3 className="font-bold text-zinc-900">{workshop.name}</h3>
-          <p className="text-blue-600">{workshop.location}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const LocationsTab: React.FC = () => {
-  const workshopData = [
-    {
-      location: "Sector 1",
-      saturday: "Evangelio Completo",
-      sunday: "Evangelio Completo",
-    },
-    {
-      location: "Sector 2",
-      saturday: "Adoración e Intercesión",
-      sunday: "Gran Comisión",
-    },
-    {
-      location: "Sector 3",
-      saturday: "Iglesia Gloriosa",
-      sunday: "Iglesia Gloriosa",
-    },
-  ];
-
-  return (
-    <div className="space-y-1 bg-blue-700 sm:mx-auto sm:w-full max-w-4xl">
-      <div className="rounded-md border bg-white border-blue-800">
-        <Table>
-          <TableHeader>
-            <TableRow className="border-neutral-200">
-              <TableHead className="text-blue-700">Ubicación</TableHead>
-              <TableHead className="text-blue-700">Sábado</TableHead>
-              <TableHead className="text-blue-700">Domingo</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {workshopData.map((workshop, index) => (
-              <TableRow key={index} className="border-neutral-200">
-                <TableCell className="text-blue-950 font-medium">
-                  {workshop.location}
-                </TableCell>
-                <TableCell className="text-blue-950">
-                  {workshop.saturday}
-                </TableCell>
-                <TableCell className="text-blue-950">
-                  {workshop.sunday}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
-  );
-};
+import Program from "./program";
+import KidsProgram from "./kids-program";
+import Locations from "./locations";
+import Workshops from "./workshops";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<
-    "program" | "locations" | "tickets"
+    "program" | "kids-program" | "locations" | "workshops"
   >("program");
-  const [tickets, setTickets] = useState<Ticket[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  const hiddenColumns = [
-    "Asistente: Iglesia",
-    "Nombre del Evento",
-    "Asistente: Teléfono",
-    "Entrada: ID",
-    "Asistente: Correo electrónico",
-    "Estado de la entrada",
-    "Estado del Pedido",
-    "Ticket ID",
-    "Fecha del Pedido",
-    "Número de Entrada",
-    "TicketID",
-    "Entrada: Número",
-    "Evento: Nombre",
-    "Pedido: Estado",
-    "Pedido: Fecha",
-  ];
-
-  const fetchEventData = async (productId: string) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/eventik/v1/event-tickets/${productId}`
-    );
-    if (!response.ok) {
-      throw new Error(`Failed to fetch data for event ${productId}`);
-    }
-    return response.json();
+  const tabComponents = {
+    program: <Program />,
+    "kids-program": <KidsProgram />,
+    locations: <Locations />,
+    workshops: <Workshops />,
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const ticketsData = await fetchEventData("9847");
-        setTickets(ticketsData);
-      } catch (err) {
-        setError(
-          err instanceof Error ? err.message : "An unknown error occurred"
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   return (
     <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-4xl">
       <WavyBackground />
       <div className="rounded-lg my-2 pb-1 px-1 bg-zinc-600">
-        <div className="flex space-x-2 md:space-x-8 font-bold text-md lg:text-xl px-4 md:px-1 justify-center">
-          <button
-            className={`px-2 py-4 rounded-lg ${
-              activeTab === "program" ? "text-white" : "text-blue-200"
-            }`}
-            onClick={() => setActiveTab("program")}
-          >
-            Programa
-          </button>
-          <button
-            className={`px-2 py-4 rounded-lg ${
-              activeTab === "locations" ? "text-white" : "text-blue-200"
-            }`}
-            onClick={() => setActiveTab("locations")}
-          >
-            Ubicaciones
-          </button>
-          <button
-            className={`px-2 py-4 rounded-lg ${
-              activeTab === "tickets" ? "text-white" : "text-blue-200"
-            }`}
-            onClick={() => setActiveTab("tickets")}
-          >
-            Talleres
-          </button>
+        <div className="flex space-x-2 md:space-x-4 font-bold text-sm lg:text-lg px-2 md:px-1 justify-center">
+          {Object.keys(tabComponents).map((tab) => (
+            <button
+              key={tab}
+              className={`px-2 py-4 rounded-lg ${
+                activeTab === tab ? "text-white" : "text-blue-200"
+              }`}
+              onClick={() => setActiveTab(tab as keyof typeof tabComponents)}
+            >
+              {tab === "kids-program"
+                ? "Programa KIDS"
+                : tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </button>
+          ))}
         </div>
 
-        {activeTab === "program" && <ConferenceProgram />}
-        {activeTab === "locations" && <LocationsTab />}
-        {activeTab === "tickets" && (
-          <div>
-            {loading && <p className="text-blue-100">Cargando...</p>}
-            {error && <p className="text-red-500">Error: {error}</p>}
-            {!loading && !error && tickets.length === 0 && (
-              <p className="text-blue-100">
-                No se encontraron tickets para este evento.
-              </p>
-            )}
-            {!loading && !error && tickets.length > 0 && (
-              <EventTable data={tickets} hiddenColumns={hiddenColumns} />
-            )}
-          </div>
-        )}
+        {tabComponents[activeTab]}
       </div>
     </main>
   );
