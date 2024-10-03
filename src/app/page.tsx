@@ -14,9 +14,10 @@ import {
   Users,
   MapPin,
   GraduationCap,
-  Baby,
   Flag,
   Utensils,
+  PartyPopper, // Nuevo icono para Kids
+  Sun, // Nuevo icono para Argentinos
 } from "lucide-react";
 // Importar los iconos de react-icons/fa
 import { FaCoffee, FaStore, FaUmbrellaBeach } from "react-icons/fa";
@@ -25,7 +26,7 @@ import { useSearchParams } from "next/navigation";
 const tabs = [
   {
     value: "program",
-    label: "Programa",
+    label: "Cronograma",
     icon: <Calendar className="w-4 h-4 mr-2" />,
   },
   {
@@ -109,7 +110,7 @@ function HomeContent() {
               value="kids"
               className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
-              <Baby className="w-4 h-4 mr-2" />
+              <PartyPopper className="w-4 h-4 mr-2" />
               Kids
             </TabsTrigger>
           </TabsList>
@@ -136,7 +137,7 @@ function HomeContent() {
               value="argentinos"
               className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
-              <GraduationCap className="w-4 h-4 mr-2" />
+              <Sun className="w-4 h-4 mr-2" />
               Argentinos
             </TabsTrigger>
             <TabsTrigger
