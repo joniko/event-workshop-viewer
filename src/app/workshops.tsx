@@ -55,7 +55,7 @@ const Workshops: React.FC = () => {
   }, []);
 
   return (
-    <div className="space-y-1 rounded-md border bg-white sm:mx-auto sm:w-full max-w-4xl p-4">
+    <div className="space-y-1 rounded-md border bg-white sm:mx-auto sm:w-full max-w-4xl">
       {loading && <p className="text-blue-600">Cargando...</p>}
       {error && <p className="text-red-500">Error: {error}</p>}
       {!loading && !error && tickets.length === 0 && (
