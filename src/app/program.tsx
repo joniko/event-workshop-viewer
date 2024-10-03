@@ -29,8 +29,11 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "19:45",
       activity: "Plenaria 2",
-      downloadUrl: "/materials/plenaria2.pdf",
+      downloadUrl:
+        "https://drive.google.com/file/d/1SrhScaU2q-3-JIdTAFL7Uihh_o_uysis/view?usp=sharing",
       enabled: false,
+      plenaryName: "Preparen el camino",
+      speaker: "Marcos Brunet",
     },
     { time: "21:30", activity: "Anuncios" },
     { time: "22:00", activity: "Cierre" },
@@ -41,8 +44,11 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "10:00",
       activity: "Plenaria 3",
-      downloadUrl: "/materials/plenaria3.pdf",
+      downloadUrl:
+        "https://drive.google.com/file/d/1pBEEDkeCmijewbYsdaqCWrRE0pyDThBm/view?usp=sharing",
       enabled: false,
+      plenaryName: "La transición de los últimos tiempos",
+      speaker: "Mariano Sennewald",
     },
     { time: "11:30", activity: "Break" },
     {
