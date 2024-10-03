@@ -7,23 +7,25 @@ import KidsProgram from "./kids-program";
 import Locations from "./locations";
 import Workshops from "./workshops";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
+import {
+  Calendar,
+  Users,
+  MapPin,
+  GraduationCap,
+  Baby,
+  Flag,
+} from "lucide-react";
 
 const tabs = [
   {
     value: "program",
-    label: "Programa General",
-  },
-  {
-    value: "kids",
-    label: "Programa KIDS",
-  },
-  {
-    value: "locations",
-    label: "Ubicaciones",
+    label: "Programa",
+    icon: <Calendar className="w-4 h-4 mr-2" />,
   },
   {
     value: "workshops",
     label: "Talleres",
+    icon: <Users className="w-4 h-4 mr-2" />,
   },
 ] as const;
 
@@ -31,42 +33,102 @@ type TabValue = (typeof tabs)[number]["value"];
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabValue>("program");
+  const [activeSubTab, setActiveSubTab] = useState<string>("general");
 
-  const tabComponents: Record<TabValue, React.ReactNode> = {
-    program: <Program />,
-    kids: <KidsProgram />,
-    locations: <Locations />,
-    workshops: <Workshops />,
+  const renderContent = () => {
+    if (activeTab === "program") {
+      return (
+        <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
+          <TabsList className="flex w-full border-b">
+            <TabsTrigger
+              value="general"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+            >
+              <Calendar className="w-4 h-4 mr-2" />
+              General
+            </TabsTrigger>
+            <TabsTrigger
+              value="kids"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+            >
+              <Baby className="w-4 h-4 mr-2" />
+              Kids
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="general">
+            <Program />
+          </TabsContent>
+          <TabsContent value="kids">
+            <KidsProgram />
+          </TabsContent>
+        </Tabs>
+      );
+    } else if (activeTab === "workshops") {
+      return (
+        <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
+          <TabsList className="flex w-full bg-zinc-100">
+            <TabsTrigger
+              value="locations"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+            >
+              <MapPin className="w-4 h-4 mr-2" />
+              Ubicaciones
+            </TabsTrigger>
+            <TabsTrigger
+              value="argentinos"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+            >
+              <GraduationCap className="w-4 h-4 mr-2" />
+              Argentinos
+            </TabsTrigger>
+            <TabsTrigger
+              value="extranjeros"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+            >
+              <Flag className="w-4 h-4 mr-2" />
+              Extranjeros
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="locations">
+            <Locations />
+          </TabsContent>
+          <TabsContent value="argentinos">
+            <Workshops type="argentinos" />
+          </TabsContent>
+          <TabsContent value="extranjeros">
+            <Workshops type="extranjeros" />
+          </TabsContent>
+        </Tabs>
+      );
+    }
   };
 
   return (
     <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-4xl">
       <WavyBackground />
-      <div className="rounded-lg my-2 p-2 bg-zinc-400">
+      <div className="rounded-lg my-2 p-2 bg-zinc-400  space-x-2">
         <Tabs
-          defaultValue="program"
-          onValueChange={(value: string) => setActiveTab(value as TabValue)}
+          value={activeTab}
+          onValueChange={(value: string) => {
+            setActiveTab(value as TabValue);
+            setActiveSubTab(value === "program" ? "general" : "locations");
+          }}
         >
-          <TabsList className="flex space-x-2 md:space-x-4 font-bold text-sm lg:text-lg justify-center">
+          <TabsList className="flex w-full space-x-1">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="px-3 py-2 rounded-md text-white hover:bg-zinc-500/50 transition-colors data-[state=active]:bg-zinc-500/50"
+                className="flex-1 px-3 py-2 rounded-md text-white font-bold hover:bg-zinc-500/50 transition-colors data-[state=active]:bg-zinc-500/50 flex items-center justify-center"
               >
+                {tab.icon}
                 {tab.label}
               </TabsTrigger>
             ))}
           </TabsList>
-          {tabs.map((tab) => (
-            <TabsContent
-              key={tab.value}
-              value={tab.value}
-              className="mt-2 bg-white rounded-md"
-            >
-              {tabComponents[tab.value]}
-            </TabsContent>
-          ))}
+          <TabsContent value={activeTab} className="mt-2 bg-white rounded-md">
+            {renderContent()}
+          </TabsContent>
         </Tabs>
       </div>
     </main>
