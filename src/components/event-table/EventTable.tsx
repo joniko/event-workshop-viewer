@@ -98,13 +98,13 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
       />
-      <div className="rounded-md border bg-white border-indigo-800">
+      <div className="rounded-md border bg-white border-blue-800">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow className="border-neutral-200" key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead className="text-indigo-700" key={header.id}>
+                  <TableHead className="text-blue-700" key={header.id}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -121,7 +121,7 @@ export function EventTable({ data, hiddenColumns = [] }: EventTableProps) {
               table.getRowModel().rows.map((row) => (
                 <TableRow className="border-neutral-200" key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell className="text-indigo-950" key={cell.id}>
+                    <TableCell className="text-blue-950" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

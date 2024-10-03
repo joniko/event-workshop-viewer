@@ -29,7 +29,7 @@ interface DayScheduleProps {
 
 const DaySchedule: React.FC<DayScheduleProps> = ({ day, schedule }) => (
   <div className="mb-8">
-    <h2 className="text-xl font-bold mb-4 text-indigo-600">{day}</h2>
+    <h2 className="text-xl font-bold mb-4 text-blue-600">{day}</h2>
     <div className="space-y-2">
       {schedule.map((item, index) => (
         <div key={index} className="flex text-zinc-900">
@@ -42,7 +42,7 @@ const DaySchedule: React.FC<DayScheduleProps> = ({ day, schedule }) => (
             {item.activity}
           </span>
           {item.person && (
-            <span className="text-indigo-300 italic">{item.person}</span>
+            <span className="text-blue-400 italic">{item.person}</span>
           )}
         </div>
       ))}
@@ -73,7 +73,7 @@ const ConferenceProgram: React.FC = () => {
       { time: "16:30", activity: "Talleres" },
       { time: "19:05", activity: "Alabanza adoración" },
       { time: "20:35", activity: "Sesión 5" },
-      { time: "21:25", activity: "Fin día 2" },
+      { time: "21:25", activity: "Fin d��a 2" },
     ],
     domingo: [
       { time: "9:00", activity: "Apertura de puertas" },
@@ -93,18 +93,18 @@ const ConferenceProgram: React.FC = () => {
   };
 
   return (
-    <div className="space-y-1 rounded-md border bg-white border-indigo-800 sm:mx-auto sm:w-full max-w-4xl">
+    <div className="space-y-1 rounded-md border bg-white border-blue-800 sm:mx-auto sm:w-full max-w-4xl">
       {Object.entries(program).map(([day, schedule]) => (
         <div key={day} className="mb-8">
-          <h2 className="text-xl font-bold m-4 text-cumbre-purple">
+          <h2 className="text-xl font-bold m-4 text-blue-500">
             {day.charAt(0).toUpperCase() + day.slice(1)}
           </h2>
-          <div className="border-y border-indigo-200">
+          <div className="border-y border-blue-200">
             <Table>
               <TableBody>
                 {schedule.map((item, index) => (
                   <TableRow key={index} className="border-neutral-200">
-                    <TableCell className="text-custom-purple font-medium">
+                    <TableCell className="text-custom-blue font-medium">
                       {item.time}
                     </TableCell>
                     <TableCell
@@ -139,12 +139,12 @@ interface WorkshopDayProps {
 
 const WorkshopDay: React.FC<WorkshopDayProps> = ({ day, workshops }) => (
   <div className="mb-8">
-    <h2 className="text-xl font-bold mb-4 text-indigo-600">{day}</h2>
+    <h2 className="text-xl font-bold mb-4 text-blue-600">{day}</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {workshops.map((workshop, index) => (
         <div key={index} className="bg-white p-4 rounded-lg shadow">
           <h3 className="font-bold text-zinc-900">{workshop.name}</h3>
-          <p className="text-indigo-600">{workshop.location}</p>
+          <p className="text-blue-600">{workshop.location}</p>
         </div>
       ))}
     </div>
@@ -191,26 +191,26 @@ const LocationsTab: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-1 bg-indigo-700 sm:mx-auto sm:w-full max-w-4xl">
-      <div className="rounded-md border bg-white border-indigo-800">
+    <div className="space-y-1 bg-blue-700 sm:mx-auto sm:w-full max-w-4xl">
+      <div className="rounded-md border bg-white border-blue-800">
         <Table>
           <TableHeader>
             <TableRow className="border-neutral-200">
-              <TableHead className="text-indigo-700">Ubicación</TableHead>
-              <TableHead className="text-indigo-700">Sábado</TableHead>
-              <TableHead className="text-indigo-700">Domingo</TableHead>
+              <TableHead className="text-blue-700">Ubicación</TableHead>
+              <TableHead className="text-blue-700">Sábado</TableHead>
+              <TableHead className="text-blue-700">Domingo</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {workshopData.map((workshop, index) => (
               <TableRow key={index} className="border-neutral-200">
-                <TableCell className="text-indigo-950 font-medium">
+                <TableCell className="text-blue-950 font-medium">
                   {workshop.location}
                 </TableCell>
-                <TableCell className="text-indigo-950">
+                <TableCell className="text-blue-950">
                   {workshop.saturday}
                 </TableCell>
-                <TableCell className="text-indigo-950">
+                <TableCell className="text-blue-950">
                   {workshop.sunday}
                 </TableCell>
               </TableRow>
@@ -224,24 +224,20 @@ const LocationsTab: React.FC = () => {
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<
-    "program" | "locations" | "tickets" | "workshops"
+    "program" | "locations" | "tickets"
   >("program");
   const [tickets, setTickets] = useState<Ticket[]>([]);
-  const [workshops, setWorkshops] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const hiddenColumns = [
-    "⁠¿De que manera estás involucrado/a en tu iglesia?",
     "Asistente: Iglesia",
     "Nombre del Evento",
     "Asistente: Teléfono",
     "Entrada: ID",
-    "Tipo De Entrada",
     "Asistente: Correo electrónico",
     "Estado de la entrada",
     "Estado del Pedido",
-    "Tipo de entrada",
     "Ticket ID",
     "Fecha del Pedido",
     "Número de Entrada",
@@ -250,8 +246,6 @@ export default function Home() {
     "Evento: Nombre",
     "Pedido: Estado",
     "Pedido: Fecha",
-    "Asistente 2: Correo electrónico",
-    "Asistente 3: Correo electrónico",
   ];
 
   const fetchEventData = async (productId: string) => {
@@ -265,16 +259,12 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const fetchAllData = async () => {
+    const fetchData = async () => {
       setLoading(true);
       setError(null);
       try {
-        const [ticketsData, workshopsData] = await Promise.all([
-          fetchEventData("26"),
-          fetchEventData("101"),
-        ]);
+        const ticketsData = await fetchEventData("9847");
         setTickets(ticketsData);
-        setWorkshops(workshopsData);
       } catch (err) {
         setError(
           err instanceof Error ? err.message : "An unknown error occurred"
@@ -284,17 +274,17 @@ export default function Home() {
       }
     };
 
-    fetchAllData();
+    fetchData();
   }, []);
 
   return (
     <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-4xl">
       <WavyBackground />
-      <div className="rounded-lg my-2 pb-1 px-1 bg-indigo-950/20 ring-1 ring-indigo-950/50 ring-inset">
+      <div className="rounded-lg my-2 pb-1 px-1 bg-zinc-600">
         <div className="flex space-x-2 md:space-x-8 font-bold text-md lg:text-xl px-4 md:px-1 justify-center">
           <button
             className={`px-2 py-4 rounded-lg ${
-              activeTab === "program" ? "text-white" : "text-indigo-200"
+              activeTab === "program" ? "text-white" : "text-blue-200"
             }`}
             onClick={() => setActiveTab("program")}
           >
@@ -302,7 +292,7 @@ export default function Home() {
           </button>
           <button
             className={`px-2 py-4 rounded-lg ${
-              activeTab === "locations" ? "text-white" : "text-indigo-200"
+              activeTab === "locations" ? "text-white" : "text-blue-200"
             }`}
             onClick={() => setActiveTab("locations")}
           >
@@ -310,19 +300,11 @@ export default function Home() {
           </button>
           <button
             className={`px-2 py-4 rounded-lg ${
-              activeTab === "tickets" ? "text-white" : "text-indigo-200"
+              activeTab === "tickets" ? "text-white" : "text-blue-200"
             }`}
             onClick={() => setActiveTab("tickets")}
           >
-            Talleres General
-          </button>
-          <button
-            className={`px-2 py-4 rounded-lg ${
-              activeTab === "workshops" ? "text-white" : "text-indigo-200"
-            }`}
-            onClick={() => setActiveTab("workshops")}
-          >
-            Talleres 3 ✕ 2
+            Talleres
           </button>
         </div>
 
@@ -330,29 +312,15 @@ export default function Home() {
         {activeTab === "locations" && <LocationsTab />}
         {activeTab === "tickets" && (
           <div>
-            {loading && <p className="text-indigo-100">Cargando...</p>}
+            {loading && <p className="text-blue-100">Cargando...</p>}
             {error && <p className="text-red-500">Error: {error}</p>}
             {!loading && !error && tickets.length === 0 && (
-              <p className="text-indigo-100">
-                No se encontraron tickets para estos eventos.
+              <p className="text-blue-100">
+                No se encontraron tickets para este evento.
               </p>
             )}
             {!loading && !error && tickets.length > 0 && (
               <EventTable data={tickets} hiddenColumns={hiddenColumns} />
-            )}
-          </div>
-        )}
-        {activeTab === "workshops" && (
-          <div>
-            {loading && <p className="text-indigo-100">Cargando...</p>}
-            {error && <p className="text-red-500">Error: {error}</p>}
-            {!loading && !error && workshops.length === 0 && (
-              <p className="text-indigo-100">
-                No se encontraron talleres para estos eventos.
-              </p>
-            )}
-            {!loading && !error && workshops.length > 0 && (
-              <EventTable data={workshops} hiddenColumns={hiddenColumns} />
             )}
           </div>
         )}

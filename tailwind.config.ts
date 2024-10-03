@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       colors: {
-        "cumbre-purple": "#591AFF",
+        "cumbre-blue": "#591AFF",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 import "./globals.css";
+import eventImage from "@/images/bg-top.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +29,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="h-full scroll-smooth" suppressHydrationWarning>
-      <body className="flex min-h-full bg-cumbre-purple antialiased dark:bg-indigo-900">
+      <body
+        style={{
+          backgroundImage: `url(${eventImage.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+        }}
+        className="flex min-h-full bg-zinc-300 antialiased"
+      >
         {children}
       </body>
     </html>
