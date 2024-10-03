@@ -13,14 +13,15 @@ import {
   Calendar,
   Users,
   MapPin,
-  GraduationCap,
   Flag,
   Utensils,
   PartyPopper, // Nuevo icono para Kids
   Sun, // Nuevo icono para Argentinos
+  Coffee,
+  Store,
+  Umbrella,
 } from "lucide-react";
 // Importar los iconos de react-icons/fa
-import { FaCoffee, FaStore, FaUmbrellaBeach } from "react-icons/fa";
 import { useSearchParams } from "next/navigation";
 
 const tabs = [
@@ -167,21 +168,21 @@ function HomeContent() {
               value="cafeteria"
               className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
-              <FaCoffee className="w-4 h-4 mr-2" />
+              <Coffee className="w-4 h-4 mr-2" />
               Cafetería
             </TabsTrigger>
             <TabsTrigger
               value="quiosco"
               className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
-              <FaStore className="w-4 h-4 mr-2" />
+              <Store className="w-4 h-4 mr-2" />
               Quiosco
             </TabsTrigger>
             <TabsTrigger
               value="carpa"
               className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
-              <FaUmbrellaBeach className="w-4 h-4 mr-2" />
+              <Umbrella className="w-4 h-4 mr-2" />
               Carpa
             </TabsTrigger>
           </TabsList>
