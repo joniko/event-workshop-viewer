@@ -55,7 +55,7 @@ const kidsSchedule: Record<string, ScheduleItem[]> = {
     { time: "21:30", activity: "Grupos pequeños" },
     { time: "22:00", activity: "Cierre" },
   ],
-  "Viernes 4 de octubre": [
+  "Viernes 4 de Octubre": [
     { time: "09:00", activity: "Adoración", tag: "A" },
     { time: "10:00", activity: "Evangelio Completo", tag: "TJ" },
     { time: "11:00", activity: "Taller 1", tag: "S" },
@@ -74,7 +74,7 @@ const kidsSchedule: Record<string, ScheduleItem[]> = {
     { time: "21:30", activity: "Cierre general" },
     { time: "22:00", activity: "Retiro de los niños" },
   ],
-  "Sábado 5 de octubre": [
+  "Sábado 5 de Octubre": [
     { time: "09:00", activity: "Adoración", tag: "A" },
     { time: "10:00", activity: "La Gran Comisión", tag: "TJ" },
     { time: "11:00", activity: "Taller 5", tag: "S" },
