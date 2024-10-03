@@ -171,7 +171,7 @@ const LocationsTab: React.FC = () => {
     {
       location: "Sector 2",
       saturday: "Adoración e Intercesión",
-      sunday: "Adoración e Intercesión",
+      sunday: "Gran Comisión",
     },
     {
       location: "Sector 3",
