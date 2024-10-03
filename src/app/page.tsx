@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
+import { useRouter } from "next/navigation";
 import WavyBackground from "@/components/WavyBackground";
 import Program from "./program";
 import KidsProgram from "./kids-program";
@@ -15,7 +16,7 @@ import {
   Baby,
   Flag,
 } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const tabs = [
   {
@@ -32,9 +33,9 @@ const tabs = [
 
 type TabValue = (typeof tabs)[number]["value"];
 
-export default function Home() {
-  const router = useRouter();
+function HomeContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabValue>(() => {
     const tab = searchParams.get("tab");
     return tab === "program" || tab === "workshops" ? tab : "program";
@@ -148,5 +149,13 @@ export default function Home() {
         </Tabs>
       </div>
     </main>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomeContent />
+    </Suspense>
   );
 }
