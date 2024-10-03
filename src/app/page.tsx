@@ -7,6 +7,7 @@ import Program from "./program";
 import KidsProgram from "./kids-program";
 import Locations from "./locations";
 import Workshops from "./workshops";
+import Buffet from "./buffet";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import {
   Calendar,
@@ -15,7 +16,10 @@ import {
   GraduationCap,
   Baby,
   Flag,
+  Utensils,
 } from "lucide-react";
+// Importar los iconos de react-icons/fa
+import { FaCoffee, FaStore, FaUmbrellaBeach } from "react-icons/fa";
 import { useSearchParams } from "next/navigation";
 
 const tabs = [
@@ -28,6 +32,11 @@ const tabs = [
     value: "workshops",
     label: "Talleres",
     icon: <Users className="w-4 h-4 mr-2" />,
+  },
+  {
+    value: "buffet",
+    label: "Buffet",
+    icon: <Utensils className="w-4 h-4 mr-2" />,
   },
 ] as const;
 
@@ -114,6 +123,43 @@ function HomeContent() {
           </TabsContent>
           <TabsContent value="extranjeros">
             <Workshops type="extranjeros" />
+          </TabsContent>
+        </Tabs>
+      );
+    } else if (activeTab === "buffet") {
+      return (
+        <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
+          <TabsList className="flex w-full border-b">
+            <TabsTrigger
+              value="cafeteria"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+            >
+              <FaCoffee className="w-4 h-4 mr-2" />
+              Cafetería
+            </TabsTrigger>
+            <TabsTrigger
+              value="quiosco"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+            >
+              <FaStore className="w-4 h-4 mr-2" />
+              Quiosco
+            </TabsTrigger>
+            <TabsTrigger
+              value="carpa"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+            >
+              <FaUmbrellaBeach className="w-4 h-4 mr-2" />
+              Carpa
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="cafeteria">
+            <Buffet type="cafeteria" />
+          </TabsContent>
+          <TabsContent value="quiosco">
+            <Buffet type="quiosco" />
+          </TabsContent>
+          <TabsContent value="carpa">
+            <Buffet type="carpa" />
           </TabsContent>
         </Tabs>
       );
