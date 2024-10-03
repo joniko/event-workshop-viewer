@@ -47,11 +47,25 @@ function HomeContent() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabValue>(() => {
     const tab = searchParams.get("tab");
-    return tab === "program" || tab === "workshops" ? tab : "program";
+    return tab === "program" || tab === "workshops" || tab === "buffet"
+      ? tab
+      : "program";
   });
   const [activeSubTab, setActiveSubTab] = useState<string>(() => {
     const subTab = searchParams.get("subTab");
-    return subTab || (activeTab === "program" ? "general" : "locations");
+    if (subTab) return subTab;
+
+    // Definir los sub-tabs por defecto para cada tab principal
+    switch (activeTab) {
+      case "program":
+        return "general";
+      case "workshops":
+        return "locations";
+      case "buffet":
+        return "cafeteria";
+      default:
+        return "general";
+    }
   });
 
   useEffect(() => {
@@ -60,6 +74,24 @@ function HomeContent() {
     newSearchParams.set("subTab", activeSubTab);
     router.push(`?${newSearchParams.toString()}`, { scroll: false });
   }, [activeTab, activeSubTab, router, searchParams]);
+
+  const handleTabChange = (value: string) => {
+    if (value === "program" || value === "workshops" || value === "buffet") {
+      setActiveTab(value);
+      // Establecer el sub-tab por defecto al cambiar de tab principal
+      switch (value) {
+        case "program":
+          setActiveSubTab("general");
+          break;
+        case "workshops":
+          setActiveSubTab("locations");
+          break;
+        case "buffet":
+          setActiveSubTab("cafeteria");
+          break;
+      }
+    }
+  };
 
   const renderContent = () => {
     if (activeTab === "program") {
@@ -170,13 +202,7 @@ function HomeContent() {
     <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-4xl">
       <WavyBackground />
       <div className="rounded-lg my-2 p-2 bg-zinc-400 space-x-2">
-        <Tabs
-          value={activeTab}
-          onValueChange={(value: string) => {
-            setActiveTab(value as TabValue);
-            setActiveSubTab(value === "program" ? "general" : "locations");
-          }}
-        >
+        <Tabs value={activeTab} onValueChange={handleTabChange}>
           <TabsList className="flex w-full space-x-1">
             {tabs.map((tab) => (
               <TabsTrigger
