@@ -63,21 +63,27 @@ export function DataTablePagination<TData>({
           </Button>
           <Button
             variant="outline"
-            className="h-8 w-8 p-0"
+            size="sm"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
+            className={`${!table.getCanPreviousPage() ? "opacity-50" : ""} ${
+              table.getState().pagination.pageIndex === 0 ? "text-blue-500" : ""
+            }`}
           >
-            <span className="sr-only">Go to previous page</span>
-            <ChevronLeftIcon className="h-4 w-4" />
+            Anterior
           </Button>
           <Button
             variant="outline"
-            className="h-8 w-8 p-0"
+            size="sm"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
+            className={`${!table.getCanNextPage() ? "opacity-50" : ""} ${
+              table.getState().pagination.pageIndex === table.getPageCount() - 1
+                ? "text-blue-500"
+                : ""
+            }`}
           >
-            <span className="sr-only">Go to next page</span>
-            <ChevronRightIcon className="h-4 w-4" />
+            Siguiente
           </Button>
           <Button
             variant="outline"

@@ -69,7 +69,7 @@ const LocationsTab: React.FC = () => {
         <Table>
           <TableHeader>
             <TableRow className="border-neutral-200 space-x-2">
-              <TableHead className="text-blue-700">Ubicación</TableHead>
+              <TableHead className="text-primary">Ubicación</TableHead>
               <TableHead className="text-blue-700">Sábado</TableHead>
               <TableHead className="text-blue-700">Domingo</TableHead>
             </TableRow>
@@ -84,7 +84,11 @@ const LocationsTab: React.FC = () => {
                   <TableCell className="text-blue-950">
                     <button
                       onClick={() => handleWorkshopClick(workshop.saturday)}
-                      className="text-blue-600 hover:underline"
+                      className={`hover:underline ${
+                        selectedWorkshop === workshop.saturday
+                          ? "text-blue-500 font-bold"
+                          : "text-blue-600"
+                      }`}
                     >
                       {workshop.saturday}
                     </button>
@@ -92,7 +96,11 @@ const LocationsTab: React.FC = () => {
                   <TableCell className="text-blue-950">
                     <button
                       onClick={() => handleWorkshopClick(workshop.sunday)}
-                      className="text-blue-600 hover:underline"
+                      className={`hover:underline ${
+                        selectedWorkshop === workshop.sunday
+                          ? "text-blue-500 font-bold"
+                          : "text-blue-600"
+                      }`}
                     >
                       {workshop.sunday}
                     </button>

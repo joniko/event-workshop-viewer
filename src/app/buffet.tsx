@@ -24,7 +24,7 @@ const BuffetPage: React.FC<BuffetProps> = ({ type }) => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-8">
+      <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-8 text-primary">
         {type === "cafeteria" && "Cafetería"}
         {type === "quiosco" && "Quiosco"}
         {type === "carpa" && "Carpa"}

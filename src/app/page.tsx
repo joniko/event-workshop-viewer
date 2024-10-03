@@ -68,14 +68,14 @@ function HomeContent() {
           <TabsList className="flex w-full border-b">
             <TabsTrigger
               value="general"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <Calendar className="w-4 h-4 mr-2" />
               General
             </TabsTrigger>
             <TabsTrigger
               value="kids"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <Baby className="w-4 h-4 mr-2" />
               Kids
@@ -95,21 +95,21 @@ function HomeContent() {
           <TabsList className="flex w-full bg-zinc-100">
             <TabsTrigger
               value="locations"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <MapPin className="w-4 h-4 mr-2" />
               Ubicaciones
             </TabsTrigger>
             <TabsTrigger
               value="argentinos"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <GraduationCap className="w-4 h-4 mr-2" />
               Argentinos
             </TabsTrigger>
             <TabsTrigger
               value="extranjeros"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <Flag className="w-4 h-4 mr-2" />
               Extranjeros
@@ -132,21 +132,21 @@ function HomeContent() {
           <TabsList className="flex w-full border-b">
             <TabsTrigger
               value="cafeteria"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <FaCoffee className="w-4 h-4 mr-2" />
               Cafetería
             </TabsTrigger>
             <TabsTrigger
               value="quiosco"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <FaStore className="w-4 h-4 mr-2" />
               Quiosco
             </TabsTrigger>
             <TabsTrigger
               value="carpa"
-              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 px-3 py-2 flex items-center justify-center"
+              className="flex-1 hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <FaUmbrellaBeach className="w-4 h-4 mr-2" />
               Carpa
@@ -169,7 +169,7 @@ function HomeContent() {
   return (
     <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-4xl">
       <WavyBackground />
-      <div className="rounded-lg my-2 p-2 bg-zinc-400  space-x-2">
+      <div className="rounded-lg my-2 p-2 bg-zinc-400 space-x-2">
         <Tabs
           value={activeTab}
           onValueChange={(value: string) => {
@@ -182,7 +182,7 @@ function HomeContent() {
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="flex-1 px-3 py-2 rounded-md text-white font-bold hover:bg-zinc-500/50 transition-colors data-[state=active]:bg-zinc-500/50 flex items-center justify-center"
+                className="flex-1 px-3 py-2 rounded-md text-white font-bold hover:bg-zinc-500/50 transition-colors data-[state=active]:bg-zinc-500/50 data-[state=active]:text-white flex items-center justify-center"
               >
                 {tab.icon}
                 {tab.label}
