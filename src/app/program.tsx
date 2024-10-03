@@ -10,6 +10,16 @@ interface ScheduleItem {
   enabled?: boolean;
   plenaryName?: string;
   speaker?: string;
+  workshops?: Workshop[];
+}
+
+interface Workshop {
+  sector: string;
+  title: string;
+  speaker: string;
+  colorClass: string; // Clase de color de Tailwind
+  downloadUrl?: string;
+  enabled: boolean; // Habilitar/deshabilitar la info del orador y el botón
 }
 
 const program: Record<string, ScheduleItem[]> = {
@@ -65,15 +75,65 @@ const program: Record<string, ScheduleItem[]> = {
     { time: "15:00", activity: "Apertura del auditorio principal" },
     {
       time: "15:30",
-      activity: "Talleres Sesión 1",
-      downloadUrl: "/materials/talleres1.pdf",
-      enabled: false,
+      activity: "Talleres",
+      workshops: [
+        {
+          sector: "SECTOR 1",
+          title: "Evangelio completo 1",
+          speaker: "Orador 1",
+          colorClass: "text-sky-500 border-sky-500",
+          downloadUrl: "/materials/taller1.pdf",
+          enabled: false,
+        },
+        {
+          sector: "SECTOR 2",
+          title: "Adoración e intercesión 1",
+          speaker: "Orador 2",
+          colorClass: "text-zinc-500 border-zinc-500",
+          downloadUrl: "/materials/taller2.pdf",
+          enabled: false,
+        },
+        {
+          sector: "SECTOR 3",
+          title: "Iglesia Gloriosa 1",
+          speaker: "Orador 3",
+          colorClass: "text-rose-500 border-rose-500",
+          downloadUrl: "/materials/taller3.pdf",
+          enabled: false,
+        },
+      ],
     },
     {
       time: "16:15",
-      activity: "Talleres Sesión 2",
+      activity: "Talleres",
       downloadUrl: "/materials/talleres2.pdf",
       enabled: false,
+      workshops: [
+        {
+          sector: "SECTOR 1",
+          title: "Evangelio completo 2",
+          speaker: "Orador 1",
+          colorClass: "text-sky-500 border-sky-500",
+          downloadUrl: "/materials/taller1.pdf",
+          enabled: false,
+        },
+        {
+          sector: "SECTOR 2",
+          title: "Adoración e intercesión 2",
+          speaker: "Orador 2",
+          colorClass: "text-zinc-500 border-zinc-500",
+          downloadUrl: "/materials/taller2.pdf",
+          enabled: false,
+        },
+        {
+          sector: "SECTOR 3",
+          title: "Iglesia Gloriosa 2",
+          speaker: "Orador 3",
+          colorClass: "text-rose-500 border-rose-500",
+          downloadUrl: "/materials/taller3.pdf",
+          enabled: false,
+        },
+      ],
     },
     { time: "17:30", activity: "Receso + Espacio TOMATULUGAR" },
     { time: "18:15", activity: "Apertura del auditorio principal" },
@@ -95,8 +155,68 @@ const program: Record<string, ScheduleItem[]> = {
     { time: "11:15", activity: "Plenaria 7", enabled: false },
     { time: "12:40", activity: "Almuerzo + Espacio TOMATULUGAR" },
     { time: "15:00", activity: "Apertura del auditorio principal" },
-    { time: "15:30", activity: "Talleres Sesión 3", enabled: false },
-    { time: "16:15", activity: "Talleres Sesión 4", enabled: false },
+    {
+      time: "15:30",
+      activity: "Talleres",
+      enabled: false,
+      workshops: [
+        {
+          sector: "SECTOR 1",
+          title: "Evangelio completo 3",
+          speaker: "Orador 1",
+          colorClass: "text-sky-500 border-sky-500",
+          downloadUrl: "/materials/taller1.pdf",
+          enabled: false,
+        },
+        {
+          sector: "SECTOR 2",
+          title: "Adoración e intercesión 3",
+          speaker: "Orador 2",
+          colorClass: "text-zinc-500 border-zinc-500",
+          downloadUrl: "/materials/taller2.pdf",
+          enabled: false,
+        },
+        {
+          sector: "SECTOR 3",
+          title: "Iglesia Gloriosa 3",
+          speaker: "Orador 3",
+          colorClass: "text-rose-500 border-rose-500",
+          downloadUrl: "/materials/taller3.pdf",
+          enabled: false,
+        },
+      ],
+    },
+    {
+      time: "16:15",
+      activity: "Talleres",
+      enabled: false,
+      workshops: [
+        {
+          sector: "SECTOR 1",
+          title: "Evangelio completo 4",
+          speaker: "Orador 1",
+          colorClass: "text-sky-500 border-sky-500",
+          downloadUrl: "/materials/taller1.pdf",
+          enabled: false,
+        },
+        {
+          sector: "SECTOR 2",
+          title: "Adoración e intercesión 4",
+          speaker: "Orador 2",
+          colorClass: "text-zinc-500 border-zinc-500",
+          downloadUrl: "/materials/taller2.pdf",
+          enabled: false,
+        },
+        {
+          sector: "SECTOR 3",
+          title: "Iglesia Gloriosa 4",
+          speaker: "Orador 3",
+          colorClass: "text-rose-400 border-rose-400",
+          downloadUrl: "/materials/taller3.pdf",
+          enabled: false,
+        },
+      ],
+    },
     {
       time: "17:30",
       activity: "Receso y Espacio TOMATULUGAR",
@@ -111,6 +231,33 @@ const program: Record<string, ScheduleItem[]> = {
 
 const ConferenceProgram: React.FC = () => {
   const [activeDay, setActiveDay] = React.useState(Object.keys(program)[0]);
+
+  const renderWorkshops = (workshops: Workshop[]) => (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+      {workshops.map((workshop, index) => (
+        <div
+          key={index}
+          className={`border rounded-lg p-4 ${workshop.colorClass}`}
+        >
+          <div className="text-sm text-gray-500">{workshop.sector}</div>
+          <div className="font-bold text-md">{workshop.title}</div>
+          {workshop.enabled && (
+            <>
+              <div className="text-sm italic">{workshop.speaker}</div>
+              {workshop.downloadUrl && (
+                <button
+                  className="mt-2 px-3 py-1.5 text-sm bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold whitespace-nowrap transition-colors"
+                  onClick={() => window.open(workshop.downloadUrl, "_blank")}
+                >
+                  Descargar Material
+                </button>
+              )}
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <div className="space-y-1 rounded-md border bg-white sm:mx-auto sm:w-full max-w-4xl">
@@ -128,7 +275,7 @@ const ConferenceProgram: React.FC = () => {
         </Tabs.List>
         {Object.entries(program).map(([day, schedule]) => (
           <Tabs.Content key={day} value={day}>
-            <div className="border-y ">
+            <div className="border-y">
               <Table>
                 <TableBody>
                   {schedule.map((item, index) => (
@@ -136,25 +283,11 @@ const ConferenceProgram: React.FC = () => {
                       <TableCell className="text-custom-blue font-medium w-24 text-base">
                         {item.time}
                       </TableCell>
-                      <TableCell className="p-0">
-                        <div className="flex flex-col justify-between pr-4">
+                      <TableCell className="p-4">
+                        <div className="flex flex-col">
                           <div className="flex justify-between items-center">
-                            <div
-                              className={`py-4 pl-4 text-zinc-900 text-base ${
-                                item.activity
-                                  .toLowerCase()
-                                  .includes("plenaria") ||
-                                item.activity.toLowerCase().includes("talleres")
-                                  ? "font-bold"
-                                  : ""
-                              }`}
-                            >
+                            <div className="text-zinc-900 text-base font-bold">
                               {item.activity}
-                              {item.person && (
-                                <span className="text-blue-400 italic ml-2">
-                                  ({item.person})
-                                </span>
-                              )}
                             </div>
                             {item.downloadUrl && item.enabled && (
                               <button
@@ -167,16 +300,7 @@ const ConferenceProgram: React.FC = () => {
                               </button>
                             )}
                           </div>
-                          {item.enabled && item.plenaryName && item.speaker && (
-                            <div className="pl-4 mb-5">
-                              <p className="font-semibold text-md  text-blue-600">
-                                {item.plenaryName}{" "}
-                              </p>
-                              <p className="text-sm  text-zinc-600">
-                                Orador/a: {item.speaker}
-                              </p>
-                            </div>
-                          )}
+                          {item.workshops && renderWorkshops(item.workshops)}
                         </div>
                       </TableCell>
                     </TableRow>
