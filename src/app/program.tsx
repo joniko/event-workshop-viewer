@@ -22,9 +22,9 @@ const program: Record<string, ScheduleItem[]> = {
       activity: "Plenaria 1",
       downloadUrl:
         "https://drive.google.com/file/d/13esIaCbvKm0jxi7vuKgGJ0KCozcr-ffU/view?usp=sharing",
-      enabled: true,
-      plenaryName: "Título de la Plenaria 1",
-      speaker: "Nombre del Orador/a",
+      enabled: false,
+      plenaryName: "De huérfano a Hijo",
+      speaker: "Fernanda Brunet",
     },
     {
       time: "19:45",
@@ -162,9 +162,13 @@ const ConferenceProgram: React.FC = () => {
                             )}
                           </div>
                           {item.enabled && item.plenaryName && item.speaker && (
-                            <div className="pl-4 text-sm text-gray-600">
-                              <p>{item.plenaryName} </p>
-                              <p>Orador/a: {item.speaker}</p>
+                            <div className="pl-4 mb-5">
+                              <p className="font-semibold text-md  text-blue-600">
+                                {item.plenaryName}{" "}
+                              </p>
+                              <p className="text-sm  text-zinc-600">
+                                Orador/a: {item.speaker}
+                              </p>
                             </div>
                           )}
                         </div>
