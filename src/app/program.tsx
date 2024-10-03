@@ -153,7 +153,8 @@ const program: Record<string, ScheduleItem[]> = {
     { time: "09:40", activity: "Plenaria 6", enabled: false },
     { time: "11:00", activity: "Break" },
     { time: "11:15", activity: "Plenaria 7", enabled: false },
-    { time: "12:40", activity: "Almuerzo + Espacio TOMATULUGAR" },
+    { time: "12:40", activity: "Cierre" },
+    { time: "13:00", activity: "Almuerzo + Espacio TOMATULUGAR" },
     { time: "15:00", activity: "Apertura del auditorio principal" },
     {
       time: "15:30",
@@ -232,6 +233,13 @@ const program: Record<string, ScheduleItem[]> = {
 const ConferenceProgram: React.FC = () => {
   const [activeDay, setActiveDay] = React.useState(Object.keys(program)[0]);
 
+  const shouldBeBold = (activity: string) => {
+    const boldActivities = ["plenaria", "taller", "adoración"];
+    return boldActivities.some((boldActivity) =>
+      activity.toLowerCase().includes(boldActivity)
+    );
+  };
+
   const renderWorkshops = (workshops: Workshop[]) => (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
       {workshops.map((workshop, index) => (
@@ -286,7 +294,11 @@ const ConferenceProgram: React.FC = () => {
                       <TableCell className="p-4">
                         <div className="flex flex-col">
                           <div className="flex justify-between items-center">
-                            <div className="text-zinc-900 text-base font-bold">
+                            <div
+                              className={`text-zinc-900 text-base ${
+                                shouldBeBold(item.activity) ? "font-bold" : ""
+                              }`}
+                            >
                               {item.activity}
                             </div>
                             {item.downloadUrl && item.enabled && (
@@ -305,7 +317,7 @@ const ConferenceProgram: React.FC = () => {
                               <p>
                                 <strong>{item.plenaryName}</strong>
                               </p>
-                              <p>{item.speaker}</p>
+                              <p>Orador/a: {item.speaker}</p>
                             </div>
                           )}
                           {item.workshops && renderWorkshops(item.workshops)}
