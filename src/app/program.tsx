@@ -85,7 +85,8 @@ const program: Record<string, ScheduleItem[]> = {
           title: "Evangelio completo 1",
           speaker: "Mariano Sennewald",
           colorClass: "text-sky-500 border-sky-500",
-          downloadUrl: "",
+          downloadUrl:
+            "https://drive.google.com/file/d/1o87QEujH7HugjRw5Ov_nUq5NZhSXp0Dr/view?usp=drive_link",
           enabled: true,
         },
         {
@@ -119,7 +120,8 @@ const program: Record<string, ScheduleItem[]> = {
           title: "Evangelio completo 2",
           speaker: "Nicolas Paretti",
           colorClass: "text-sky-500 border-sky-500",
-          downloadUrl: "",
+          downloadUrl:
+            "https://drive.google.com/file/d/16uMY4J6ESf9H3Zqc4yelU-ocKBD6428Z/view?usp=drive_open",
           enabled: true,
         },
         {
