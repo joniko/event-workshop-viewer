@@ -158,7 +158,7 @@ function HomeContent() {
         className="flex items-center justify-center bg-red-500 text-white font-bold py-2 px-4 rounded-lg mb-1 md:mb-2 mx-2 md:mx-0 hover:bg-red-600 transition-colors"
       >
         <Youtube className="w-6 h-6 mr-2" />
-        Mira la Conferencia 2024 EN VIVO
+        Mira la Conferencia EN VIVO
       </a>
 
       <div className="rounded-lg my-2 p-2 bg-zinc-400 space-x-2">
