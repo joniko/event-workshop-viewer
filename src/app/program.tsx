@@ -120,7 +120,7 @@ const program: Record<string, ScheduleItem[]> = {
           speaker: "Nicolas Paretti",
           colorClass: "text-sky-500 border-sky-500",
           downloadUrl: "",
-          enabled: false,
+          enabled: true,
         },
         {
           sector: "SECTOR 2",
@@ -128,7 +128,7 @@ const program: Record<string, ScheduleItem[]> = {
           speaker: "Lucas Conslie",
           colorClass: "text-zinc-500 border-zinc-500",
           downloadUrl: "",
-          enabled: false,
+          enabled: true,
         },
         {
           sector: "SECTOR 3",
@@ -136,7 +136,7 @@ const program: Record<string, ScheduleItem[]> = {
           speaker: "Samuel Benedetto",
           colorClass: "text-rose-500 border-rose-500",
           downloadUrl: "",
-          enabled: false,
+          enabled: true,
         },
       ],
     },
