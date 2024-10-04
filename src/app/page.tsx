@@ -32,6 +32,8 @@ const tabs = [
 
 type TabValue = (typeof tabs)[number]["value"];
 
+import { Youtube } from "lucide-react";
+
 function HomeContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -147,6 +149,18 @@ function HomeContent() {
   return (
     <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-4xl">
       <WavyBackground />
+
+      {/* Nuevo botón para la transmisión en vivo */}
+      <a
+        href="https://www.youtube.com/@TOMATULUGAR/streams" // Reemplaza con el enlace correcto de YouTube
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center bg-red-500 text-white font-bold py-2 px-4 rounded-lg mb-2 hover:bg-red-600 transition-colors"
+      >
+        <Youtube className="w-6 h-6 mr-2" />
+        Mira la Conferencia 2024 EN VIVO
+      </a>
+
       <div className="rounded-lg my-2 p-2 bg-zinc-400 space-x-2">
         <Tabs value={activeTab} onValueChange={handleTabChange}>
           <TabsList className="flex w-full space-x-1">
