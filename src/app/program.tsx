@@ -56,7 +56,7 @@ const program: Record<string, ScheduleItem[]> = {
       activity: "Plenaria 3",
       downloadUrl:
         "https://drive.google.com/file/d/1pBEEDkeCmijewbYsdaqCWrRE0pyDThBm/view?usp=sharing",
-      enabled: false,
+      enabled: true,
       plenaryName: "La transición de los últimos tiempos",
       speaker: "Mariano Sennewald",
     },
