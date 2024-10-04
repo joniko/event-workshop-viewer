@@ -66,6 +66,8 @@ const program: Record<string, ScheduleItem[]> = {
       activity: "Plenaria 4",
       downloadUrl: "/materials/plenaria4.pdf",
       enabled: false,
+      plenaryName: "La transición de los últimos tiempos",
+      speaker: "Douglas Gonzalvez",
     },
     {
       time: "13:00",
@@ -317,7 +319,7 @@ const ConferenceProgram: React.FC = () => {
                               <p>
                                 <strong>{item.plenaryName}</strong>
                               </p>
-                              <p>Orador/a: {item.speaker}</p>
+                              <p>{item.speaker}</p>
                             </div>
                           )}
                           {item.workshops && renderWorkshops(item.workshops)}
