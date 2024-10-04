@@ -68,7 +68,7 @@ const program: Record<string, ScheduleItem[]> = {
         "https://drive.google.com/file/d/1SEbgeRCvCG3wSN4aFRDmGBJ6VNP9ywwo/view?usp=drivesdk",
       enabled: true,
       plenaryName: "Madurez de la iglesia",
-      speaker: "Douglas Gonzalvez",
+      speaker: "Douglas Gonçalves",
     },
     {
       time: "13:00",
@@ -135,7 +135,7 @@ const program: Record<string, ScheduleItem[]> = {
         {
           sector: "SECTOR 3",
           title: "Iglesia Gloriosa 2",
-          speaker: "Samuel Benedetto",
+          speaker: "Douglas Gonçalves",
           colorClass: "text-rose-500 border-rose-500",
           downloadUrl: "",
           enabled: true,
