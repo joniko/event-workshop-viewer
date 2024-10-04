@@ -236,10 +236,19 @@ const ConferenceProgram: React.FC = () => {
   const [activeDay, setActiveDay] = React.useState(Object.keys(program)[0]);
 
   const shouldBeBold = (activity: string) => {
-    const boldActivities = ["plenaria", "taller", "adoración"];
+    const boldActivities = ["plenaria", "adoración"];
     return boldActivities.some((boldActivity) =>
       activity.toLowerCase().includes(boldActivity)
     );
+  };
+
+  const getActivityStyle = (item: ScheduleItem) => {
+    if (item.activity.toLowerCase().includes("talleres") && item.enabled) {
+      return "text-blue-900 text-sm font-semibold";
+    }
+    return `text-zinc-900 text-base ${
+      shouldBeBold(item.activity) ? "font-bold" : ""
+    }`;
   };
 
   const renderWorkshops = (workshops: Workshop[]) => (
@@ -250,7 +259,7 @@ const ConferenceProgram: React.FC = () => {
           className={`border rounded-lg p-4 ${workshop.colorClass}`}
         >
           <div className="text-sm text-gray-500">{workshop.sector}</div>
-          <div className="font-bold text-md">{workshop.title}</div>
+          <div className="font-bold">{workshop.title}</div>
           {workshop.enabled && (
             <>
               <div className="text-sm italic">{workshop.speaker}</div>
@@ -296,11 +305,7 @@ const ConferenceProgram: React.FC = () => {
                       <TableCell className="p-4">
                         <div className="flex flex-col">
                           <div className="flex justify-between items-center">
-                            <div
-                              className={`text-zinc-900 text-base ${
-                                shouldBeBold(item.activity) ? "font-bold" : ""
-                              }`}
-                            >
+                            <div className={getActivityStyle(item)}>
                               {item.activity}
                             </div>
                             {item.downloadUrl && item.enabled && (
@@ -315,9 +320,9 @@ const ConferenceProgram: React.FC = () => {
                             )}
                           </div>
                           {item.enabled && item.plenaryName && item.speaker && (
-                            <div className="mt-2 text-sm text-gray-600">
-                              <p>
-                                <strong>{item.plenaryName}</strong>
+                            <div className="mt-2 text-gray-600">
+                              <p className="text-blue-600 font-bold text-base">
+                                {item.plenaryName}
                               </p>
                               <p>{item.speaker}</p>
                             </div>
