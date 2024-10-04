@@ -64,9 +64,10 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "11:45",
       activity: "Plenaria 4",
-      downloadUrl: "/materials/plenaria4.pdf",
-      enabled: false,
-      plenaryName: "La transición de los últimos tiempos",
+      downloadUrl:
+        "https://drive.google.com/file/d/1SEbgeRCvCG3wSN4aFRDmGBJ6VNP9ywwo/view?usp=drivesdk",
+      enabled: true,
+      plenaryName: "Madurez de la iglesia",
       speaker: "Douglas Gonzalvez",
     },
     {
