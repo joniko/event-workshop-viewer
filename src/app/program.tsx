@@ -112,7 +112,7 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "16:15",
       activity: "Talleres",
-      downloadUrl: "/materials/talleres2.pdf",
+      downloadUrl: "",
       enabled: false,
       workshops: [
         {
@@ -148,8 +148,10 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "20:30",
       activity: "Plenaria 5",
-      downloadUrl: "/materials/plenaria5.pdf",
-      enabled: false,
+      downloadUrl: "",
+      plenaryName: "Restaurando el tabernáculo de David",
+      speaker: "Michael Miller",
+      enabled: true,
     },
     { time: "21:45", activity: "Anuncios" },
     { time: "22:00", activity: "Cierre" },
@@ -157,7 +159,15 @@ const program: Record<string, ScheduleItem[]> = {
   "Sábado 5 de Octubre": [
     { time: "08:00", activity: "Apertura del auditorio principal" },
     { time: "09:00", activity: "Adoración" },
-    { time: "09:40", activity: "Plenaria 6", enabled: false },
+    {
+      time: "09:40",
+      activity: "Plenaria 6",
+      downloadUrl:
+        "https://drive.google.com/file/d/1J1JiUpr1LWvHfH7y5IzWuROLhTXeBe6b/view?usp=drive_link",
+      plenaryName: "Las tres doctrinas",
+      speaker: "Fernanda Brunet",
+      enabled: true,
+    },
     { time: "11:00", activity: "Break" },
     { time: "11:15", activity: "Plenaria 7", enabled: false },
     { time: "12:40", activity: "Cierre" },
@@ -187,10 +197,11 @@ const program: Record<string, ScheduleItem[]> = {
         {
           sector: "SECTOR 3",
           title: "Iglesia Gloriosa 3",
-          speaker: "Orador 3",
+          speaker: "Samuel Benedetto",
           colorClass: "text-rose-500 border-rose-500",
-          downloadUrl: "/materials/taller3.pdf",
-          enabled: false,
+          downloadUrl:
+            "https://drive.google.com/file/d/17iAFEaYo9YjyK9yrow1Suiv0ODqn8XZf/view?usp=drive_link",
+          enabled: true,
         },
       ],
     },

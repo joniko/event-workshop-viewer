@@ -82,7 +82,7 @@ function HomeContent() {
     if (activeTab === "program") {
       return (
         <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
-          <TabsList className="flex w-full  rounded-t-lg">
+          <TabsList className="flex w-full rounded-t-lg">
             <TabsTrigger
               value="general"
               className="flex-1 font-semibold hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
@@ -147,7 +147,7 @@ function HomeContent() {
   };
 
   return (
-    <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-4xl">
+    <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-3xl">
       <WavyBackground />
 
       {/* Nuevo botón para la transmisión en vivo */}
