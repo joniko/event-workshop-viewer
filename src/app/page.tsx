@@ -161,14 +161,14 @@ function HomeContent() {
         Mira la Conferencia EN VIVO
       </a>
 
-      <div className="rounded-lg my-2 p-2 bg-zinc-400 space-x-2">
+      <div className="rounded-lg my-2 p-2 bg-zinc-500 space-x-2">
         <Tabs value={activeTab} onValueChange={handleTabChange}>
           <TabsList className="flex w-full space-x-1">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="flex-1 px-3 py-2 rounded-md text-white font-bold hover:bg-zinc-500/50 transition-colors data-[state=active]:bg-zinc-500/50 data-[state=active]:text-white flex items-center justify-center"
+                className="flex-1 px-3 py-2 rounded-md text-white font-bold hover:bg-zinc-600/50 transition-colors data-[state=active]:bg-zinc-600/50 data-[state=active]:text-white flex items-center justify-center"
               >
                 {tab.icon}
                 {tab.label}

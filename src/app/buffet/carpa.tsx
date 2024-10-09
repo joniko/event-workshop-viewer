@@ -1,64 +1,84 @@
-import React from "react";
-import { Salad, Sandwich, Pizza, Coffee } from "lucide-react";
-// Nota: Cambiamos 'Fries' por 'Utensils' ya que 'Fries' no existe en lucide-react
-import { Utensils } from "lucide-react";
+import React, { useEffect } from "react";
+import { Salad, Sandwich, Pizza, Coffee, Utensils } from "lucide-react";
+import MenuItemList, { MenuItem } from "@/components/MenuItemList";
 
-const CarpaContent: React.FC = () => {
+interface CarpaContentProps {
+  onItemChange: (item: MenuItem & { id: string }, quantity: number) => void;
+  setWhatsappNumber: (number: string) => void;
+  enableOrdering: boolean;
+}
+
+const CARPA_WHATSAPP_NUMBER = ""; // Número específico para la carpa
+export const CARPA_ENABLE_ORDERING = false;
+
+const CarpaContent: React.FC<CarpaContentProps> = ({
+  onItemChange,
+  setWhatsappNumber,
+  enableOrdering,
+}) => {
+  useEffect(() => {
+    setWhatsappNumber(CARPA_WHATSAPP_NUMBER);
+  }, [setWhatsappNumber]);
+
+  const menuSections = [
+    {
+      title: "Ensaladas y Tartas",
+      icon: Salad,
+      items: [
+        { name: "Ensalada César con pollo", price: 6500 },
+        {
+          name: "Ensalada completa (verdes, cherries, zanahoria, choclo, jamón y queso)",
+          price: 6000,
+        },
+        { name: "Tarta de pollo / zapallito", price: 5500 },
+      ],
+      category: "ensaladas-y-tartas",
+    },
+    {
+      title: "Sándwiches y Wraps",
+      icon: Sandwich,
+      items: [
+        { name: "Sándwich de milanesa", price: 7000 },
+        { name: "Baguette de pollo", price: 6500 },
+        { name: "Wraps con nachos (pollo y vegetales salteados)", price: 6000 },
+      ],
+      category: "sandwiches-y-wraps",
+    },
+    {
+      title: "Comidas calientes",
+      icon: Pizza,
+      items: [
+        { name: "Hamburguesas con papitas", price: 7500 },
+        { name: "Nugget de pollo (con papas fritas)", price: 6500 },
+        { name: "Empanadas x3 (carne, jamón y queso, árabe)", price: 5000 },
+        { name: "Pizza (peperoni, jamón, mozzarella)", price: 8000 },
+      ],
+      category: "comidas-calientes",
+    },
+    {
+      title: "Acompañamientos",
+      icon: Utensils,
+      items: [{ name: "Papas fritas - Porción", price: 4000 }],
+      category: "acompañamientos",
+    },
+    {
+      title: "Bebidas",
+      icon: Coffee,
+      items: [
+        { name: "Línea Coca Cola", price: 2000 },
+        { name: "Agua saborizada", price: 1800 },
+        { name: "Agua (con gas/sin gas)", price: 1500 },
+      ],
+      category: "bebidas",
+    },
+  ];
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <section>
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <Salad className="w-6 h-6 mr-2" /> Ensaladas y Tartas
-        </h2>
-        <ul className="list-disc list-inside">
-          <li>Ensalada César con pollo</li>
-          <li>
-            Ensalada completa (verdes, cherries, zanahoria, choclo, jamón y
-            queso)
-          </li>
-          <li>Tarta de pollo / zapallito</li>
-        </ul>
-      </section>
-      <section>
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <Sandwich className="w-6 h-6 mr-2" /> Sándwiches y Wraps
-        </h2>
-        <ul className="list-disc list-inside">
-          <li>Sándwich de milanesa</li>
-          <li>Baguette de pollo</li>
-          <li>Wraps con nachos (pollo y vegetales salteados)</li>
-        </ul>
-      </section>
-      <section>
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <Pizza className="w-6 h-6 mr-2" /> Comidas calientes
-        </h2>
-        <ul className="list-disc list-inside">
-          <li>Hamburguesas con papitas</li>
-          <li>Nugget de pollo (con papas fritas)</li>
-          <li>Empanadas x3 (carne, jamón y queso, árabe)</li>
-          <li>Pizza (peperoni, jamón, mozzarella)</li>
-        </ul>
-      </section>
-      <section>
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <Utensils className="w-6 h-6 mr-2" /> Acompañamientos
-        </h2>
-        <ul className="list-disc list-inside">
-          <li>Papas fritas - Porción</li>
-        </ul>
-      </section>
-      <section>
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <Coffee className="w-6 h-6 mr-2" /> Bebidas
-        </h2>
-        <ul className="list-disc list-inside">
-          <li>Línea Coca Cola</li>
-          <li>Agua saborizada</li>
-          <li>Agua (con gas/sin gas)</li>
-        </ul>
-      </section>
-    </div>
+    <MenuItemList
+      sections={menuSections}
+      onItemChange={onItemChange}
+      enableOrdering={enableOrdering}
+    />
   );
 };
 

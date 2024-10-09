@@ -1,64 +1,88 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Cookie, Pizza, Candy, Coffee } from "lucide-react";
+import MenuItemList, { MenuItem } from "@/components/MenuItemList";
 
-const QuioscoContent = () => {
+interface QuioscoContentProps {
+  onItemChange: (item: MenuItem & { id: string }, quantity: number) => void;
+  setWhatsappNumber: (number: string) => void;
+  enableOrdering: boolean;
+}
+
+const QUIOSCO_WHATSAPP_NUMBER = ""; // Número específico para el quiosco
+export const QUIOSCO_ENABLE_ORDERING = true;
+
+const QuioscoContent: React.FC<QuioscoContentProps> = ({
+  onItemChange,
+  setWhatsappNumber,
+  enableOrdering,
+}) => {
+  useEffect(() => {
+    setWhatsappNumber(QUIOSCO_WHATSAPP_NUMBER);
+  }, [setWhatsappNumber]);
+
+  const menuSections = [
+    {
+      title: "Galletas y Dulces",
+      icon: Cookie,
+      items: [
+        { name: "Galleta Oreo", price: 1500 },
+        { name: "Galleta Mini Pepitos", price: 1200 },
+        { name: "Galleta 9 de Oro", price: 1000 },
+        { name: "Galleta Formis", price: 1300 },
+        { name: "Galleta Pepas", price: 1100 },
+        { name: "Galleta Surtido Bagley", price: 1800 },
+        { name: "Galleta Vocación", price: 1400 },
+        { name: "Galleta Vainilla", price: 900 },
+        { name: "Almohaditas Frutilla", price: 1600 },
+        { name: "Cereal Anillito", price: 2000 },
+        { name: "Butter Toffees", price: 800 },
+        { name: "Masticable Sugus", price: 700 },
+      ],
+      category: "galletas-y-dulces",
+    },
+    {
+      title: "Snacks Salados",
+      icon: Pizza,
+      items: [
+        { name: "Galletas Saladix", price: 1400 },
+        { name: "Tostada de Arroz Molino", price: 1200 },
+        { name: "Tutuca", price: 1000 },
+        { name: "Papa Quento", price: 1800 },
+        { name: "Papa Danal", price: 1600 },
+        { name: "Cereal Mix", price: 2200 },
+      ],
+      category: "snacks-salados",
+    },
+    {
+      title: "Chicles y Caramelos",
+      icon: Candy,
+      items: [
+        { name: "Chicles Topline", price: 600 },
+        { name: "Menthoplus", price: 500 },
+        { name: "Goma Misky", price: 400 },
+        { name: "Tic Tac", price: 700 },
+      ],
+      category: "chicles-y-caramelos",
+    },
+    {
+      title: "Bebidas",
+      icon: Coffee,
+      items: [
+        { name: "Línea Coca Cola", price: 2000 },
+        { name: "Agua saborizada", price: 1800 },
+        { name: "Agua (con gas/sin gas)", price: 1500 },
+        { name: "Agua caliente", price: 1000 },
+      ],
+      category: "bebidas",
+    },
+  ];
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <section>
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <Cookie className="w-6 h-6 mr-2" /> Galletas y Dulces
-        </h2>
-        <ul className="list-disc list-inside">
-          <li>Galleta Oreo</li>
-          <li>Galleta Mini Pepitos</li>
-          <li>Galleta 9 de Oro</li>
-          <li>Galleta Formis</li>
-          <li>Galleta Pepas</li>
-          <li>Galleta Surtido Bagley</li>
-          <li>Galleta Vocación</li>
-          <li>Galleta Vainilla</li>
-          <li>Almohaditas Frutilla</li>
-          <li>Cereal Anillito</li>
-          <li>Butter Toffees</li>
-          <li>Masticable Sugus</li>
-        </ul>
-      </section>
-      <section>
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <Pizza className="w-6 h-6 mr-2" /> Snacks Salados
-        </h2>
-        <ul className="list-disc list-inside">
-          <li>Galletas Saladix</li>
-          <li>Tostada de Arroz Molino</li>
-          <li>Tutuca</li>
-          <li>Papa Quento</li>
-          <li>Papa Danal</li>
-          <li>Cereal Mix</li>
-        </ul>
-      </section>
-      <section>
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <Candy className="w-6 h-6 mr-2" /> Chicles y Caramelos
-        </h2>
-        <ul className="list-disc list-inside">
-          <li>Chicles Topline</li>
-          <li>Menthoplus</li>
-          <li>Goma Misky</li>
-          <li>Tic Tac</li>
-        </ul>
-      </section>
-      <section>
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <Coffee className="w-6 h-6 mr-2" /> Bebidas
-        </h2>
-        <ul className="list-disc list-inside">
-          <li>Línea Coca Cola</li>
-          <li>Agua saborizada</li>
-          <li>Agua (con gas/sin gas)</li>
-          <li>Agua caliente</li>
-        </ul>
-      </section>
-    </div>
+    <MenuItemList
+      sections={menuSections}
+      onItemChange={onItemChange}
+      enableOrdering={enableOrdering}
+    />
   );
 };
 
