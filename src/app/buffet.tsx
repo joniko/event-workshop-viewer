@@ -1,0 +1,158 @@
+import React, { useState, useEffect } from "react";
+import { MenuItem } from "@/components/MenuItemList";
+import QuioscoContent, { QUIOSCO_ENABLE_ORDERING } from "./buffet/quiosco";
+import CafeteriaContent, {
+  CAFETERIA_ENABLE_ORDERING,
+} from "./buffet/cafeteria";
+import CarpaContent, { CARPA_ENABLE_ORDERING } from "./buffet/carpa";
+import { ShoppingCart } from "lucide-react";
+
+interface BuffetPageProps {
+  type: "cafeteria" | "quiosco" | "carpa";
+}
+
+interface OrderItem extends MenuItem {
+  id: string;
+  quantity: number;
+}
+
+const DEFAULT_WHATSAPP_NUMBER = "5491130734041";
+
+const BuffetPage: React.FC<BuffetPageProps> = ({ type }) => {
+  const [order, setOrder] = useState<OrderItem[]>([]);
+  const [whatsappNumber, setWhatsappNumber] = useState(DEFAULT_WHATSAPP_NUMBER);
+  const [enableOrdering, setEnableOrdering] = useState(false);
+
+  useEffect(() => {
+    switch (type) {
+      case "cafeteria":
+        setEnableOrdering(CAFETERIA_ENABLE_ORDERING);
+        break;
+      case "quiosco":
+        setEnableOrdering(QUIOSCO_ENABLE_ORDERING);
+        break;
+      case "carpa":
+        setEnableOrdering(CARPA_ENABLE_ORDERING);
+        break;
+    }
+  }, [type]);
+
+  const handleItemChange = (
+    item: MenuItem & { id: string },
+    quantity: number
+  ) => {
+    if (!enableOrdering) return;
+
+    setOrder((prevOrder) => {
+      const existingItemIndex = prevOrder.findIndex((i) => i.id === item.id);
+      if (existingItemIndex > -1) {
+        const updatedOrder = [...prevOrder];
+        if (quantity === 0) {
+          updatedOrder.splice(existingItemIndex, 1);
+        } else {
+          updatedOrder[existingItemIndex] = { ...item, quantity };
+        }
+        return updatedOrder;
+      } else if (quantity > 0) {
+        return [...prevOrder, { ...item, quantity }];
+      }
+      return prevOrder;
+    });
+  };
+
+  const renderContent = () => {
+    switch (type) {
+      case "cafeteria":
+        return (
+          <CafeteriaContent
+            onItemChange={handleItemChange}
+            setWhatsappNumber={setWhatsappNumber}
+            enableOrdering={enableOrdering}
+          />
+        );
+      case "quiosco":
+        return (
+          <QuioscoContent
+            onItemChange={handleItemChange}
+            setWhatsappNumber={setWhatsappNumber}
+            enableOrdering={enableOrdering}
+          />
+        );
+      case "carpa":
+        return (
+          <CarpaContent
+            onItemChange={handleItemChange}
+            setWhatsappNumber={setWhatsappNumber}
+            enableOrdering={enableOrdering}
+          />
+        );
+      default:
+        return <div>Contenido no disponible</div>;
+    }
+  };
+
+  const totalItems = order.reduce((sum, item) => sum + item.quantity, 0);
+  const totalAmount = order.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+  const sendWhatsAppOrder = () => {
+    const message = order
+      .map(
+        (item) =>
+          `${item.quantity}x ${item.name} - $${item.price * item.quantity}`
+      )
+      .join("\n");
+    const total = `Total: $${totalAmount}`;
+    const encodedMessage = encodeURIComponent(
+      `Mi pedido:\n${message}\n${total}`
+    );
+
+    // Usar el número de WhatsApp actualizado
+    const phoneNumber = whatsappNumber || DEFAULT_WHATSAPP_NUMBER;
+
+    window.open(
+      `https://wa.me/${phoneNumber}?text=${encodedMessage}`,
+      "_blank"
+    );
+  };
+
+  return (
+    <div className="p-4">
+      <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center mb-8 text-primary">
+        {type === "cafeteria" && "Cafetería"}
+        {type === "quiosco" && "Quiosco"}
+        {type === "carpa" && "Carpa"}
+      </h1>
+      {renderContent()}
+      {enableOrdering && order.length > 0 && (
+        <div className="mt-8 bg-gray-100 p-4 rounded-lg">
+          <div className="flex justify-between items-center">
+            <p className="text-xl font-bold">Tu pedido</p>
+            <div className="bg-zinc-600 text-white px-2 py-1 rounded-md">
+              <p>
+                {totalItems} {totalItems === 1 ? "Item" : "Items"}
+              </p>
+            </div>
+            <p className="text-xl font-bold">
+              $
+              {totalAmount.toLocaleString("es-AR", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
+            </p>
+          </div>
+          <button
+            onClick={sendWhatsAppOrder}
+            className="mt-4 bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition-colors w-full"
+          >
+            Enviar pedido por WhatsApp
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default BuffetPage;
