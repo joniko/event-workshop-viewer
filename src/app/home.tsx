@@ -15,14 +15,26 @@ const HomeComponent: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Datos de ejemplo para los banners - puedes reemplazar con contenido real
+  /* 
+  BANNERS EN FORMATO 1200x630 PÍXELES
+  
+  Para reemplazar con las imágenes definitivas:
+  1. Crear 5 imágenes en formato 1200x630 píxeles
+  2. Guardarlas en la carpeta public/banners/ con los nombres:
+     - banner-principal-1200x630.jpg (Banner principal de la conferencia)
+     - banner-live-1200x630.jpg (Banner de transmisión en vivo)
+     - banner-plenarias-1200x630.jpg (Banner de plenarias)
+     - banner-talleres-1200x630.jpg (Banner de talleres)
+     - banner-oracion-1200x630.jpg (Banner de casa de oración)
+  3. Las imágenes actuales son placeholders temporales
+  */
   const banners: BannerItem[] = [
     {
       id: 1,
       title: "Conferencia TOMATULUGAR 2025",
       subtitle: "Evangelio del Reino",
       description: "Únete a nosotros en esta experiencia transformadora donde exploraremos las profundidades del Reino de Dios",
-      imageUrl: "/conferencia-tomatulugar-2024.jpg",
+      imageUrl: "/banners/banner-principal-1200x630.jpg", // Banner principal 1200x630
       ctaText: "Ver Programa",
       ctaAction: () => {
         const programTab = document.querySelector('[value="program"]') as HTMLElement;
@@ -34,7 +46,7 @@ const HomeComponent: React.FC = () => {
       title: "Transmisión EN VIVO",
       subtitle: "No te pierdas ningún momento",
       description: "Sigue toda la conferencia en tiempo real desde nuestro canal oficial de YouTube",
-      imageUrl: "/bg-app.jpg",
+      imageUrl: "/banners/banner-live-1200x630.jpg", // Banner transmisión en vivo 1200x630
       ctaText: "Ver EN VIVO",
       ctaAction: () => {
         window.open("https://www.youtube.com/@TOMATULUGAR/streams", "_blank");
@@ -45,14 +57,14 @@ const HomeComponent: React.FC = () => {
       title: "Plenarias Principales",
       subtitle: "Enseñanzas profundas",
       description: "Experimenta momentos únicos de revelación y crecimiento espiritual con oradores reconocidos",
-      imageUrl: "/Evangelio-del-Reino.png",
+      imageUrl: "/banners/banner-plenarias-1200x630.jpg", // Banner plenarias 1200x630
     },
     {
       id: 4,
       title: "Talleres Especializados",
       subtitle: "3 Sectores Temáticos",
       description: "Profundiza en áreas específicas: Evangelio Completo, Adoración & Intercesión, e Iglesia Gloriosa",
-      imageUrl: "/bg-app.jpg",
+      imageUrl: "/banners/banner-talleres-1200x630.jpg", // Banner talleres 1200x630
       ctaText: "Explorar Mapa",
       ctaAction: () => {
         const mapTab = document.querySelector('[value="map"]') as HTMLElement;
@@ -64,7 +76,7 @@ const HomeComponent: React.FC = () => {
       title: "Casa de Oración",
       subtitle: "Momentos de intercesión",
       description: "Espacios dedicados a la oración y búsqueda de Dios durante toda la conferencia",
-      imageUrl: "/conferencia-tomatulugar-2024.jpg",
+      imageUrl: "/banners/banner-oracion-1200x630.jpg", // Banner casa de oración 1200x630
     }
   ];
 
@@ -98,7 +110,7 @@ const HomeComponent: React.FC = () => {
     <div className="w-full max-w-4xl mx-auto">
       {/* Hero Carousel */}
       <div 
-        className="relative w-full h-96 md:h-[500px] overflow-hidden rounded-lg shadow-lg mb-6"
+        className="relative w-full aspect-[1200/630] overflow-hidden rounded-md shadow-lg mb-6"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -109,34 +121,33 @@ const HomeComponent: React.FC = () => {
         >
           {banners.map((banner) => (
             <div key={banner.id} className="w-full h-full flex-shrink-0 relative">
-              {/* Background Image */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ 
-                  backgroundImage: `url('${banner.imageUrl}')`,
-                  filter: 'brightness(0.7)'
-                }}
+              {/* Banner Image - optimized for 1200x630 format */}
+              <img 
+                src={banner.imageUrl}
+                alt={banner.title}
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ filter: 'brightness(0.6)' }}
               />
               
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-40" />
+              {/* Overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/20" />
               
-              {/* Content */}
-              <div className="relative z-10 h-full flex items-center justify-center text-center text-white p-6">
-                <div className="max-w-2xl">
-                  <h1 className="text-3xl md:text-5xl font-bold mb-4">
+              {/* Content positioned for optimal readability */}
+              <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-4 md:px-8">
+                <div className="max-w-3xl">
+                  <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 leading-tight">
                     {banner.title}
                   </h1>
-                  <h2 className="text-xl md:text-2xl font-semibold mb-4 text-blue-200">
+                  <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-3 md:mb-4 text-blue-200">
                     {banner.subtitle}
                   </h2>
-                  <p className="text-lg md:text-xl mb-6 text-gray-200">
+                  <p className="text-sm md:text-lg lg:text-xl mb-4 md:mb-6 text-gray-200 leading-relaxed">
                     {banner.description}
                   </p>
                   {banner.ctaText && banner.ctaAction && (
                     <button
                       onClick={banner.ctaAction}
-                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors inline-flex items-center gap-2"
+                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg transition-colors inline-flex items-center gap-2 text-sm md:text-base"
                     >
                       {banner.ctaText}
                       <Play className="w-4 h-4" />
@@ -182,7 +193,7 @@ const HomeComponent: React.FC = () => {
       </div>
 
       {/* Quick Access Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 px-4 md:px-6">
         <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
           <div className="flex items-center mb-3">
             <Calendar className="w-6 h-6 text-blue-600 mr-2" />
