@@ -23,6 +23,106 @@ interface Workshop {
 }
 
 const program: Record<string, ScheduleItem[]> = {
+  "Jueves": [
+    { time: "13:00", activity: "Inicio de acreditaciones" },
+    { time: "13:00", activity: "Apertura de Espacio TTL y espacio gastronómico" },
+    { time: "16:00", activity: "Casa de Oración en Carpa", person: "hasta 18:00" },
+    { time: "17:00", activity: "Apertura de puertas" },
+    { time: "18:30", activity: "Adoración" },
+    {
+      time: "19:30",
+      activity: "Plenaria 1",
+      enabled: false,
+    },
+    {
+      time: "20:30",
+      activity: "Plenaria 2",
+      enabled: false,
+    },
+    { time: "21:30", activity: "Cierre" },
+  ],
+  "Viernes": [
+    { time: "07:00", activity: "Casa de Oración en Carpa", person: "hasta 09:00" },
+    { time: "08:00", activity: "Apertura de puertas" },
+    { time: "09:00", activity: "Adoración" },
+    {
+      time: "10:00",
+      activity: "Plenaria 3",
+      enabled: false,
+    },
+    { time: "11:15", activity: "Break" },
+    {
+      time: "11:30",
+      activity: "Plenaria 4",
+      enabled: false,
+    },
+    { time: "12:30", activity: "Anuncios" },
+    { time: "13:00", activity: "Cierre bloque mañana" },
+    { time: "13:00", activity: "Casa de Oración en Carpa", person: "hasta 14:00" },
+    {
+      time: "16:00",
+      activity: "Talleres bloque 1",
+      enabled: false,
+    },
+    {
+      time: "17:00",
+      activity: "Talleres bloque 2",
+      enabled: false,
+    },
+    { time: "18:00", activity: "Break" },
+    { time: "18:00", activity: "Casa de Oración en Carpa", person: "hasta 19:00" },
+    { time: "19:00", activity: "Adoración" },
+    {
+      time: "20:00",
+      activity: "Plenaria 5",
+      enabled: false,
+    },
+    { time: "21:30", activity: "Cierre" },
+  ],
+  "Sábado": [
+    { time: "07:00", activity: "Casa de Oración en Carpa", person: "hasta 09:00" },
+    { time: "08:00", activity: "Apertura de puertas" },
+    { time: "09:00", activity: "Adoración" },
+    {
+      time: "10:00",
+      activity: "Plenaria 6",
+      enabled: false,
+    },
+    { time: "11:15", activity: "Break" },
+    {
+      time: "11:30",
+      activity: "Plenaria 7",
+      enabled: false,
+    },
+    { time: "12:30", activity: "Anuncios" },
+    { time: "13:00", activity: "Cierre bloque mañana" },
+    { time: "13:00", activity: "Casa de Oración en Carpa", person: "hasta 14:00" },
+    {
+      time: "16:00",
+      activity: "Talleres bloque 3",
+      enabled: false,
+    },
+    {
+      time: "17:00",
+      activity: "Talleres bloque 4",
+      enabled: false,
+    },
+    { time: "18:00", activity: "Break" },
+    { time: "18:00", activity: "Casa de Oración en Carpa", person: "hasta 19:00" },
+    { time: "19:00", activity: "Adoración" },
+    {
+      time: "20:00",
+      activity: "Plenaria 8",
+      enabled: false,
+    },
+    { time: "21:30", activity: "Cierre" },
+  ],
+};
+
+/* 
+REFERENCIA DEL PROGRAMA 2024 - Para usar como guía cuando se agregue información faltante:
+
+const program2024Example: Record<string, ScheduleItem[]> = {
   "Jueves 3 de Octubre": [
     { time: "13:00", activity: "Apertura del predio e inscripciones" },
     { time: "16:00", activity: "Apertura del auditorio principal" },
@@ -30,8 +130,7 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "19:15",
       activity: "Plenaria 1",
-      downloadUrl:
-        "https://drive.google.com/file/d/13esIaCbvKm0jxi7vuKgGJ0KCozcr-ffU/view?usp=sharing",
+      downloadUrl: "https://drive.google.com/file/d/13esIaCbvKm0jxi7vuKgGJ0KCozcr-ffU/view?usp=sharing",
       enabled: true,
       plenaryName: "De huérfano a Hijo",
       speaker: "Fernanda Brunet",
@@ -39,8 +138,7 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "19:45",
       activity: "Plenaria 2",
-      downloadUrl:
-        "https://drive.google.com/file/d/1SrhScaU2q-3-JIdTAFL7Uihh_o_uysis/view?usp=sharing",
+      downloadUrl: "https://drive.google.com/file/d/1SrhScaU2q-3-JIdTAFL7Uihh_o_uysis/view?usp=sharing",
       enabled: true,
       plenaryName: "Preparen el camino",
       speaker: "Marcos Brunet",
@@ -54,8 +152,7 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "10:00",
       activity: "Plenaria 3",
-      downloadUrl:
-        "https://drive.google.com/file/d/1pBEEDkeCmijewbYsdaqCWrRE0pyDThBm/view?usp=sharing",
+      downloadUrl: "https://drive.google.com/file/d/1pBEEDkeCmijewbYsdaqCWrRE0pyDThBm/view?usp=sharing",
       enabled: true,
       plenaryName: "La transición de los últimos tiempos",
       speaker: "Mariano Sennewald",
@@ -64,8 +161,7 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "11:45",
       activity: "Plenaria 4",
-      downloadUrl:
-        "https://drive.google.com/file/d/1SEbgeRCvCG3wSN4aFRDmGBJ6VNP9ywwo/view?usp=drivesdk",
+      downloadUrl: "https://drive.google.com/file/d/1SEbgeRCvCG3wSN4aFRDmGBJ6VNP9ywwo/view?usp=drivesdk",
       enabled: true,
       plenaryName: "Madurez de la iglesia",
       speaker: "Douglas Gonçalves",
@@ -85,8 +181,7 @@ const program: Record<string, ScheduleItem[]> = {
           title: "Evangelio completo 1",
           speaker: "Mariano Sennewald",
           colorClass: "text-sky-500 border-sky-500",
-          downloadUrl:
-            "https://drive.google.com/file/d/1o87QEujH7HugjRw5Ov_nUq5NZhSXp0Dr/view?usp=drive_link",
+          downloadUrl: "https://drive.google.com/file/d/1o87QEujH7HugjRw5Ov_nUq5NZhSXp0Dr/view?usp=drive_link",
           enabled: true,
         },
         {
@@ -94,8 +189,7 @@ const program: Record<string, ScheduleItem[]> = {
           title: "Adoración e intercesión 1",
           speaker: "Lucas Conslie",
           colorClass: "text-zinc-500 border-zinc-500",
-          downloadUrl:
-            "https://drive.google.com/file/d/1ePb3kolIUVmVnjFo9zMZ22mSZfzBL4k4/view?usp=drive_open",
+          downloadUrl: "https://drive.google.com/file/d/1ePb3kolIUVmVnjFo9zMZ22mSZfzBL4k4/view?usp=drive_open",
           enabled: true,
         },
         {
@@ -103,8 +197,7 @@ const program: Record<string, ScheduleItem[]> = {
           title: "Iglesia Gloriosa 1",
           speaker: "Estela Ortiz",
           colorClass: "text-rose-500 border-rose-500",
-          downloadUrl:
-            "https://drive.google.com/file/d/1WDGOx6Go5-Epi1bRNudD_PsDHrmc_I45/view?usp=drive_link",
+          downloadUrl: "https://drive.google.com/file/d/1WDGOx6Go5-Epi1bRNudD_PsDHrmc_I45/view?usp=drive_link",
           enabled: true,
         },
       ],
@@ -120,8 +213,7 @@ const program: Record<string, ScheduleItem[]> = {
           title: "Evangelio completo 2",
           speaker: "Nicolas Paretti",
           colorClass: "text-sky-500 border-sky-500",
-          downloadUrl:
-            "https://drive.google.com/file/d/16uMY4J6ESf9H3Zqc4yelU-ocKBD6428Z/view?usp=drive_open",
+          downloadUrl: "https://drive.google.com/file/d/16uMY4J6ESf9H3Zqc4yelU-ocKBD6428Z/view?usp=drive_open",
           enabled: true,
         },
         {
@@ -162,8 +254,7 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "09:40",
       activity: "Plenaria 6",
-      downloadUrl:
-        "https://drive.google.com/file/d/1J1JiUpr1LWvHfH7y5IzWuROLhTXeBe6b/view?usp=drive_link",
+      downloadUrl: "https://drive.google.com/file/d/1J1JiUpr1LWvHfH7y5IzWuROLhTXeBe6b/view?usp=drive_link",
       plenaryName: "Las tres doctrinas",
       speaker: "Fernanda Brunet",
       enabled: true,
@@ -199,8 +290,7 @@ const program: Record<string, ScheduleItem[]> = {
           title: "Iglesia Gloriosa 3",
           speaker: "Samuel Benedetto",
           colorClass: "text-rose-500 border-rose-500",
-          downloadUrl:
-            "https://drive.google.com/file/d/17iAFEaYo9YjyK9yrow1Suiv0ODqn8XZf/view?usp=drive_link",
+          downloadUrl: "https://drive.google.com/file/d/17iAFEaYo9YjyK9yrow1Suiv0ODqn8XZf/view?usp=drive_link",
           enabled: true,
         },
       ],
@@ -247,6 +337,43 @@ const program: Record<string, ScheduleItem[]> = {
     { time: "21:00", activity: "Cierre de la conferencia" },
   ],
 };
+
+INSTRUCCIONES PARA COMPLETAR EL PROGRAMA 2025:
+1. Para agregar información de plenarias, usar el formato:
+   {
+     time: "19:30",
+     activity: "Plenaria 1",
+     downloadUrl: "URL_DEL_MATERIAL", // opcional
+     enabled: true,
+     plenaryName: "Nombre de la plenaria",
+     speaker: "Nombre del orador",
+   }
+
+2. Para agregar talleres, usar el formato:
+   {
+     time: "16:00",
+     activity: "Talleres bloque 1",
+     enabled: true, // cambiar a true cuando esté lista la info
+     workshops: [
+       {
+         sector: "SECTOR 1",
+         title: "Nombre del taller",
+         speaker: "Nombre del orador",
+         colorClass: "text-sky-500 border-sky-500", // colores: sky, zinc, rose
+         downloadUrl: "URL_DEL_MATERIAL", // opcional
+         enabled: true,
+       },
+       // agregar más talleres según sectores
+     ],
+   }
+
+3. Los colores disponibles para talleres:
+   - SECTOR 1: "text-sky-500 border-sky-500" (azul)
+   - SECTOR 2: "text-zinc-500 border-zinc-500" (gris)
+   - SECTOR 3: "text-rose-500 border-rose-500" (rosa)
+
+4. Para habilitar elementos, cambiar enabled: false a enabled: true
+*/
 
 const ConferenceProgram: React.FC = () => {
   const [activeDay, setActiveDay] = React.useState(Object.keys(program)[0]);
