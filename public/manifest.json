@@ -1,0 +1,91 @@
+{
+  "name": "Conferencia TOMATULUGAR 2025",
+  "short_name": "TOMATULUGAR 2025",
+  "description": "Consulta el programa, busca tus talleres y las ubicaciones de la Conferencia TOMATULUGAR 2025 - Evangelio del Reino",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#051561",
+  "theme_color": "#051561",
+  "orientation": "portrait-primary",
+  "categories": ["education", "lifestyle", "productivity"],
+  "lang": "es",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver Programa",
+      "short_name": "Programa",
+      "description": "Consulta el cronograma completo del evento",
+      "url": "/?tab=program",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Mapa del Evento",
+      "short_name": "Mapa",
+      "description": "Encuentra las ubicaciones y sectores",
+      "url": "/?tab=map",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Transmisión EN VIVO",
+      "short_name": "EN VIVO",
+      "description": "Mira la conferencia en tiempo real",
+      "url": "https://www.youtube.com/@TOMATULUGAR/streams",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

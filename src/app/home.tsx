@@ -1,6 +1,9 @@
-import React, { useState, useRef } from "react";
-import { ChevronLeft, ChevronRight, Play, Calendar, MapPin, ShoppingBag, ExternalLink } from "lucide-react";
+import React, { useState, useRef, Suspense } from "react";
+import { ChevronLeft, ChevronRight, Play, Calendar, MapPin, ShoppingBag, ExternalLink, Wifi, WifiOff } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
+import CarouselSkeleton from "@/components/CarouselSkeleton";
 import Autoplay from "embla-carousel-autoplay";
 
 interface BannerItem {
@@ -23,10 +26,49 @@ interface MerchItem {
 
 const HomeComponent: React.FC = () => {
   const [currentMerchSlide, setCurrentMerchSlide] = useState(0);
+  const [isOnline, setIsOnline] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const { toast } = useToast();
   
   const autoplayPlugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
   );
+
+  // Simular carga inicial
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Detectar estado de conexión
+  React.useEffect(() => {
+    const handleOnline = () => {
+      setIsOnline(true);
+      toast({
+        title: "Conexión restaurada",
+        description: "Ya puedes acceder a todas las funciones.",
+      });
+    };
+    
+    const handleOffline = () => {
+      setIsOnline(false);
+      toast({
+        title: "Sin conexión",
+        description: "Algunas funciones pueden no estar disponibles.",
+        variant: "destructive",
+      });
+    };
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, [toast]);
 
   /* 
   BANNERS EN FORMATO 1200x630 PÍXELES - SIN TEXTO SUPERPUESTO
@@ -151,29 +193,46 @@ const HomeComponent: React.FC = () => {
     setCurrentMerchSlide((prev) => (prev - 1 + Math.max(1, merchItems.length - 2)) % Math.max(1, merchItems.length - 2));
   };
 
+  // Mostrar skeleton mientras carga
+  if (isLoading) {
+    return <CarouselSkeleton />;
+  }
+
   return (
     <div className="w-full max-w-4xl mx-auto">
+      {/* Status Badge */}
+      <div className="flex justify-between items-center mb-4">
+        <Badge variant={isOnline ? "default" : "destructive"} className="flex items-center gap-1">
+          {isOnline ? <Wifi className="w-3 h-3" /> : <WifiOff className="w-3 h-3" />}
+          {isOnline ? "En línea" : "Sin conexión"}
+        </Badge>
+        <Badge variant="secondary">PWA Instalable</Badge>
+      </div>
+
       {/* Hero Carousel with Swipe Support */}
-      <Carousel
-        plugins={[autoplayPlugin.current]}
-        className="w-full max-w-4xl mx-auto mb-6"
-        onMouseEnter={autoplayPlugin.current.stop}
-        onMouseLeave={autoplayPlugin.current.reset}
-      >
-        <CarouselContent className="aspect-[1200/630]">
-          {banners.map((banner) => (
-            <CarouselItem key={banner.id} className="relative">
-              <img 
-                src={banner.imageUrl}
-                alt={banner.title}
-                className="w-full h-full object-cover rounded-md shadow-lg"
-              />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="left-4" />
-        <CarouselNext className="right-4" />
-      </Carousel>
+      <Suspense fallback={<CarouselSkeleton />}>
+        <Carousel
+          plugins={[autoplayPlugin.current]}
+          className="w-full max-w-4xl mx-auto mb-6"
+          onMouseEnter={autoplayPlugin.current.stop}
+          onMouseLeave={autoplayPlugin.current.reset}
+        >
+          <CarouselContent className="aspect-[1200/630]">
+            {banners.map((banner) => (
+              <CarouselItem key={banner.id} className="relative">
+                <img 
+                  src={banner.imageUrl}
+                  alt={banner.title}
+                  className="w-full h-full object-cover rounded-md shadow-lg"
+                  loading="lazy"
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-4" />
+          <CarouselNext className="right-4" />
+        </Carousel>
+      </Suspense>
 
       {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
