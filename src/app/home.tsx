@@ -300,7 +300,7 @@ const HomeComponent: React.FC = () => {
 
       {/* Merchandise Slider */}
       <div className="mb-6">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-4 p-2 md:p-6">
           <h3 className="text-2xl font-bold">Merch Oficial</h3>
           <button className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors">
             <span>Ver más productos</span>
