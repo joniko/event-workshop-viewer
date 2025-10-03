@@ -48,7 +48,7 @@ const MapComponent: React.FC<MapComponentProps> = () => {
   const locations = [
     { id: 1, name: "Auditorio Principal", x: 40, y: 30, color: "bg-blue-500" },
     { id: 2, name: "Sector 1 - Talleres", x: 20, y: 50, color: "bg-sky-500" },
-    { id: 3, name: "Sector 2 - Talleres", x: 60, y: 50, color: "bg-zinc-500" },
+    { id: 3, name: "Sector 2 - Talleres", x: 60, y: 50, color: "bg-slate-500" },
     { id: 4, name: "Sector 3 - Talleres", x: 80, y: 30, color: "bg-rose-500" },
     { id: 5, name: "Casa de Oración - Carpa", x: 30, y: 70, color: "bg-purple-500" },
     { id: 6, name: "Espacio TTL", x: 70, y: 70, color: "bg-green-500" },

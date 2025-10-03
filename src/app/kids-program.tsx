@@ -100,7 +100,7 @@ const KidsProgram: React.FC = () => {
   return (
     <div className="space-y-1 rounded-md border bg-white sm:mx-auto sm:w-full max-w-4xl">
       <Tabs.Root defaultValue={activeDay} onValueChange={setActiveDay}>
-        <Tabs.List className="flex text-center items-center justify-center bg-zinc-100 py-0.5">
+        <Tabs.List className="flex text-center items-center justify-center bg-slate-100 py-0.5">
           {Object.keys(kidsSchedule).map((day) => (
             <Tabs.Trigger
               key={day}
@@ -113,7 +113,7 @@ const KidsProgram: React.FC = () => {
         </Tabs.List>
         {Object.entries(kidsSchedule).map(([day, schedule]) => (
           <Tabs.Content key={day} value={day}>
-            <div className="border-y border-zinc-200">
+            <div className="border-y border-slate-200">
               <Table>
                 <TableBody>
                   {schedule.map((item, index) => (
@@ -121,7 +121,7 @@ const KidsProgram: React.FC = () => {
                       <TableCell className="text-custom-blue  text-base w-24">
                         {item.time}
                       </TableCell>
-                      <TableCell className="text-zinc-900 flex items-center  text-base">
+                      <TableCell className="text-slate-900 flex items-center  text-base">
                         <div className="w-8 mr-2">
                           {item.tag && <TagComponent tag={item.tag} />}
                         </div>

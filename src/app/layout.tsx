@@ -37,7 +37,7 @@ export default function RootLayout({
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
         }}
-        className="flex min-h-full bg-zinc-300 antialiased"
+        className="flex min-h-full bg-slate-300 antialiased"
       >
         {children}
       </body>

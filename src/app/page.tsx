@@ -6,15 +6,22 @@ import WavyBackground from "@/components/WavyBackground";
 import Program from "./program";
 import KidsProgram from "./kids-program";
 import MapComponent from "./map";
+import HomeComponent from "./home";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import {
   Calendar,
   Map,
   PartyPopper,
+  Home as HomeIcon,
 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
 const tabs = [
+  {
+    value: "inicio",
+    label: "Inicio",
+    icon: <HomeIcon className="w-4 h-4 mr-2" />,
+  },
   {
     value: "program",
     label: "Cronograma",
@@ -36,7 +43,7 @@ function HomeContent() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabValue>(() => {
     const tab = searchParams.get("tab");
-    return tab === "program" || tab === "map" ? tab : "program";
+    return tab === "inicio" || tab === "program" || tab === "map" ? tab : "inicio";
   });
   const [activeSubTab, setActiveSubTab] = useState<string>(() => {
     const subTab = searchParams.get("subTab");
@@ -44,12 +51,14 @@ function HomeContent() {
 
     // Definir los sub-tabs por defecto para cada tab principal
     switch (activeTab) {
+      case "inicio":
+        return "home";
       case "program":
         return "general";
       case "map":
         return "venue";
       default:
-        return "general";
+        return "home";
     }
   });
 
@@ -61,10 +70,13 @@ function HomeContent() {
   }, [activeTab, activeSubTab, router, searchParams]);
 
   const handleTabChange = (value: string) => {
-    if (value === "program" || value === "map") {
+    if (value === "inicio" || value === "program" || value === "map") {
       setActiveTab(value);
       // Establecer el sub-tab por defecto al cambiar de tab principal
       switch (value) {
+        case "inicio":
+          setActiveSubTab("home");
+          break;
         case "program":
           setActiveSubTab("general");
           break;
@@ -76,20 +88,22 @@ function HomeContent() {
   };
 
   const renderContent = () => {
-    if (activeTab === "program") {
+    if (activeTab === "inicio") {
+      return <HomeComponent />;
+    } else if (activeTab === "program") {
       return (
         <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
           <TabsList className="flex w-full rounded-t-lg">
             <TabsTrigger
               value="general"
-              className="flex-1 font-semibold hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
+              className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <Calendar className="w-4 h-4 mr-2" />
               General
             </TabsTrigger>
             <TabsTrigger
               value="kids"
-              className="flex-1 font-semibold hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
+              className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
             >
               <PartyPopper className="w-4 h-4 mr-2" />
               Kids
@@ -123,14 +137,14 @@ function HomeContent() {
         Mira la Conferencia EN VIVO
       </a>
 
-      <div className="rounded-lg my-2 p-2 bg-zinc-500 space-x-2">
+      <div className="rounded-lg my-2 p-2 bg-slate-900/60 space-x-2">
         <Tabs value={activeTab} onValueChange={handleTabChange}>
           <TabsList className="flex w-full space-x-1">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="flex-1 px-3 py-2 rounded-md text-white font-bold hover:bg-zinc-600/50 transition-colors data-[state=active]:bg-zinc-600/50 data-[state=active]:text-white flex items-center justify-center"
+                className="flex-1 px-3 py-2 rounded-md text-white font-bold hover:bg-slate-600/50 transition-colors data-[state=active]:bg-slate-600/50 data-[state=active]:text-white flex items-center justify-center"
               >
                 {tab.icon}
                 {tab.label}

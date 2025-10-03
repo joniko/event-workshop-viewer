@@ -99,7 +99,7 @@ const program: Record<string, ScheduleItem[]> = {
           sector: "SECTOR 2",
           title: "Nombre del taller",
           speaker: "Nombre del orador",
-          colorClass: "text-zinc-500 border-zinc-500",
+          colorClass: "text-slate-500 border-slate-500",
           downloadUrl: "URL_DEL_MATERIAL",
           enabled: true,
         },
@@ -132,7 +132,7 @@ const program: Record<string, ScheduleItem[]> = {
           sector: "SECTOR 2",
           title: "Nombre del taller",
           speaker: "Nombre del orador",
-          colorClass: "text-zinc-500 border-zinc-500",
+          colorClass: "text-slate-500 border-slate-500",
           downloadUrl: "URL_DEL_MATERIAL",
           enabled: true,
         },
@@ -208,7 +208,7 @@ const program: Record<string, ScheduleItem[]> = {
           sector: "SECTOR 2",
           title: "Nombre del taller",
           speaker: "Nombre del orador",
-          colorClass: "text-zinc-500 border-zinc-500",
+          colorClass: "text-slate-500 border-slate-500",
           downloadUrl: "URL_DEL_MATERIAL",
           enabled: true,
         },
@@ -241,7 +241,7 @@ const program: Record<string, ScheduleItem[]> = {
           sector: "SECTOR 2",
           title: "Nombre del taller",
           speaker: "Nombre del orador",
-          colorClass: "text-zinc-500 border-zinc-500",
+          colorClass: "text-slate-500 border-slate-500",
           downloadUrl: "URL_DEL_MATERIAL",
           enabled: true,
         },
@@ -304,7 +304,7 @@ const ConferenceProgram: React.FC = () => {
     if (item.activity.toLowerCase().includes("talleres") && item.enabled) {
       return "text-blue-900 text-sm font-semibold";
     }
-    return `text-zinc-900 text-base ${
+    return `text-slate-900 text-base ${
       shouldBeBold(item.activity) ? "font-bold" : ""
     }`;
   };
@@ -339,7 +339,7 @@ const ConferenceProgram: React.FC = () => {
   return (
     <div className="space-y-1 rounded-md border bg-white sm:mx-auto sm:w-full max-w-4xl">
       <Tabs.Root defaultValue={activeDay} onValueChange={setActiveDay}>
-        <Tabs.List className="flex text-center items-center justify-center bg-zinc-100 py-0.5">
+        <Tabs.List className="flex text-center items-center justify-center bg-slate-100 py-0.5">
           {Object.keys(program).map((day) => (
             <Tabs.Trigger
               key={day}

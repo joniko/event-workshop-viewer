@@ -75,7 +75,7 @@ const MenuItemList: React.FC<MenuItemListProps> = ({
                               {item.description}
                             </p>
                           )}
-                          <p className="text-sm font-medium text-zinc-600">
+                          <p className="text-sm font-medium text-slate-600">
                             ${item.price.toFixed(2)}
                           </p>
                         </div>
