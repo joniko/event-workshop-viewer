@@ -5,15 +5,12 @@ import { useRouter } from "next/navigation";
 import WavyBackground from "@/components/WavyBackground";
 import Program from "./program";
 import KidsProgram from "./kids-program";
-import Buffet from "./buffet";
+import MapComponent from "./map";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import {
   Calendar,
-  Utensils,
+  Map,
   PartyPopper,
-  Coffee,
-  Store,
-  Umbrella,
 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
@@ -24,9 +21,9 @@ const tabs = [
     icon: <Calendar className="w-4 h-4 mr-2" />,
   },
   {
-    value: "buffet",
-    label: "Buffet",
-    icon: <Utensils className="w-4 h-4 mr-2" />,
+    value: "map",
+    label: "Mapa",
+    icon: <Map className="w-4 h-4 mr-2" />,
   },
 ] as const;
 
@@ -39,7 +36,7 @@ function HomeContent() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabValue>(() => {
     const tab = searchParams.get("tab");
-    return tab === "program" || tab === "buffet" ? tab : "program";
+    return tab === "program" || tab === "map" ? tab : "program";
   });
   const [activeSubTab, setActiveSubTab] = useState<string>(() => {
     const subTab = searchParams.get("subTab");
@@ -49,8 +46,8 @@ function HomeContent() {
     switch (activeTab) {
       case "program":
         return "general";
-      case "buffet":
-        return "cafeteria";
+      case "map":
+        return "venue";
       default:
         return "general";
     }
@@ -64,15 +61,15 @@ function HomeContent() {
   }, [activeTab, activeSubTab, router, searchParams]);
 
   const handleTabChange = (value: string) => {
-    if (value === "program" || value === "buffet") {
+    if (value === "program" || value === "map") {
       setActiveTab(value);
       // Establecer el sub-tab por defecto al cambiar de tab principal
       switch (value) {
         case "program":
           setActiveSubTab("general");
           break;
-        case "buffet":
-          setActiveSubTab("cafeteria");
+        case "map":
+          setActiveSubTab("venue");
           break;
       }
     }
@@ -106,43 +103,8 @@ function HomeContent() {
           </TabsContent>
         </Tabs>
       );
-    } else if (activeTab === "buffet") {
-      return (
-        <Tabs value={activeSubTab} onValueChange={setActiveSubTab} className="">
-          <TabsList className="flex w-full border-b">
-            <TabsTrigger
-              value="cafeteria"
-              className="flex-1 font-semibold hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
-            >
-              <Coffee className="w-4 h-4 mr-2" />
-              Cafetería
-            </TabsTrigger>
-            <TabsTrigger
-              value="quiosco"
-              className="flex-1 font-semibold hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
-            >
-              <Store className="w-4 h-4 mr-2" />
-              Quiosco
-            </TabsTrigger>
-            <TabsTrigger
-              value="carpa"
-              className="flex-1 font-semibold hover:bg-zinc-200/50 transition-colors data-[state=active]:bg-zinc-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
-            >
-              <Umbrella className="w-4 h-4 mr-2" />
-              Carpa
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="cafeteria">
-            <Buffet type="cafeteria" />
-          </TabsContent>
-          <TabsContent value="quiosco">
-            <Buffet type="quiosco" />
-          </TabsContent>
-          <TabsContent value="carpa">
-            <Buffet type="carpa" />
-          </TabsContent>
-        </Tabs>
-      );
+    } else if (activeTab === "map") {
+      return <MapComponent />;
     }
   };
 
