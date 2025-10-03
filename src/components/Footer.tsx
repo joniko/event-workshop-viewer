@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full py-6 mt-8 bg-white/10 backdrop-blur-sm border-t border-white/20">
+    <footer className="w-full py-6 mt-8 bg-zinc-900/10 backdrop-blur-sm border-t border-white/20">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center">
           <a
@@ -12,15 +12,15 @@ const Footer: React.FC = () => {
             className="flex items-center gap-3 text-white hover:text-green-400 transition-colors group"
           >
             <span className="text-sm font-medium">
-              Organizá tu próximo evento con Fint
+              Organizá tu próximo evento con
             </span>
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
-              width="58" 
-              height="26" 
+              width="46" 
+              height="21" 
               viewBox="48 4 70 32" 
               fill="none"
-              className="group-hover:scale-105 transition-transform"
+              className=""
             >
               <g>
                 <path 
