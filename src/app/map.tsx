@@ -59,7 +59,7 @@ const MapComponent: React.FC<MapComponentProps> = () => {
   ];
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4">
+    <div className="w-full max-w-4xl mx-auto p-4 bg-white rounded-xl">
       <div className="mb-4">
         <h2 className="text-2xl font-bold text-center mb-2">Mapa del Evento</h2>
         <p className="text-center text-gray-600 mb-4">
@@ -70,21 +70,21 @@ const MapComponent: React.FC<MapComponentProps> = () => {
         <div className="flex justify-center gap-2 mb-4">
           <button
             onClick={handleZoomIn}
-            className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg transition-colors"
+            className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-xl transition-colors"
           >
             <ZoomIn className="w-4 h-4" />
             Zoom +
           </button>
           <button
             onClick={handleZoomOut}
-            className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg transition-colors"
+            className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-xl transition-colors"
           >
             <ZoomOut className="w-4 h-4" />
             Zoom -
           </button>
           <button
             onClick={handleReset}
-            className="flex items-center gap-2 bg-gray-500 hover:bg-gray-600 text-white px-3 py-2 rounded-lg transition-colors"
+            className="flex items-center gap-2 bg-gray-500 hover:bg-gray-600 text-white px-3 py-2 rounded-xl transition-colors"
           >
             <RotateCcw className="w-4 h-4" />
             Reset
@@ -95,7 +95,7 @@ const MapComponent: React.FC<MapComponentProps> = () => {
       {/* Contenedor del mapa */}
       <div
         ref={containerRef}
-        className="relative w-full h-96 bg-gray-100 border-2 border-gray-300 rounded-lg overflow-hidden cursor-grab active:cursor-grabbing"
+        className="relative w-full h-96 bg-gray-100 border-2 border-gray-300 rounded-xl overflow-hidden cursor-grab active:cursor-grabbing"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -112,7 +112,7 @@ const MapComponent: React.FC<MapComponentProps> = () => {
           <div className="w-full h-full relative bg-gradient-to-br from-green-100 to-green-200">
             
             {/* Estructura principal del edificio/evento */}
-            <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-32 h-16 bg-gray-300 border-2 border-gray-400 rounded-lg flex items-center justify-center">
+            <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-32 h-16 bg-gray-300 border-2 border-gray-400 rounded-xl flex items-center justify-center">
               <span className="text-xs font-bold text-gray-700">Edificio Principal</span>
             </div>
 
@@ -153,7 +153,7 @@ const MapComponent: React.FC<MapComponentProps> = () => {
         <h3 className="text-lg font-semibold mb-3">Ubicaciones</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           {locations.map((location) => (
-            <div key={location.id} className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
+            <div key={location.id} className="flex items-center gap-2 p-2 bg-gray-50 rounded-xl">
               <div className={`w-3 h-3 ${location.color} rounded-full`}></div>
               <span className="text-sm font-medium">{location.name}</span>
             </div>
@@ -162,7 +162,7 @@ const MapComponent: React.FC<MapComponentProps> = () => {
       </div>
 
       {/* Información adicional */}
-      <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+      <div className="mt-6 p-4 bg-blue-50 rounded-xl">
         <h3 className="font-semibold text-blue-800 mb-2">Información del Mapa</h3>
         <ul className="text-sm text-blue-700 space-y-1">
           <li>• Haz clic y arrastra para mover el mapa</li>

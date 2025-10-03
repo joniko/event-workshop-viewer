@@ -93,7 +93,7 @@ function HomeContent() {
     } else if (activeTab === "program") {
       return (
         <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
-          <TabsList className="flex w-full rounded-t-lg">
+          <TabsList className="flex w-full rounded-t-xl bg-white">
             <TabsTrigger
               value="general"
               className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
@@ -123,7 +123,7 @@ function HomeContent() {
   };
 
   return (
-    <main className="container flex flex-col px-0 sm:mx-auto sm:w-full max-w-3xl">
+    <main className="container flex flex-col px-2 sm:mx-auto sm:w-full max-w-3xl">
       <WavyBackground />
 
       {/* Nuevo botón para la transmisión en vivo */}
@@ -131,27 +131,27 @@ function HomeContent() {
         href="https://www.youtube.com/@TOMATULUGAR/streams" // Reemplaza con el enlace correcto de YouTube
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center bg-red-500 text-white font-bold py-2 px-4 rounded-lg mb-1 md:mb-2 mx-2 md:mx-0 hover:bg-red-600 transition-colors"
+        className="flex items-center justify-center bg-red-500 text-white font-bold py-2 px-4 rounded-full mb-1 md:mb-2 mx-2 md:mx-0 hover:bg-red-600 transition-colors"
       >
         <Youtube className="w-6 h-6 mr-2" />
         Mira la Conferencia EN VIVO
       </a>
 
-      <div className="rounded-lg my-2 p-2 bg-slate-900/60 space-x-2">
+      <div className="my-2">
         <Tabs value={activeTab} onValueChange={handleTabChange}>
-          <TabsList className="flex w-full space-x-1">
+          <TabsList className="flex w-full space-x-1  border-2 border-[#cddba3] rounded-full">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="flex-1 px-3 py-2 rounded-md text-white font-bold hover:bg-slate-600/50 transition-colors data-[state=active]:bg-slate-600/50 data-[state=active]:text-white flex items-center justify-center"
+                className="flex-1 px-3 py-2 rounded-full text-[#cddba3] font-bold hover:bg-slate-600/50 transition-colors data-[state=active]:bg-[#cddba3] data-[state=active]:text-[#051561] flex items-center justify-center"
               >
                 {tab.icon}
                 {tab.label}
               </TabsTrigger>
             ))}
           </TabsList>
-          <TabsContent value={activeTab} className="mt-2 bg-white rounded-md">
+          <TabsContent value={activeTab} className="mt-2">
             {renderContent()}
           </TabsContent>
         </Tabs>

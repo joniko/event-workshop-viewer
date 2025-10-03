@@ -223,8 +223,8 @@ const HomeComponent: React.FC = () => {
       </div>
 
       {/* Quick Access Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 px-4 md:px-6">
-        <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="bg-blue-50 p-6 rounded-xl border border-blue-200">
           <div className="flex items-center mb-3">
             <Calendar className="w-6 h-6 text-blue-600 mr-2" />
             <h3 className="text-lg font-semibold text-blue-800">Cronograma</h3>
@@ -243,7 +243,7 @@ const HomeComponent: React.FC = () => {
           </button>
         </div>
 
-        <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+        <div className="bg-green-50 p-6 rounded-xl border border-green-200">
           <div className="flex items-center mb-3">
             <MapPin className="w-6 h-6 text-green-600 mr-2" />
             <h3 className="text-lg font-semibold text-green-800">Ubicaciones</h3>
@@ -262,7 +262,7 @@ const HomeComponent: React.FC = () => {
           </button>
         </div>
 
-        <div className="bg-red-50 p-6 rounded-lg border border-red-200">
+        <div className="bg-red-50 p-6 rounded-xl border border-red-200">
           <div className="flex items-center mb-3">
             <Play className="w-6 h-6 text-red-600 mr-2" />
             <h3 className="text-lg font-semibold text-red-800">EN VIVO</h3>
@@ -280,9 +280,9 @@ const HomeComponent: React.FC = () => {
       </div>
 
       {/* YouTube Video Section */}
-      <div className="mb-6">
-        <h3 className="text-2xl font-bold text-center mb-4">Video Destacado</h3>
-        <div className="bg-gray-50 p-4 rounded-lg">
+      <div className="mb-6 bg-white rounded-xl">
+        <h3 className="text-2xl font-bold text-center py-4">Video Destacado</h3>
+        <div className="bg-gray-50 p-4 rounded-xl">
           <div className="aspect-video w-full">
             <iframe
               width="100%"
@@ -292,14 +292,13 @@ const HomeComponent: React.FC = () => {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              className="rounded-lg"
             ></iframe>
           </div>
         </div>
       </div>
 
       {/* Merchandise Slider */}
-      <div className="mb-6">
+      <div className="mb-6 bg-white rounded-xl">
         <div className="flex items-center justify-between mb-4 p-2 md:p-6">
           <h3 className="text-2xl font-bold">Merch Oficial</h3>
           <button className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors">
@@ -316,7 +315,7 @@ const HomeComponent: React.FC = () => {
             >
               {merchItems.map((item, index) => (
                 <div key={item.id} className={`flex-shrink-0 w-1/3 min-w-[280px] snap-center ${index === 0 ? 'ml-4' : ''} ${index === merchItems.length - 1 ? 'mr-4' : ''}`}>
-                  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="aspect-square bg-gray-100">
                       <img 
                         src={item.image} 
@@ -331,7 +330,7 @@ const HomeComponent: React.FC = () => {
                         <span className="text-2xl font-bold text-green-600">
                           ${item.price.toLocaleString()}
                         </span>
-                        <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+                        <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-xl transition-colors flex items-center gap-2">
                           <ShoppingBag className="w-4 h-4" />
                           Comprar
                         </button>
@@ -360,10 +359,10 @@ const HomeComponent: React.FC = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 p-2 md:p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <button
           onClick={() => window.open("https://wa.me/5491130734041", "_blank")}
-          className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg transition-colors flex items-center justify-center gap-3"
+          className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-xl transition-colors flex items-center justify-center gap-3"
         >
           <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m4.52 7.15l-4.93 2.65c-.54.29-.78.1-.78-.43v-5.31c0-.53.24-.72.78-.43l4.93 2.65c.54.29.54.76 0 1.05"/>
@@ -373,7 +372,7 @@ const HomeComponent: React.FC = () => {
         
         <button
           onClick={() => window.open("https://forms.google.com/inscripcion-conferencia", "_blank")}
-          className="bg-purple-500 hover:bg-purple-600 text-white p-4 rounded-lg transition-colors flex items-center justify-center gap-3"
+          className="bg-purple-500 hover:bg-purple-600 text-white p-4 rounded-xl transition-colors flex items-center justify-center gap-3"
         >
           <Calendar className="w-6 h-6" />
           <span className="font-semibold">Inscribirse a la Conferencia</span>

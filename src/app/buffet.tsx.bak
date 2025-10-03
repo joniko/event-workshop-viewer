@@ -127,7 +127,7 @@ const BuffetPage: React.FC<BuffetPageProps> = ({ type }) => {
       </h1>
       {renderContent()}
       {enableOrdering && order.length > 0 && (
-        <div className="mt-8 bg-gray-100 p-4 rounded-lg">
+        <div className="mt-8 bg-gray-100 p-4 rounded-xl">
           <div className="flex justify-between items-center">
             <p className="text-xl font-bold">Tu pedido</p>
             <div className="bg-slate-600 text-white px-2 py-1 rounded-md">

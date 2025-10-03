@@ -314,7 +314,7 @@ const ConferenceProgram: React.FC = () => {
       {workshops.map((workshop, index) => (
         <div
           key={index}
-          className={`border rounded-lg p-4 ${workshop.colorClass}`}
+          className={`border rounded-xl bg-white p-4 ${workshop.colorClass}`}
         >
           <div className="text-sm text-gray-500">{workshop.sector}</div>
           <div className="font-bold">{workshop.title}</div>
