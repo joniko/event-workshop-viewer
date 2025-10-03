@@ -314,11 +314,11 @@ const HomeComponent: React.FC = () => {
         <div className="relative">
           <div className="overflow-hidden">
             <div 
-              className="flex transition-transform duration-300 ease-in-out gap-4"
+              className="flex transition-transform duration-300 ease-in-out gap-4 scroll-smooth snap-x snap-mandatory"
               style={{ transform: `translateX(-${currentMerchSlide * 33.333}%)` }}
             >
-              {merchItems.map((item) => (
-                <div key={item.id} className="flex-shrink-0 w-1/3 min-w-[280px]">
+              {merchItems.map((item, index) => (
+                <div key={item.id} className={`flex-shrink-0 w-1/3 min-w-[280px] snap-center ${index === 0 ? 'ml-4' : ''} ${index === merchItems.length - 1 ? 'mr-4' : ''}`}>
                   <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="aspect-square bg-gray-100">
                       <img 
@@ -363,7 +363,7 @@ const HomeComponent: React.FC = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 p-2 md:p-6">
         <button
           onClick={() => window.open("https://wa.me/5491130734041", "_blank")}
           className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg transition-colors flex items-center justify-center gap-3"
@@ -383,28 +383,7 @@ const HomeComponent: React.FC = () => {
         </button>
       </div>
 
-      {/* Event Info */}
-      <div className="bg-gray-50 p-6 rounded-lg">
-        <h3 className="text-xl font-bold text-gray-800 mb-4">Información del Evento</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
-          <div>
-            <h4 className="font-semibold mb-2">Fechas:</h4>
-            <p>Jueves, Viernes y Sábado</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Modalidad:</h4>
-            <p>Presencial y transmisión en vivo</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Tema Central:</h4>
-            <p>Evangelio del Reino</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Actividades:</h4>
-            <p>Plenarias, Talleres, Casa de Oración</p>
-          </div>
-        </div>
-      </div>
+     
     </div>
   );
 };
