@@ -12,17 +12,17 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "TOMATULUGAR - PEC 2024",
+  title: "Conferencia TOMATULUGAR 2025",
   description: "Consulta el programa, busca tus talleres y las ubicaciones.",
-  metadataBase: new URL("https://pec24.app"), // Reemplaza con tu dominio real
+  metadataBase: new URL("https://conferencia.app"), // Reemplaza con tu dominio real
   other: {
     // Safari específico
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
-    "apple-mobile-web-app-title": "TOMATULUGAR PEC 2024",
+    "apple-mobile-web-app-title": "Conferencia TOMATULUGAR 2025",
     // Chrome/Android
     "mobile-web-app-capable": "yes",
-    "application-name": "TOMATULUGAR PEC 2024",
+    "application-name": "Conferencia TOMATULUGAR 2025",
     // Windows
     "msapplication-TileColor": "#051561",
     "msapplication-navbutton-color": "#051561",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: "/conferencia-tomatulugar-2024.jpg",
         width: 1200,
         height: 630,
-        alt: "TOMATULUGAR - PEC 2024",
+        alt: "Conferencia TOMATULUGAR 2025",
       },
     ],
   },
