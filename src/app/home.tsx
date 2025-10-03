@@ -1,7 +1,6 @@
 import React, { useState, useRef, Suspense } from "react";
-import { ChevronLeft, ChevronRight, Play, Calendar, MapPin, ShoppingBag, ExternalLink, Wifi, WifiOff } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, Calendar, MapPin, ShoppingBag, ExternalLink } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import CarouselSkeleton from "@/components/CarouselSkeleton";
 import Autoplay from "embla-carousel-autoplay";
@@ -26,9 +25,7 @@ interface MerchItem {
 
 const HomeComponent: React.FC = () => {
   const [currentMerchSlide, setCurrentMerchSlide] = useState(0);
-  const [isOnline, setIsOnline] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const { toast } = useToast();
   
   const autoplayPlugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
@@ -41,34 +38,6 @@ const HomeComponent: React.FC = () => {
     }, 1500);
     return () => clearTimeout(timer);
   }, []);
-
-  // Detectar estado de conexión
-  React.useEffect(() => {
-    const handleOnline = () => {
-      setIsOnline(true);
-      toast({
-        title: "Conexión restaurada",
-        description: "Ya puedes acceder a todas las funciones.",
-      });
-    };
-    
-    const handleOffline = () => {
-      setIsOnline(false);
-      toast({
-        title: "Sin conexión",
-        description: "Algunas funciones pueden no estar disponibles.",
-        variant: "destructive",
-      });
-    };
-
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-    
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, [toast]);
 
   /* 
   BANNERS EN FORMATO 1200x630 PÍXELES - SIN TEXTO SUPERPUESTO
@@ -200,15 +169,6 @@ const HomeComponent: React.FC = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      {/* Status Badge */}
-      <div className="flex justify-between items-center mb-4">
-        <Badge variant={isOnline ? "default" : "destructive"} className="flex items-center gap-1">
-          {isOnline ? <Wifi className="w-3 h-3" /> : <WifiOff className="w-3 h-3" />}
-          {isOnline ? "En línea" : "Sin conexión"}
-        </Badge>
-        <Badge variant="secondary">PWA Instalable</Badge>
-      </div>
-
       {/* Hero Carousel with Swipe Support */}
       <Suspense fallback={<CarouselSkeleton />}>
         <Carousel
@@ -286,7 +246,27 @@ const HomeComponent: React.FC = () => {
           </a>
         </div>
         
-        <div className="relative">
+        {/* Responsive Merchandise Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:hidden">
+          {merchItems.map((item) => (
+            <div key={item.id} className="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+              <img 
+                src={item.image} 
+                alt={item.name}
+                className="w-full h-40 object-cover rounded-md mb-3"
+                loading="lazy"
+              />
+              <h3 className="font-semibold text-gray-800 mb-1 text-sm">{item.name}</h3>
+              <p className="text-xs text-gray-600 mb-2">{item.description}</p>
+              <p className="text-base font-bold text-blue-600">
+                ${item.price.toLocaleString()}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Carousel */}
+        <div className="relative hidden md:block">
           <div className="overflow-hidden">
             <div 
               className="flex transition-transform duration-300 ease-in-out"
@@ -299,6 +279,7 @@ const HomeComponent: React.FC = () => {
                       src={item.image} 
                       alt={item.name}
                       className="w-full h-32 object-cover rounded-md mb-3"
+                      loading="lazy"
                     />
                     <h3 className="font-semibold text-gray-800 mb-1">{item.name}</h3>
                     <p className="text-sm text-gray-600 mb-2">{item.description}</p>
@@ -311,7 +292,7 @@ const HomeComponent: React.FC = () => {
             </div>
           </div>
           
-          {/* Merch Navigation */}
+          {/* Merch Navigation - Solo Desktop */}
           <button
             onClick={prevMerchSlide}
             className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-50 transition-colors"
