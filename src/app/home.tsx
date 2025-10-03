@@ -295,9 +295,6 @@ const HomeComponent: React.FC = () => {
               className="rounded-lg"
             ></iframe>
           </div>
-          <p className="text-center mt-3 text-gray-600">
-            LA GENERACIÓN DE ELÍAS - Lou Engle (Conferencia habitación 24:7)
-          </p>
         </div>
       </div>
 

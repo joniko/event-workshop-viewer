@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
+import Footer from "@/components/Footer";
 import "./globals.css";
 // Using bg-app.jpg from public folder directly
 
@@ -37,9 +38,10 @@ export default function RootLayout({
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
         }}
-        className="flex min-h-full bg-slate-300 antialiased"
+        className="flex flex-col min-h-full bg-slate-300 antialiased"
       >
-        {children}
+        <div className="flex-1">{children}</div>
+        <Footer />
       </body>
     </html>
   );
