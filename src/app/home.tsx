@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Play, Calendar, MapPin } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, Calendar, MapPin, ShoppingBag, ExternalLink } from "lucide-react";
 
 interface BannerItem {
   id: number;
@@ -11,22 +11,32 @@ interface BannerItem {
   ctaAction?: () => void;
 }
 
+interface MerchItem {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  description?: string;
+}
+
 const HomeComponent: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [currentMerchSlide, setCurrentMerchSlide] = useState(0);
 
   /* 
-  BANNERS EN FORMATO 1200x630 PÍXELES
+  BANNERS EN FORMATO 1200x630 PÍXELES - SIN TEXTO SUPERPUESTO
   
   Para reemplazar con las imágenes definitivas:
   1. Crear 5 imágenes en formato 1200x630 píxeles
   2. Guardarlas en la carpeta public/banners/ con los nombres:
-     - banner-principal-1200x630.jpg (Banner principal de la conferencia)
-     - banner-live-1200x630.jpg (Banner de transmisión en vivo)
-     - banner-plenarias-1200x630.jpg (Banner de plenarias)
-     - banner-talleres-1200x630.jpg (Banner de talleres)
-     - banner-oracion-1200x630.jpg (Banner de casa de oración)
-  3. Las imágenes actuales son placeholders temporales
+     - banner-1.jpg (Banner principal de la conferencia)
+     - banner-2.jpg (Banner de transmisión en vivo)
+     - banner-3.jpg (Banner de plenarias)
+     - banner-4.jpg (Banner de talleres)
+     - banner-5.jpg (Banner de casa de oración)
+  3. Las imágenes se mostrarán limpias sin texto superpuesto
+  4. Las imágenes actuales son placeholders temporales
   */
   const banners: BannerItem[] = [
     {
@@ -34,7 +44,7 @@ const HomeComponent: React.FC = () => {
       title: "Conferencia TOMATULUGAR 2025",
       subtitle: "Evangelio del Reino",
       description: "Únete a nosotros en esta experiencia transformadora donde exploraremos las profundidades del Reino de Dios",
-      imageUrl: "/banners/banner-principal-1200x630.jpg", // Banner principal 1200x630
+      imageUrl: "/banners/banner-1.jpg", // Banner principal 1200x630
       ctaText: "Ver Programa",
       ctaAction: () => {
         const programTab = document.querySelector('[value="program"]') as HTMLElement;
@@ -46,7 +56,7 @@ const HomeComponent: React.FC = () => {
       title: "Transmisión EN VIVO",
       subtitle: "No te pierdas ningún momento",
       description: "Sigue toda la conferencia en tiempo real desde nuestro canal oficial de YouTube",
-      imageUrl: "/banners/banner-live-1200x630.jpg", // Banner transmisión en vivo 1200x630
+      imageUrl: "/banners/banner-2.jpg", // Banner transmisión en vivo 1200x630
       ctaText: "Ver EN VIVO",
       ctaAction: () => {
         window.open("https://www.youtube.com/@TOMATULUGAR/streams", "_blank");
@@ -57,14 +67,14 @@ const HomeComponent: React.FC = () => {
       title: "Plenarias Principales",
       subtitle: "Enseñanzas profundas",
       description: "Experimenta momentos únicos de revelación y crecimiento espiritual con oradores reconocidos",
-      imageUrl: "/banners/banner-plenarias-1200x630.jpg", // Banner plenarias 1200x630
+      imageUrl: "/banners/banner-3.jpg", // Banner plenarias 1200x630
     },
     {
       id: 4,
       title: "Talleres Especializados",
       subtitle: "3 Sectores Temáticos",
       description: "Profundiza en áreas específicas: Evangelio Completo, Adoración & Intercesión, e Iglesia Gloriosa",
-      imageUrl: "/banners/banner-talleres-1200x630.jpg", // Banner talleres 1200x630
+      imageUrl: "/banners/banner-4.jpg", // Banner talleres 1200x630
       ctaText: "Explorar Mapa",
       ctaAction: () => {
         const mapTab = document.querySelector('[value="map"]') as HTMLElement;
@@ -76,7 +86,46 @@ const HomeComponent: React.FC = () => {
       title: "Casa de Oración",
       subtitle: "Momentos de intercesión",
       description: "Espacios dedicados a la oración y búsqueda de Dios durante toda la conferencia",
-      imageUrl: "/banners/banner-oracion-1200x630.jpg", // Banner casa de oración 1200x630
+      imageUrl: "/banners/banner-5.jpg", // Banner casa de oración 1200x630
+    }
+  ];
+
+  // Merchandise items
+  const merchItems: MerchItem[] = [
+    {
+      id: 1,
+      name: "Gratitude - Lion Inside",
+      price: 25000,
+      image: "/merch/merch-1.jpg",
+      description: "Camiseta negra con diseño de león"
+    },
+    {
+      id: 2,
+      name: "House of Miracles",
+      price: 25000,
+      image: "/merch/merch-2.jpg",
+      description: "Camiseta blanca con diseño de casa"
+    },
+    {
+      id: 3,
+      name: "Conferencia 2025",
+      price: 30000,
+      image: "/merch/merch-3.jpg",
+      description: "Camiseta oficial de la conferencia"
+    },
+    {
+      id: 4,
+      name: "Toma Tu Lugar",
+      price: 28000,
+      image: "/merch/merch-4.jpg",
+      description: "Sudadera con capucha"
+    },
+    {
+      id: 5,
+      name: "Reino de Dios",
+      price: 22000,
+      image: "/merch/merch-5.jpg",
+      description: "Taza de cerámica"
     }
   ];
 
@@ -90,6 +139,15 @@ const HomeComponent: React.FC = () => {
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
+  };
+
+  // Merchandise slider functions
+  const nextMerchSlide = () => {
+    setCurrentMerchSlide((prev) => (prev + 1) % Math.max(1, merchItems.length - 2));
+  };
+
+  const prevMerchSlide = () => {
+    setCurrentMerchSlide((prev) => (prev - 1 + Math.max(1, merchItems.length - 2)) % Math.max(1, merchItems.length - 2));
   };
 
   // Auto-play functionality
@@ -121,40 +179,12 @@ const HomeComponent: React.FC = () => {
         >
           {banners.map((banner) => (
             <div key={banner.id} className="w-full h-full flex-shrink-0 relative">
-              {/* Banner Image - optimized for 1200x630 format */}
+              {/* Banner Image - clean without overlay */}
               <img 
                 src={banner.imageUrl}
                 alt={banner.title}
                 className="absolute inset-0 w-full h-full object-cover"
-                style={{ filter: 'brightness(0.6)' }}
               />
-              
-              {/* Overlay for better text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/20" />
-              
-              {/* Content positioned for optimal readability */}
-              <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-4 md:px-8">
-                <div className="max-w-3xl">
-                  <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 leading-tight">
-                    {banner.title}
-                  </h1>
-                  <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-3 md:mb-4 text-blue-200">
-                    {banner.subtitle}
-                  </h2>
-                  <p className="text-sm md:text-lg lg:text-xl mb-4 md:mb-6 text-gray-200 leading-relaxed">
-                    {banner.description}
-                  </p>
-                  {banner.ctaText && banner.ctaAction && (
-                    <button
-                      onClick={banner.ctaAction}
-                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg transition-colors inline-flex items-center gap-2 text-sm md:text-base"
-                    >
-                      {banner.ctaText}
-                      <Play className="w-4 h-4" />
-                    </button>
-                  )}
-                </div>
-              </div>
             </div>
           ))}
         </div>
@@ -247,6 +277,110 @@ const HomeComponent: React.FC = () => {
             Ver Transmisión
           </button>
         </div>
+      </div>
+
+      {/* YouTube Video Section */}
+      <div className="mb-6">
+        <h3 className="text-2xl font-bold text-center mb-4">Video Destacado</h3>
+        <div className="bg-gray-50 p-4 rounded-lg">
+          <div className="aspect-video w-full">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/4bCC0Nz3FEc"
+              title="Video de la Conferencia - LA GENERACIÓN DE ELÍAS"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="rounded-lg"
+            ></iframe>
+          </div>
+          <p className="text-center mt-3 text-gray-600">
+            LA GENERACIÓN DE ELÍAS - Lou Engle (Conferencia habitación 24:7)
+          </p>
+        </div>
+      </div>
+
+      {/* Merchandise Slider */}
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-2xl font-bold">Merch Oficial</h3>
+          <button className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors">
+            <span>Ver más productos</span>
+            <ExternalLink className="w-4 h-4" />
+          </button>
+        </div>
+        
+        <div className="relative">
+          <div className="overflow-hidden">
+            <div 
+              className="flex transition-transform duration-300 ease-in-out gap-4"
+              style={{ transform: `translateX(-${currentMerchSlide * 33.333}%)` }}
+            >
+              {merchItems.map((item) => (
+                <div key={item.id} className="flex-shrink-0 w-1/3 min-w-[280px]">
+                  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div className="aspect-square bg-gray-100">
+                      <img 
+                        src={item.image} 
+                        alt={item.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h4 className="font-semibold text-lg mb-2 line-clamp-2">{item.name}</h4>
+                      <p className="text-gray-600 text-sm mb-3 line-clamp-2">{item.description}</p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-2xl font-bold text-green-600">
+                          ${item.price.toLocaleString()}
+                        </span>
+                        <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+                          <ShoppingBag className="w-4 h-4" />
+                          Comprar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Merchandise slider navigation */}
+          <button
+            onClick={prevMerchSlide}
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 shadow-md p-2 rounded-full transition-all"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={nextMerchSlide}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 shadow-md p-2 rounded-full transition-all"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <button
+          onClick={() => window.open("https://wa.me/5491130734041", "_blank")}
+          className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg transition-colors flex items-center justify-center gap-3"
+        >
+          <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m4.52 7.15l-4.93 2.65c-.54.29-.78.1-.78-.43v-5.31c0-.53.24-.72.78-.43l4.93 2.65c.54.29.54.76 0 1.05"/>
+          </svg>
+          <span className="font-semibold">Contactar por WhatsApp</span>
+        </button>
+        
+        <button
+          onClick={() => window.open("https://forms.google.com/inscripcion-conferencia", "_blank")}
+          className="bg-purple-500 hover:bg-purple-600 text-white p-4 rounded-lg transition-colors flex items-center justify-center gap-3"
+        >
+          <Calendar className="w-6 h-6" />
+          <span className="font-semibold">Inscribirse a la Conferencia</span>
+        </button>
       </div>
 
       {/* Event Info */}
