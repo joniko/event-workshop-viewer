@@ -22,7 +22,7 @@ const config = {
         base: "16px",
       },
       colors: {
-        "cumbre-blue": "#591AFF",
+        "cumbre-blue": "#051561",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
