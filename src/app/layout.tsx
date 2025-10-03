@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import "./globals.css";
-import eventImage from "@/images/bg-top.jpg";
+// Using bg-app.jpg from public folder directly
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="es" className="h-full scroll-smooth" suppressHydrationWarning>
       <body
         style={{
-          backgroundImage: `url(${eventImage.src})`,
+          backgroundImage: "url(/bg-app.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
