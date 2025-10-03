@@ -2,14 +2,14 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full py-6 mt-8 bg-zinc-900/10 backdrop-blur-sm border-t border-white/20">
+    <footer className="w-full py-6 mt-8 bg-slate-800/10 backdrop-blur-sm border-t border-slate-900/60">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center">
           <a
             href="https://fint.app/funcionalidades/eventos"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 text-white hover:text-green-400 transition-colors group"
+            className="flex items-center gap-3 text-emerald-400 hover:text-emerald-300 transition-colors group"
           >
             <span className="text-sm font-medium">
               Organizá tu próximo evento con
