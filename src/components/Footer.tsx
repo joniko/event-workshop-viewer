@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full py-6 mt-2">
+    <footer className="w-full py-8">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center">
           <a
@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-emerald-400 hover:text-emerald-300 transition-colors group"
           >
-            <span className="text-sm font-medium">
+            <span className="text-lg font-medium">
               Organizá tu próximo evento con
             </span>
             <svg 
