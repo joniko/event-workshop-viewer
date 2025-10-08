@@ -5,121 +5,58 @@ import { useRouter } from "next/navigation";
 import WavyBackground from "@/components/WavyBackground";
 import Program from "./program";
 import KidsProgram from "./kids-program";
-import MapComponent from "./map";
-import HomeComponent from "./home";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import {
   Calendar,
-  Map,
   PartyPopper,
-  Home as HomeIcon,
 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
-const tabs = [
-  {
-    value: "inicio",
-    label: "Inicio",
-    icon: <HomeIcon className="w-4 h-4 mr-2" />,
-  },
-  {
-    value: "program",
-    label: "Cronograma",
-    icon: <Calendar className="w-4 h-4 mr-2" />,
-  },
-  {
-    value: "map",
-    label: "Mapa",
-    icon: <Map className="w-4 h-4 mr-2" />,
-  },
-] as const;
-
-type TabValue = (typeof tabs)[number]["value"];
 
 import { Youtube } from "lucide-react";
 
 function HomeContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<TabValue>(() => {
-    const tab = searchParams.get("tab");
-    return tab === "inicio" || tab === "program" || tab === "map" ? tab : "inicio";
-  });
   const [activeSubTab, setActiveSubTab] = useState<string>(() => {
     const subTab = searchParams.get("subTab");
     if (subTab) return subTab;
-
-    // Definir los sub-tabs por defecto para cada tab principal
-    switch (activeTab) {
-      case "inicio":
-        return "home";
-      case "program":
-        return "general";
-      case "map":
-        return "venue";
-      default:
-        return "home";
-    }
+    return "general";
   });
 
   useEffect(() => {
     const newSearchParams = new URLSearchParams(searchParams);
-    newSearchParams.set("tab", activeTab);
     newSearchParams.set("subTab", activeSubTab);
     router.push(`?${newSearchParams.toString()}`, { scroll: false });
-  }, [activeTab, activeSubTab, router, searchParams]);
-
-  const handleTabChange = (value: string) => {
-    if (value === "inicio" || value === "program" || value === "map") {
-      setActiveTab(value);
-      // Establecer el sub-tab por defecto al cambiar de tab principal
-      switch (value) {
-        case "inicio":
-          setActiveSubTab("home");
-          break;
-        case "program":
-          setActiveSubTab("general");
-          break;
-        case "map":
-          setActiveSubTab("venue");
-          break;
-      }
-    }
-  };
+  }, [activeSubTab, router, searchParams]);
 
   const renderContent = () => {
-    if (activeTab === "inicio") {
-      return <HomeComponent />;
-    } else if (activeTab === "program") {
-      return (
-        <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
-          <TabsList className="flex w-full rounded-t-xl bg-white">
-            <TabsTrigger
-              value="general"
-              className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
-            >
-              <Calendar className="w-4 h-4 mr-2" />
-              General
-            </TabsTrigger>
-            <TabsTrigger
-              value="kids"
-              className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
-            >
-              <PartyPopper className="w-4 h-4 mr-2" />
-              Kids
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="general">
-            <Program />
-          </TabsContent>
-          <TabsContent value="kids">
-            <KidsProgram />
-          </TabsContent>
-        </Tabs>
-      );
-    } else if (activeTab === "map") {
-      return <MapComponent />;
-    }
+    return (
+      <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
+        <TabsList className="flex w-full rounded-t-xl bg-white">
+          <TabsTrigger
+            value="general"
+            className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
+          >
+            <Calendar className="w-4 h-4 mr-2" />
+            General
+          </TabsTrigger>
+          <TabsTrigger
+            value="kids"
+            className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
+          >
+            <PartyPopper className="w-4 h-4 mr-2" />
+            Kids
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="general">
+          <Program />
+        </TabsContent>
+        <TabsContent value="kids">
+          <KidsProgram />
+        </TabsContent>
+      </Tabs>
+    );
   };
 
   return (
@@ -138,23 +75,7 @@ function HomeContent() {
       </a>
 
       <div className="my-2">
-        <Tabs value={activeTab} onValueChange={handleTabChange}>
-          <TabsList className="flex w-full space-x-1  border-2 border-[#cddba3] rounded-full">
-            {tabs.map((tab) => (
-              <TabsTrigger
-                key={tab.value}
-                value={tab.value}
-                className="flex-1 px-3 py-2 rounded-full text-[#cddba3] font-bold hover:bg-slate-600/50 transition-colors data-[state=active]:bg-[#cddba3] data-[state=active]:text-[#051561] flex items-center justify-center"
-              >
-                {tab.icon}
-                {tab.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          <TabsContent value={activeTab} className="mt-2">
-            {renderContent()}
-          </TabsContent>
-        </Tabs>
+        {renderContent()}
       </div>
     </main>
   );
