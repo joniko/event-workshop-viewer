@@ -34,14 +34,14 @@ function HomeContent() {
         <TabsList className="flex w-full rounded-t-xl bg-white">
           <TabsTrigger
             value="general"
-            className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
+            className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center rounded-t-xl"
           >
             <Calendar className="w-4 h-4 mr-2" />
             General
           </TabsTrigger>
           <TabsTrigger
             value="kids"
-            className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center"
+            className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center rounded-t-xl"
           >
             <PartyPopper className="w-4 h-4 mr-2" />
             Kids
@@ -72,7 +72,7 @@ function HomeContent() {
         Mira la Conferencia EN VIVO
       </a>
 
-      <div className="my-2">
+      <div className="my-2 bg-white rounded-xl">
         {renderContent()}
       </div>
     </main>
