@@ -28,7 +28,7 @@ function HomeContent() {
     const newSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set("subTab", activeSubTab);
     router.push(`?${newSearchParams.toString()}`, { scroll: false });
-  }, [activeSubTab, router, searchParams]);
+  }, [activeSubTab, router]);
 
   const renderContent = () => {
     return (
