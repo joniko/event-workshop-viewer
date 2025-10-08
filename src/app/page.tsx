@@ -9,11 +9,9 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import {
   Calendar,
   PartyPopper,
+  Youtube,
 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-
-
-import { Youtube } from "lucide-react";
 
 function HomeContent() {
   const searchParams = useSearchParams();
