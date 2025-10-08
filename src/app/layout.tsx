@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
-import InstallPWA from "@/components/InstallPWA";
 import "./globals.css";
 // Using bg-app.jpg from public folder directly
 
@@ -72,7 +71,6 @@ export default function RootLayout({
       >
         <div className="flex-1">{children}</div>
         <Footer />
-        <InstallPWA />
         <Toaster />
       </body>
     </html>
