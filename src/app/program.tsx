@@ -33,11 +33,11 @@ const program: Record<string, ScheduleItem[]> = {
       time: "19:30",
       activity: "Plenaria 1",
       enabled: false,
-      /*
+     
       downloadUrl: "https://drive.google.com/file/d/13esIaCbvKm0jxi7vuKgGJ0KCozcr-ffU/view?usp=sharing",
       plenaryName: "Nombre de la plenaria",
       speaker: "Nombre del orador",
-      */
+     
     },
     {
       time: "20:30",
@@ -91,7 +91,7 @@ const program: Record<string, ScheduleItem[]> = {
           sector: "SECTOR 1",
           title: "Nombre del taller",
           speaker: "Nombre del orador",
-          colorClass: "text-sky-500 border-sky-500",
+          colorClass: "text-emerald-700 border-emerald-500",
           downloadUrl: "URL_DEL_MATERIAL",
           enabled: true,
         },
@@ -99,7 +99,7 @@ const program: Record<string, ScheduleItem[]> = {
           sector: "SECTOR 2",
           title: "Nombre del taller",
           speaker: "Nombre del orador",
-          colorClass: "text-slate-500 border-slate-500",
+          colorClass: "text-emerald-700 border-emerald-500",
           downloadUrl: "URL_DEL_MATERIAL",
           enabled: true,
         },
@@ -107,7 +107,7 @@ const program: Record<string, ScheduleItem[]> = {
           sector: "SECTOR 3",
           title: "Nombre del taller",
           speaker: "Nombre del orador",
-          colorClass: "text-rose-500 border-rose-500",
+          colorClass: "text-emerald-700 border-emerald-500",
           downloadUrl: "URL_DEL_MATERIAL",
           enabled: true,
         },
@@ -378,7 +378,7 @@ const ConferenceProgram: React.FC = () => {
                       <TableCell className="text-custom-blue opacity-60 font-medium w-24 text-base ">
                         {item.time}
                       </TableCell>
-                      <TableCell className="py-4 px-0 border-neutral-200 border-b">
+                      <TableCell className="py-4 pl-0 border-neutral-200 border-b">
                         <div className="flex flex-col">
                           <div className="flex justify-between items-center">
                             <div className={`${getActivityStyle(item, textColor)} ${textColor}`}>
