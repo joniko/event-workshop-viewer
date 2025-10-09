@@ -356,23 +356,30 @@ const ConferenceProgram: React.FC = () => {
               <Table>
                 <TableBody>
                   {schedule.map((item, index) => {
-                    // Determinar el color de fondo basado en el tipo de actividad
+                    // Determinar el color de fondo, borde y texto basado en el tipo de actividad
                     let bgColor = "";
+                    let borderColor = "";
+                    let textColor = "";
+                    
                     if (item.activity.toLowerCase().includes("plenaria")) {
-                      bgColor = "bg-blue-50"; // Fondo azul muy claro para plenarias
+                      bgColor = "bg-blue-100"; // Fondo azul claro para plenarias
+                      borderColor = "border-l-blue-500"; // Borde izquierdo azul
+                      textColor = "text-blue-900"; // Texto azul oscuro
                     } else if (item.activity.toLowerCase().includes("talleres")) {
-                      bgColor = "bg-green-50"; // Fondo verde muy claro para talleres
+                      bgColor = "bg-green-100"; // Fondo verde claro para talleres
+                      borderColor = "border-l-green-500"; // Borde izquierdo verde
+                      textColor = "text-green-900"; // Texto verde oscuro
                     }
                     
                     return (
-                    <TableRow key={index} className={`border-neutral-200 ${bgColor}`}>
+                    <TableRow key={index} className={`border-neutral-200 ${bgColor} ${borderColor}`}>
                       <TableCell className="text-custom-blue font-medium w-24 text-base">
                         {item.time}
                       </TableCell>
                       <TableCell className="p-4">
                         <div className="flex flex-col">
                           <div className="flex justify-between items-center">
-                            <div className={getActivityStyle(item)}>
+                            <div className={`${getActivityStyle(item)} ${textColor}`}>
                               {item.activity}
                             </div>
                             {item.downloadUrl && item.enabled && (
