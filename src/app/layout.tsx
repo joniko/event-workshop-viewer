@@ -13,7 +13,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Conferencia TOMATULUGAR 2025",
+  title: "Programa - Conferencia TOMATULUGAR 2025",
   description: "Consulta el programa.",
   metadataBase: new URL("https://conferencia.app"), // Reemplaza con tu dominio real
   manifest: "/manifest.json",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Conferencia TOMATULUGAR 2025",
+    title: "Programa - Conferencia TOMATULUGAR 2025",
     description: "Consulta el programa.",
     type: "website",
     locale: "es_ES",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Conferencia TOMATULUGAR 2025",
+    title: "Programa - Conferencia TOMATULUGAR 2025",
     description: "Consulta el programa.",
     images: ["/ttl-og-image.jpg"],
   },
