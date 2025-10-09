@@ -294,7 +294,7 @@ const ConferenceProgram: React.FC = () => {
   const [activeDay, setActiveDay] = React.useState(Object.keys(program)[0]);
 
   const shouldBeBold = (activity: string) => {
-    const boldActivities = ["plenaria", "talleres", "Casa de"];
+    const boldActivities = ["plenaria", "talleres", "casa", "adoración"];
     return boldActivities.some((boldActivity) =>
       activity.toLowerCase().includes(boldActivity)
     );
@@ -339,7 +339,7 @@ const ConferenceProgram: React.FC = () => {
   );
 
   return (
-    <div className="space-y-1 rounded-xl border bg-white sm:mx-auto sm:w-full max-w-4xl">
+    <div className="space-y-1 rounded-xl bg-white sm:mx-auto sm:w-full max-w-4xl">
       <Tabs.Root defaultValue={activeDay} onValueChange={setActiveDay}>
         <Tabs.List className="flex text-center items-center justify-center bg-slate-100 py-0.5">
           {Object.keys(program).map((day) => (
@@ -365,20 +365,20 @@ const ConferenceProgram: React.FC = () => {
                     
                     if (item.activity.toLowerCase().includes("plenaria")) {
                       bgColor = "bg-indigo-50/60"; // Fondo azul claro para plenarias
-                      borderColor = "border-l-4 border-l-indigo-500"; // Borde izquierdo azul
-                      textColor = "text-indigo-900"; // Texto azul oscuro
+                      borderColor = "border-l-4 border-l-indigo-500 border-y border-y-indigo-900/20 z-10"; // Borde izquierdo azul
+                      textColor = "text-indigo-800"; // Texto azul oscuro
                     } else if (item.activity.toLowerCase().includes("talleres")) {
                       bgColor = "bg-emerald-50/60"; // Fondo verde claro para talleres
-                      borderColor = "border-l-4 border-l-emerald-500"; // Borde izquierdo verde
-                      textColor = "text-emerald-900"; // Texto verde oscuro
+                      borderColor = "border-l-4 border-l-emerald-500 border-y border-y-emerald-900/20 z-10"; // Borde izquierdo verde
+                      textColor = "text-emerald-800"; // Texto verde oscuro
                     }
                     
                     return (
-                    <TableRow key={index} className={`border-neutral-200 ${bgColor} ${borderColor}`}>
-                      <TableCell className="text-custom-blue font-medium w-24 text-base">
+                    <TableRow key={index} className={`${bgColor} ${borderColor}`}>
+                      <TableCell className="text-custom-blue opacity-60 font-medium w-24 text-base ">
                         {item.time}
                       </TableCell>
-                      <TableCell className="p-4">
+                      <TableCell className="py-4 px-0 border-neutral-200 border-b">
                         <div className="flex flex-col">
                           <div className="flex justify-between items-center">
                             <div className={`${getActivityStyle(item, textColor)} ${textColor}`}>
