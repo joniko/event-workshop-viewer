@@ -117,7 +117,8 @@ const KidsProgram: React.FC = () => {
                         </div>
                         <span
                           className={
-                            item.activity.toLowerCase().includes("taller")
+                            item.activity.toLowerCase().includes("taller") ||
+                            item.activity.toLowerCase().includes("plenaria")
                               ? "font-bold"
                               : ""
                           }
