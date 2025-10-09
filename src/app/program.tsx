@@ -355,8 +355,17 @@ const ConferenceProgram: React.FC = () => {
             <div className="rounded-b-xl">
               <Table>
                 <TableBody>
-                  {schedule.map((item, index) => (
-                    <TableRow key={index} className="border-neutral-200">
+                  {schedule.map((item, index) => {
+                    // Determinar el color de fondo basado en el tipo de actividad
+                    let bgColor = "";
+                    if (item.activity.toLowerCase().includes("plenaria")) {
+                      bgColor = "bg-blue-50"; // Fondo azul muy claro para plenarias
+                    } else if (item.activity.toLowerCase().includes("talleres")) {
+                      bgColor = "bg-green-50"; // Fondo verde muy claro para talleres
+                    }
+                    
+                    return (
+                    <TableRow key={index} className={`border-neutral-200 ${bgColor}`}>
                       <TableCell className="text-custom-blue font-medium w-24 text-base">
                         {item.time}
                       </TableCell>
@@ -389,7 +398,8 @@ const ConferenceProgram: React.FC = () => {
                         </div>
                       </TableCell>
                     </TableRow>
-                  ))}
+                    );
+                  })}
                 </TableBody>
               </Table>
             </div>
