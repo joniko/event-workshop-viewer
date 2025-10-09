@@ -41,14 +41,24 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
+    title: "Conferencia TOMATULUGAR 2025",
+    description: "Consulta el programa, busca tus talleres y las ubicaciones.",
+    type: "website",
+    locale: "es_ES",
     images: [
       {
-        url: "/conferencia-tomatulugar-2024.jpg",
+        url: "/ttl-og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Conferencia TOMATULUGAR 2025",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Conferencia TOMATULUGAR 2025",
+    description: "Consulta el programa, busca tus talleres y las ubicaciones.",
+    images: ["/ttl-og-image.jpg"],
   },
 };
 
