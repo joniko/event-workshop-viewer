@@ -362,12 +362,12 @@ const ConferenceProgram: React.FC = () => {
                     let textColor = "";
                     
                     if (item.activity.toLowerCase().includes("plenaria")) {
-                      bgColor = "bg-blue-100"; // Fondo azul claro para plenarias
-                      borderColor = "border-l-blue-500"; // Borde izquierdo azul
+                      bgColor = "bg-blue-50"; // Fondo azul claro para plenarias
+                      borderColor = "border-l-4 border-l-blue-500"; // Borde izquierdo azul
                       textColor = "text-blue-900"; // Texto azul oscuro
                     } else if (item.activity.toLowerCase().includes("talleres")) {
-                      bgColor = "bg-green-100"; // Fondo verde claro para talleres
-                      borderColor = "border-l-green-500"; // Borde izquierdo verde
+                      bgColor = "bg-green-50"; // Fondo verde claro para talleres
+                      borderColor = "border-l-4 border-l-green-500"; // Borde izquierdo verde
                       textColor = "text-green-900"; // Texto verde oscuro
                     }
                     
