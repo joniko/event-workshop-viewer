@@ -1,7 +1,7 @@
 {
   "name": "Conferencia TOMATULUGAR 2025",
   "short_name": "TOMATULUGAR 2025",
-  "description": "Consulta el programa, busca tus talleres y las ubicaciones de la Conferencia TOMATULUGAR 2025 - Evangelio del Reino",
+  "description": "Consulta el programa de la Conferencia TOMATULUGAR 2025 - Evangelio del Reino",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#051561",
