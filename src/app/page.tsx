@@ -37,22 +37,22 @@ function HomeContent() {
             className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center rounded-t-xl"
           >
             <Calendar className="w-4 h-4 mr-2" />
-            General
+            Programa
           </TabsTrigger>
-          <TabsTrigger
+          {/* <TabsTrigger
             value="kids"
             className="flex-1 font-semibold hover:bg-slate-200/50 transition-colors data-[state=active]:bg-slate-200/50 data-[state=active]:text-blue-500 px-3 py-2 flex items-center justify-center rounded-t-xl"
           >
             <PartyPopper className="w-4 h-4 mr-2" />
             Kids
-          </TabsTrigger>
+          </TabsTrigger> */}
         </TabsList>
         <TabsContent value="general">
           <Program />
         </TabsContent>
-        <TabsContent value="kids">
+        {/* <TabsContent value="kids">
           <KidsProgram />
-        </TabsContent>
+        </TabsContent> */}
       </Tabs>
     );
   };
