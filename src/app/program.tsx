@@ -300,11 +300,13 @@ const ConferenceProgram: React.FC = () => {
     );
   };
 
-  const getActivityStyle = (item: ScheduleItem) => {
+  const getActivityStyle = (item: ScheduleItem, textColor?: string) => {
     if (item.activity.toLowerCase().includes("talleres") && item.enabled) {
       return "text-blue-900 text-sm font-semibold";
     }
-    return `text-slate-900 text-base ${
+    // Si tenemos un textColor específico, no aplicar text-slate-900
+    const baseTextColor = textColor ? "" : "text-slate-900";
+    return `${baseTextColor} text-base ${
       shouldBeBold(item.activity) ? "font-bold" : ""
     }`;
   };
@@ -379,7 +381,7 @@ const ConferenceProgram: React.FC = () => {
                       <TableCell className="p-4">
                         <div className="flex flex-col">
                           <div className="flex justify-between items-center">
-                            <div className={`${getActivityStyle(item)} ${textColor}`}>
+                            <div className={`${getActivityStyle(item, textColor)} ${textColor}`}>
                               {item.activity}
                             </div>
                             {item.downloadUrl && item.enabled && (
