@@ -24,10 +24,10 @@ interface Workshop {
 
 const program: Record<string, ScheduleItem[]> = {
   "JUEVES": [
-    { time: "13:00", activity: "Inicio de acreditaciones" },
-    { time: "13:00", activity: "Apertura de Espacio TTL y espacio gastronómico" },
-    { time: "16:00", activity: "Casa de Oración en Carpa", person: "hasta 18:00" },
-    { time: "17:00", activity: "Apertura de puertas" },
+    // { time: "13:00", activity: "Inicio de acreditaciones" },
+    // { time: "13:00", activity: "Apertura de Espacio TTL y espacio gastronómico" },
+    // { time: "16:00", activity: "Casa de Oración en Carpa", person: "hasta 18:00" },
+    // { time: "17:00", activity: "Apertura de puertas" },
     { time: "18:30", activity: "Adoración" },
     {
       time: "19:30",
@@ -52,8 +52,8 @@ const program: Record<string, ScheduleItem[]> = {
     { time: "21:30", activity: "Cierre" },
   ],
   "VIERNES": [
-    { time: "07:00", activity: "Casa de Oración en Carpa", person: "hasta 09:00" },
-    { time: "08:00", activity: "Apertura de puertas" },
+    // { time: "07:00", activity: "Casa de Oración en Carpa", person: "hasta 09:00" },
+    // { time: "08:00", activity: "Apertura de puertas" },
     { time: "09:00", activity: "Adoración" },
     {
       time: "10:00",
@@ -80,7 +80,7 @@ const program: Record<string, ScheduleItem[]> = {
     },
     { time: "12:30", activity: "Anuncios" },
     { time: "13:00", activity: "Cierre bloque mañana" },
-    { time: "13:00", activity: "Casa de Oración en Carpa", person: "hasta 14:00" },
+    // { time: "13:00", activity: "Casa de Oración en Carpa", person: "hasta 14:00" },
     {
       time: "16:00",
       activity: "Talleres bloque 1",
@@ -148,7 +148,7 @@ const program: Record<string, ScheduleItem[]> = {
       */
     },
     { time: "18:00", activity: "Break" },
-    { time: "18:00", activity: "Casa de Oración en Carpa", person: "hasta 19:00" },
+    // { time: "18:00", activity: "Casa de Oración en Carpa", person: "hasta 19:00" },
     { time: "19:00", activity: "Adoración" },
     {
       time: "20:00",
@@ -163,8 +163,8 @@ const program: Record<string, ScheduleItem[]> = {
     { time: "21:30", activity: "Cierre" },
   ],
   "SÁBADO": [
-    { time: "07:00", activity: "Casa de Oración en Carpa", person: "hasta 09:00" },
-    { time: "08:00", activity: "Apertura de puertas" },
+    // { time: "07:00", activity: "Casa de Oración en Carpa", person: "hasta 09:00" },
+    // { time: "08:00", activity: "Apertura de puertas" },
     { time: "09:00", activity: "Adoración" },
     {
       time: "10:00",
@@ -189,7 +189,7 @@ const program: Record<string, ScheduleItem[]> = {
     },
     { time: "12:30", activity: "Anuncios" },
     { time: "13:00", activity: "Cierre bloque mañana" },
-    { time: "13:00", activity: "Casa de Oración en Carpa", person: "hasta 14:00" },
+    // { time: "13:00", activity: "Casa de Oración en Carpa", person: "hasta 14:00" },
     {
       time: "16:00",
       activity: "Talleres bloque 3",
@@ -257,7 +257,7 @@ const program: Record<string, ScheduleItem[]> = {
       */
     },
     { time: "18:00", activity: "Break" },
-    { time: "18:00", activity: "Casa de Oración en Carpa", person: "hasta 19:00" },
+    // { time: "18:00", activity: "Casa de Oración en Carpa", person: "hasta 19:00" },
     { time: "19:00", activity: "Adoración" },
     {
       time: "20:00",
