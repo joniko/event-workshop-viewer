@@ -28,10 +28,6 @@ const TagLegend: React.FC = () => {
   return (
     <div className="flex flex-wrap gap-4 mt-8 text-base p-4">
       <div className="flex items-center">
-        <TagComponent tag="A" />
-        <span>Auditorio General.</span>
-      </div>
-      <div className="flex items-center">
         <TagComponent tag="TJ" />
         <span>Todos Juntos.</span>
       </div>
@@ -47,7 +43,7 @@ const kidsSchedule: Record<string, ScheduleItem[]> = {
   "JUEVES": [
     { time: "18:00", activity: "Ingreso de niños" },
     { time: "18:30", activity: "Apertura Evangelio del Reino Kids", tag: "TJ" },
-    { time: "19:00", activity: "Adoración", tag: "A" },
+    { time: "19:00", activity: "Adoración" },
     { time: "19:30", activity: "Plenaria bienvenida", tag: "TJ" },
     { time: "20:00", activity: "Break" },
     { time: "20:30", activity: "Taller 1: Lo que hizo", tag: "S" },
@@ -57,7 +53,7 @@ const kidsSchedule: Record<string, ScheduleItem[]> = {
     { time: "08:30", activity: "Ingreso de niños" },
     { time: "09:00", activity: "Taller 2: Lo que hizo", tag: "S" },
     { time: "10:00", activity: "Break" },
-    { time: "10:15", activity: "Adoración", tag: "A" },
+    { time: "10:15", activity: "Adoración" },
     { time: "10:45", activity: "Plenaria 1: Lo que hizo", tag: "TJ" },
     { time: "11:45", activity: "Break" },
     { time: "12:00", activity: "Recreación" },
@@ -70,7 +66,7 @@ const kidsSchedule: Record<string, ScheduleItem[]> = {
   ],
   "SÁBADO": [
     { time: "08:30", activity: "Ingreso de niños" },
-    { time: "09:00", activity: "Adoración", tag: "A" },
+    { time: "09:00", activity: "Adoración" },
     { time: "09:30", activity: "Plenaria 2: Lo que está haciendo", tag: "TJ" },
     { time: "10:30", activity: "Break" },
     { time: "11:00", activity: "Taller 5: Lo que hará", tag: "S" },
@@ -88,7 +84,7 @@ const KidsProgram: React.FC = () => {
   const [activeDay, setActiveDay] = useState(Object.keys(kidsSchedule)[0]);
 
   return (
-    <div className="space-y-1 rounded-md border bg-white sm:mx-auto sm:w-full max-w-4xl">
+    <div className="space-y-1 rounded-xl border bg-white sm:mx-auto sm:w-full max-w-4xl">
       <Tabs.Root defaultValue={activeDay} onValueChange={setActiveDay}>
         <Tabs.List className="flex text-center items-center justify-center bg-slate-100 py-0.5">
           {Object.keys(kidsSchedule).map((day) => (

@@ -58,7 +58,7 @@ function HomeContent() {
   };
 
   return (
-    <main className="container flex flex-col px-2 sm:mx-auto sm:w-full max-w-3xl">
+    <main className="container flex flex-col sm:mx-auto sm:w-full max-w-3xl">
       <WavyBackground />
 
       {/* Nuevo botón para la transmisión en vivo */}

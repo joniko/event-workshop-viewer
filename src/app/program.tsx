@@ -23,7 +23,7 @@ interface Workshop {
 }
 
 const program: Record<string, ScheduleItem[]> = {
-  "Jueves": [
+  "JUEVES": [
     { time: "13:00", activity: "Inicio de acreditaciones" },
     { time: "13:00", activity: "Apertura de Espacio TTL y espacio gastronómico" },
     { time: "16:00", activity: "Casa de Oración en Carpa", person: "hasta 18:00" },
@@ -51,7 +51,7 @@ const program: Record<string, ScheduleItem[]> = {
     },
     { time: "21:30", activity: "Cierre" },
   ],
-  "Viernes": [
+  "VIERNES": [
     { time: "07:00", activity: "Casa de Oración en Carpa", person: "hasta 09:00" },
     { time: "08:00", activity: "Apertura de puertas" },
     { time: "09:00", activity: "Adoración" },
@@ -162,7 +162,7 @@ const program: Record<string, ScheduleItem[]> = {
     },
     { time: "21:30", activity: "Cierre" },
   ],
-  "Sábado": [
+  "SÁBADO": [
     { time: "07:00", activity: "Casa de Oración en Carpa", person: "hasta 09:00" },
     { time: "08:00", activity: "Apertura de puertas" },
     { time: "09:00", activity: "Adoración" },
@@ -337,7 +337,7 @@ const ConferenceProgram: React.FC = () => {
   );
 
   return (
-    <div className="space-y-1 rounded-md border bg-white sm:mx-auto sm:w-full max-w-4xl">
+    <div className="space-y-1 rounded-xl border bg-white sm:mx-auto sm:w-full max-w-4xl">
       <Tabs.Root defaultValue={activeDay} onValueChange={setActiveDay}>
         <Tabs.List className="flex text-center items-center justify-center bg-slate-100 py-0.5">
           {Object.keys(program).map((day) => (
@@ -352,7 +352,7 @@ const ConferenceProgram: React.FC = () => {
         </Tabs.List>
         {Object.entries(program).map(([day, schedule]) => (
           <Tabs.Content key={day} value={day}>
-            <div className="border-y">
+            <div className="rounded-b-xl">
               <Table>
                 <TableBody>
                   {schedule.map((item, index) => (
