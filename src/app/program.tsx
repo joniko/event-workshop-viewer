@@ -23,64 +23,44 @@ interface Workshop {
 }
 
 const program: Record<string, ScheduleItem[]> = {
-  "JUEVES": [
-    // { time: "13:00", activity: "Inicio de acreditaciones" },
-    // { time: "13:00", activity: "Apertura de Espacio TTL y espacio gastronómico" },
-    // { time: "16:00", activity: "Casa de Oración en Carpa", person: "hasta 18:00" },
-    // { time: "17:00", activity: "Apertura de puertas" },
+  "JUEVES 9": [
+    { time: "13:00", activity: "Inicio de acreditaciones, Apertura del Espacio TOMATULUGAR y espacio gastronómico" },
+    { time: "16:00", activity: "Casa de Oración" },
+    { time: "17:00", activity: "Apertura del auditorio principal" },
     { time: "18:30", activity: "Adoración" },
     {
       time: "19:30",
       activity: "Plenaria 1",
       enabled: false,
-     
-      downloadUrl: "https://drive.google.com/file/d/13esIaCbvKm0jxi7vuKgGJ0KCozcr-ffU/view?usp=sharing",
-      plenaryName: "Nombre de la plenaria",
-      speaker: "Nombre del orador",
-     
-    },
-    {
-      time: "20:30",
-      activity: "Plenaria 2",
-      enabled: false,
-      /*
-      downloadUrl: "https://drive.google.com/file/d/1SrhScaU2q-3-JIdTAFL7Uihh_o_uysis/view?usp=sharing",
-      plenaryName: "Nombre de la plenaria",
-      speaker: "Nombre del orador",
-      */
+      // plenaryName: "Nombre de la plenaria",
+      // speaker: "Marcos y Fernanda Brunet",
+      // downloadUrl: "https://drive.google.com/file/d/13esIaCbvKm0jxi7vuKgGJ0KCozcr-ffU/view?usp=sharing",
     },
     { time: "21:30", activity: "Cierre" },
   ],
-  "VIERNES": [
-    // { time: "07:00", activity: "Casa de Oración en Carpa", person: "hasta 09:00" },
-    // { time: "08:00", activity: "Apertura de puertas" },
+  "VIERNES 10": [
+    { time: "07:00", activity: "Casa de Oración" },
+    { time: "08:00", activity: "Apertura del auditorio principal" },
     { time: "09:00", activity: "Adoración" },
     {
       time: "10:00",
-      activity: "Plenaria 3",
+      activity: "Plenaria 2",
       enabled: false,
-      /*
-       downloadUrl: "https://drive.google.com/file/d/13esIaCbvKm0jxi7vuKgGJ0KCozcr-ffU/view?usp=sharing",
-      enabled: true,
-      plenaryName: "De huérfano a Hijo",
-      speaker: "Fernanda Brunet",
-      */
-
+      // plenaryName: "Nombre de la plenaria",
+      // speaker: "Douglas Gonçalves",
+      // downloadUrl: "https://drive.google.com/file/d/13esIaCbvKm0jxi7vuKgGJ0KCozcr-ffU/view?usp=sharing",
     },
     { time: "11:15", activity: "Break" },
     {
       time: "11:30",
-      activity: "Plenaria 4",
+      activity: "Plenaria 3",
       enabled: false,
-      /*
-      downloadUrl: "https://drive.google.com/file/d/1SEbgeRCvCG3wSN4aFRDmGBJ6VNP9ywwo/view?usp=drivesdk",
-      plenaryName: "Nombre de la plenaria",
-      speaker: "Nombre del orador",
-      */
+      // plenaryName: "La iglesia perseguida",
+      // speaker: "VOM",
+      // downloadUrl: "https://drive.google.com/file/d/1SEbgeRCvCG3wSN4aFRDmGBJ6VNP9ywwo/view?usp=drivesdk",
     },
     { time: "12:30", activity: "Anuncios" },
-    { time: "13:00", activity: "Cierre bloque mañana" },
-    // { time: "13:00", activity: "Casa de Oración en Carpa", person: "hasta 14:00" },
+    { time: "13:00", activity: "Cierre bloque mañana e inicio del turno de Casa de Oración" },
     {
       time: "16:00",
       activity: "Talleres bloque 1",
@@ -88,28 +68,36 @@ const program: Record<string, ScheduleItem[]> = {
       /*
       workshops: [
         {
-          sector: "SECTOR 1",
+          sector: "AH",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-emerald-700 border-emerald-500",
+          speaker: "Lucas Conslie y Rodrigo Rocha",
+          colorClass: "text-orange-600 border-orange-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
         },
         {
-          sector: "SECTOR 2",
+          sector: "GRAN COMISIÓN",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-emerald-700 border-emerald-500",
+          speaker: "Mariano Sennewald",
+          colorClass: "text-cyan-600 border-cyan-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
         },
         {
-          sector: "SECTOR 3",
+          sector: "IGLESIA GLORIOSA",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-emerald-700 border-emerald-500",
+          speaker: "Samuel Benedetto",
+          colorClass: "text-emerald-600 border-emerald-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
+        },
+        {
+          sector: "EVANGELIO COMPLETO",
+          title: "Nombre del taller",
+          speaker: "Nicolas Chiari",
+          colorClass: "text-blue-600 border-blue-500",
+          downloadUrl: "URL_DEL_MATERIAL",
+          enabled: false,
         },
       ],
       */
@@ -121,75 +109,75 @@ const program: Record<string, ScheduleItem[]> = {
       /*
       workshops: [
         {
-          sector: "SECTOR 1",
+          sector: "AH",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-sky-500 border-sky-500",
+          speaker: "Gustavo Paiva",
+          colorClass: "text-orange-600 border-orange-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
         },
         {
-          sector: "SECTOR 2",
+          sector: "GRAN COMISIÓN",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-slate-500 border-slate-500",
+          speaker: "VOM",
+          colorClass: "text-cyan-600 border-cyan-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
         },
         {
-          sector: "SECTOR 3",
+          sector: "IGLESIA GLORIOSA",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-rose-500 border-rose-500",
+          speaker: "Bernardo Armiancino",
+          colorClass: "text-emerald-600 border-emerald-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
+        },
+        {
+          sector: "EVANGELIO COMPLETO",
+          title: "Nombre del taller",
+          speaker: "Fabio Coelho",
+          colorClass: "text-blue-600 border-blue-500",
+          downloadUrl: "URL_DEL_MATERIAL",
+          enabled: false,
         },
       ],
       */
     },
-    { time: "18:00", activity: "Break" },
-    // { time: "18:00", activity: "Casa de Oración en Carpa", person: "hasta 19:00" },
+    { time: "18:00", activity: "Break y Casa de Oración" },
     { time: "19:00", activity: "Adoración" },
     {
       time: "20:00",
-      activity: "Plenaria 5",
+      activity: "Plenaria 4",
       enabled: false,
-      /*
-      downloadUrl: "URL_DEL_MATERIAL",
-      plenaryName: "Nombre de la plenaria",
-      speaker: "Nombre del orador",
-      */
+      // plenaryName: "Nombre de la plenaria",
+      // speaker: "Gustavo Paiva",
+      // downloadUrl: "URL_DEL_MATERIAL",
     },
     { time: "21:30", activity: "Cierre" },
   ],
-  "SÁBADO": [
-    // { time: "07:00", activity: "Casa de Oración en Carpa", person: "hasta 09:00" },
-    // { time: "08:00", activity: "Apertura de puertas" },
+  "SÁBADO 11": [
+    { time: "07:00", activity: "Casa de Oración" },
+    { time: "08:00", activity: "Apertura del auditorio principal" },
     { time: "09:00", activity: "Adoración" },
     {
       time: "10:00",
-      activity: "Plenaria 6",
+      activity: "Plenaria 5",
       enabled: false,
-      /*
-      downloadUrl: "https://drive.google.com/file/d/1J1JiUpr1LWvHfH7y5IzWuROLhTXeBe6b/view?usp=drive_link",
-      plenaryName: "Nombre de la plenaria",
-      speaker: "Nombre del orador",
-      */
+      // plenaryName: "Nombre de la plenaria",
+      // speaker: "Itiel Arroyo",
+      // downloadUrl: "https://drive.google.com/file/d/1J1JiUpr1LWvHfH7y5IzWuROLhTXeBe6b/view?usp=drive_link",
     },
     { time: "11:15", activity: "Break" },
     {
       time: "11:30",
-      activity: "Plenaria 7",
+      activity: "Plenaria 6",
       enabled: false,
-      /*
-      downloadUrl: "URL_DEL_MATERIAL",
-      plenaryName: "Nombre de la plenaria",
-      speaker: "Nombre del orador",
-      */
+      // plenaryName: "Nombre de la plenaria",
+      // speaker: "Lorisa Miller",
+      // downloadUrl: "URL_DEL_MATERIAL",
     },
     { time: "12:30", activity: "Anuncios" },
     { time: "13:00", activity: "Cierre bloque mañana" },
-    // { time: "13:00", activity: "Casa de Oración en Carpa", person: "hasta 14:00" },
     {
       time: "16:00",
       activity: "Talleres bloque 3",
@@ -197,28 +185,36 @@ const program: Record<string, ScheduleItem[]> = {
       /*
       workshops: [
         {
-          sector: "SECTOR 1",
+          sector: "AH",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-sky-500 border-sky-500",
+          speaker: "Fabio Coelho",
+          colorClass: "text-orange-600 border-orange-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
         },
         {
-          sector: "SECTOR 2",
+          sector: "GRAN COMISIÓN",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-slate-500 border-slate-500",
+          speaker: "Josías García",
+          colorClass: "text-cyan-600 border-cyan-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
         },
         {
-          sector: "SECTOR 3",
+          sector: "IGLESIA GLORIOSA",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-rose-500 border-rose-500",
+          speaker: "Lorisa Miller",
+          colorClass: "text-emerald-600 border-emerald-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
+        },
+        {
+          sector: "EVANGELIO COMPLETO",
+          title: "Nombre del taller",
+          speaker: "Itiel Arroyo",
+          colorClass: "text-blue-600 border-blue-500",
+          downloadUrl: "URL_DEL_MATERIAL",
+          enabled: false,
         },
       ],
       */
@@ -230,44 +226,49 @@ const program: Record<string, ScheduleItem[]> = {
       /*
       workshops: [
         {
-          sector: "SECTOR 1",
+          sector: "AH",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-sky-500 border-sky-500",
+          speaker: "Alessandro Villas Boas",
+          colorClass: "text-orange-600 border-orange-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
         },
         {
-          sector: "SECTOR 2",
+          sector: "GRAN COMISIÓN",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-slate-500 border-slate-500",
+          speaker: "VOM Encargado",
+          colorClass: "text-cyan-600 border-cyan-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
         },
         {
-          sector: "SECTOR 3",
+          sector: "IGLESIA GLORIOSA",
           title: "Nombre del taller",
-          speaker: "Nombre del orador",
-          colorClass: "text-rose-500 border-rose-500",
+          speaker: "Douglas Gonçalves",
+          colorClass: "text-emerald-600 border-emerald-500",
           downloadUrl: "URL_DEL_MATERIAL",
-          enabled: true,
+          enabled: false,
+        },
+        {
+          sector: "EVANGELIO COMPLETO",
+          title: "Nombre del taller",
+          speaker: "Mariano Sennewald",
+          colorClass: "text-blue-600 border-blue-500",
+          downloadUrl: "URL_DEL_MATERIAL",
+          enabled: false,
         },
       ],
       */
     },
-    { time: "18:00", activity: "Break" },
-    // { time: "18:00", activity: "Casa de Oración en Carpa", person: "hasta 19:00" },
+    { time: "18:00", activity: "Break y Casa de Oración" },
     { time: "19:00", activity: "Adoración" },
     {
       time: "20:00",
-      activity: "Plenaria 8",
+      activity: "Plenaria 7",
       enabled: false,
-      /*
-      downloadUrl: "URL_DEL_MATERIAL",
-      plenaryName: "Nombre de la plenaria",
-      speaker: "Nombre del orador",
-      */
+      // plenaryName: "Nombre de la plenaria",
+      // speaker: "Marcos Brunet y Ben Fitzgerald",
+      // downloadUrl: "URL_DEL_MATERIAL",
     },
     { time: "21:30", activity: "Cierre" },
   ],
@@ -279,13 +280,20 @@ INSTRUCCIONES PARA COMPLETAR EL PROGRAMA 2025:
 1. Para completar las plenarias:
    - Descomentar las líneas correspondientes en cada plenaria
    - Cambiar "enabled: false" a "enabled: true"
-   - Actualizar plenaryName, speaker y downloadUrl con la información real
+   - Actualizar plenaryName y downloadUrl con la información real
+   - Los nombres de los oradores ya están incluidos en los comentarios
 
 2. Para completar los talleres:
    - Descomentar la sección "workshops" en cada bloque de talleres
-   - Cambiar "enabled: false" a "enabled: true"
-   - Actualizar título, speaker y downloadUrl para cada sector
-   - Colores por sector: SECTOR 1 (azul), SECTOR 2 (gris), SECTOR 3 (rosa)
+   - Cambiar "enabled: false" a "enabled: true" en el bloque principal
+   - Cambiar "enabled: false" a "enabled: true" en cada workshop individual cuando esté listo
+   - Actualizar título y downloadUrl para cada taller
+   - Los nombres de los oradores ya están incluidos en los comentarios
+   - Colores por sector:
+     * AH: naranja (text-orange-600 border-orange-500)
+     * GRAN COMISIÓN: cian (text-cyan-600 border-cyan-500)
+     * IGLESIA GLORIOSA: verde (text-emerald-600 border-emerald-500)
+     * EVANGELIO COMPLETO: azul (text-blue-600 border-blue-500)
 
 3. Los campos opcionales como downloadUrl se pueden omitir si no hay material disponible
 */
