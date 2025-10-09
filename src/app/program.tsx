@@ -294,7 +294,7 @@ const ConferenceProgram: React.FC = () => {
   const [activeDay, setActiveDay] = React.useState(Object.keys(program)[0]);
 
   const shouldBeBold = (activity: string) => {
-    const boldActivities = ["plenaria", "adoración"];
+    const boldActivities = ["plenaria", "talleres", "Casa de"];
     return boldActivities.some((boldActivity) =>
       activity.toLowerCase().includes(boldActivity)
     );
@@ -364,13 +364,13 @@ const ConferenceProgram: React.FC = () => {
                     let textColor = "";
                     
                     if (item.activity.toLowerCase().includes("plenaria")) {
-                      bgColor = "bg-blue-50"; // Fondo azul claro para plenarias
-                      borderColor = "border-l-4 border-l-blue-500"; // Borde izquierdo azul
-                      textColor = "text-blue-900"; // Texto azul oscuro
+                      bgColor = "bg-indigo-50/60"; // Fondo azul claro para plenarias
+                      borderColor = "border-l-4 border-l-indigo-500"; // Borde izquierdo azul
+                      textColor = "text-indigo-900"; // Texto azul oscuro
                     } else if (item.activity.toLowerCase().includes("talleres")) {
-                      bgColor = "bg-green-50"; // Fondo verde claro para talleres
-                      borderColor = "border-l-4 border-l-green-500"; // Borde izquierdo verde
-                      textColor = "text-green-900"; // Texto verde oscuro
+                      bgColor = "bg-emerald-50/60"; // Fondo verde claro para talleres
+                      borderColor = "border-l-4 border-l-emerald-500"; // Borde izquierdo verde
+                      textColor = "text-emerald-900"; // Texto verde oscuro
                     }
                     
                     return (
