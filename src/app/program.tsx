@@ -94,7 +94,7 @@ const program: Record<string, ScheduleItem[]> = {
         {
           sector: "EVANGELIO COMPLETO",
           title: "No es otro Evangelio",
-          speaker: "Nicolas Chiari",
+          speaker: "Nicolas Paretti",
           colorClass: "text-blue-600 border-blue-500",
           downloadUrl: "https://drive.google.com/file/d/17rPr9vwIxHLQQQ-Mvbukitdae1yNd7i3/view?usp=drive_link",
           enabled: true,
