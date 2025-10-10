@@ -31,7 +31,7 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "19:30",
       activity: "Plenaria 1",
-      enabled: false,
+      enabled: true,
       plenaryName: "Unidos por el Corazón del Rey",
       speaker: "Marcos y Fernanda Brunet",
       downloadUrl: "https://drive.google.com/file/d/1sDGhjk-fN6e3axqLWKlqzgawMtWeuURl/view?usp=sharing",
