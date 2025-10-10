@@ -45,10 +45,10 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "10:00",
       activity: "Plenaria 2",
-      enabled: false,
-      // plenaryName: "Nombre de la plenaria",
-      // speaker: "Douglas Gonçalves",
-      // downloadUrl: "https://drive.google.com/file/d/13esIaCbvKm0jxi7vuKgGJ0KCozcr-ffU/view?usp=sharing",
+      enabled: true,
+       plenaryName: "El Tema Central de Jesús",
+       speaker: "Douglas Gonçalves",
+       downloadUrl: "https://drive.google.com/file/d/1oNBnsDRnKwsWMxqzWl6v68Lxf_Mb2Vjo/view?usp=sharing",
     },
     { time: "11:15", activity: "Break" },
     {
