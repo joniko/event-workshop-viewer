@@ -65,42 +65,42 @@ const program: Record<string, ScheduleItem[]> = {
       time: "16:00",
       activity: "Talleres bloque 1",
       enabled: false,
-      /*
+
       workshops: [
         {
-          sector: "AH",
-          title: "Nombre del taller",
+          sector: "A + I",
+          title: "La Gloria de Cristo",
           speaker: "Lucas Conslie y Rodrigo Rocha",
           colorClass: "text-orange-600 border-orange-500",
-          downloadUrl: "URL_DEL_MATERIAL",
-          enabled: false,
+          downloadUrl: "https://drive.google.com/file/d/1WNcnSpYeuPrqqOt7bmEr8Tm6hwBKj_Au/view?usp=drive_link",
+          enabled: true,
         },
         {
           sector: "GRAN COMISIÓN",
-          title: "Nombre del taller",
+          title: "La Gran Comisión y los Últimos Tiempos",
           speaker: "Mariano Sennewald",
           colorClass: "text-cyan-600 border-cyan-500",
-          downloadUrl: "URL_DEL_MATERIAL",
-          enabled: false,
+          downloadUrl: "https://drive.google.com/file/d/1bAwnncOdb4ljHXCX2hFeDxPwBbEhY7_9/view?usp=drive_link",
+          enabled: true,
         },
         {
           sector: "IGLESIA GLORIOSA",
-          title: "Nombre del taller",
+          title: "Comunión",
           speaker: "Samuel Benedetto",
           colorClass: "text-emerald-600 border-emerald-500",
-          downloadUrl: "URL_DEL_MATERIAL",
-          enabled: false,
+          downloadUrl: "https://drive.google.com/file/d/1l2oyo7J0u7Z6eQfYV5XMWm4zcOuekXUP/view?usp=drive_link",
+          enabled: true,
         },
         {
           sector: "EVANGELIO COMPLETO",
-          title: "Nombre del taller",
+          title: "No es otro Evangelio",
           speaker: "Nicolas Chiari",
           colorClass: "text-blue-600 border-blue-500",
-          downloadUrl: "URL_DEL_MATERIAL",
-          enabled: false,
+          downloadUrl: "https://drive.google.com/file/d/17rPr9vwIxHLQQQ-Mvbukitdae1yNd7i3/view?usp=drive_link",
+          enabled: true,
         },
       ],
-      */
+
     },
     {
       time: "17:00",
@@ -320,7 +320,7 @@ const ConferenceProgram: React.FC = () => {
   };
 
   const renderWorkshops = (workshops: Workshop[]) => (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
       {workshops.map((workshop, index) => (
         <div
           key={index}
