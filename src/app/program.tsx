@@ -182,11 +182,11 @@ const program: Record<string, ScheduleItem[]> = {
       time: "16:00",
       activity: "Talleres bloque 3",
       enabled: false,
-      /*
+
       workshops: [
         {
-          sector: "AH",
-          title: "Nombre del taller",
+          sector: "A+I",
+          title: "",
           speaker: "Fabio Coelho",
           colorClass: "text-orange-600 border-orange-500",
           downloadUrl: "URL_DEL_MATERIAL",
@@ -198,15 +198,15 @@ const program: Record<string, ScheduleItem[]> = {
           speaker: "Josías García",
           colorClass: "text-cyan-600 border-cyan-500",
           downloadUrl: "https://drive.google.com/file/d/1hK3wttSRejKUL2WUsG6mVsN722F38deK/view?usp=sharing",
-          enabled: false,
+          enabled: true,
         },
         {
           sector: "IGLESIA GLORIOSA",
-          title: "Nombre del taller",
+          title: "Cristo y la Iglesia",
           speaker: "Lorisa Miller",
           colorClass: "text-emerald-600 border-emerald-500",
-          downloadUrl: "URL_DEL_MATERIAL",
-          enabled: false,
+          downloadUrl: "https://drive.google.com/file/d/133wke0YqAuZr7O8RcqGJ0qC4DTaCjPsH/view?usp=sharing",
+          enabled: true,
         },
         {
           sector: "EVANGELIO COMPLETO",
@@ -214,10 +214,10 @@ const program: Record<string, ScheduleItem[]> = {
           speaker: "Itiel Arroyo",
           colorClass: "text-blue-600 border-blue-500",
           downloadUrl: "https://drive.google.com/file/d/1slbMFfR4m0z4CyDpZGAbKfgurUUbc7BD/view?usp=sharing",
-          enabled: false,
+          enabled: true,
         },
       ],
-      */
+
     },
     {
       time: "17:00",
@@ -251,10 +251,10 @@ const program: Record<string, ScheduleItem[]> = {
         },
         {
           sector: "EVANGELIO COMPLETO",
-          title: "Nombre del taller",
+          title: "El Evangelio y los últimos tiempos",
           speaker: "Mariano Sennewald",
           colorClass: "text-blue-600 border-blue-500",
-          downloadUrl: "URL_DEL_MATERIAL",
+          downloadUrl: "https://drive.google.com/file/d/1pru4_qoRxGJn5BQKNmvZVHqSwtFoFO8u/view?usp=drive_link",
           enabled: false,
         },
       ],
