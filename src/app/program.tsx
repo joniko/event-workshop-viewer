@@ -162,10 +162,10 @@ const program: Record<string, ScheduleItem[]> = {
     {
       time: "10:00",
       activity: "Plenaria 5",
-      enabled: false,
-      // plenaryName: "Nombre de la plenaria",
-      // speaker: "Itiel Arroyo",
-      // downloadUrl: "https://drive.google.com/file/d/1J1JiUpr1LWvHfH7y5IzWuROLhTXeBe6b/view?usp=drive_link",
+      enabled: true,
+      plenaryName: "Jaque Mate a Satanás",
+      speaker: "Itiel Arroyo",
+      downloadUrl: "https://drive.google.com/file/d/1Dz7iCmtzeY0tDQUmaipHw3vqslfvJqFB/view?usp=sharing",
     },
     { time: "11:15", activity: "Break" },
     {
@@ -194,10 +194,10 @@ const program: Record<string, ScheduleItem[]> = {
         },
         {
           sector: "GRAN COMISIÓN",
-          title: "Nombre del taller",
+          title: "De Nazaret a Capernaúm",
           speaker: "Josías García",
           colorClass: "text-cyan-600 border-cyan-500",
-          downloadUrl: "URL_DEL_MATERIAL",
+          downloadUrl: "https://drive.google.com/file/d/1hK3wttSRejKUL2WUsG6mVsN722F38deK/view?usp=sharing",
           enabled: false,
         },
         {
@@ -210,10 +210,10 @@ const program: Record<string, ScheduleItem[]> = {
         },
         {
           sector: "EVANGELIO COMPLETO",
-          title: "Nombre del taller",
+          title: "Pelea por tu Mente",
           speaker: "Itiel Arroyo",
           colorClass: "text-blue-600 border-blue-500",
-          downloadUrl: "URL_DEL_MATERIAL",
+          downloadUrl: "https://drive.google.com/file/d/1slbMFfR4m0z4CyDpZGAbKfgurUUbc7BD/view?usp=sharing",
           enabled: false,
         },
       ],
