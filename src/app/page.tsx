@@ -58,7 +58,7 @@ function HomeContent() {
   };
 
   return (
-    <main className="container flex flex-col sm:mx-auto sm:w-full max-w-3xl">
+    <main className="flex flex-col sm:mx-auto sm:w-full max-w-3xl">
       <WavyBackground />
 
       {/* Nuevo botón para la transmisión en vivo */}
@@ -66,7 +66,7 @@ function HomeContent() {
         href="https://www.youtube.com/@TOMATULUGAR/streams" // Reemplaza con el enlace correcto de YouTube
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center bg-[#FF0033] text-white font-bold py-2 px-4 rounded-full mb-1 md:mb-2 hover:bg-red-600 transition-colors"
+        className="flex items-center mx-2 md:mx-0 justify-center bg-[#FF0033] text-white font-bold py-2 px-4 rounded-full mb-1 md:mb-2 hover:bg-red-600 transition-colors"
       >
         <Youtube className="w-6 h-6 mr-2" />
         Mira la Conferencia EN VIVO
