@@ -106,11 +106,11 @@ const program: Record<string, ScheduleItem[]> = {
       time: "17:00",
       activity: "Talleres bloque 2",
       enabled: false,
-      /*
+
       workshops: [
         {
-          sector: "AH",
-          title: "Nombre del taller",
+          sector: "A+I",
+          title: "",
           speaker: "Gustavo Paiva",
           colorClass: "text-orange-600 border-orange-500",
           downloadUrl: "URL_DEL_MATERIAL",
@@ -118,7 +118,7 @@ const program: Record<string, ScheduleItem[]> = {
         },
         {
           sector: "GRAN COMISIÓN",
-          title: "Nombre del taller",
+          title: "",
           speaker: "VOM",
           colorClass: "text-cyan-600 border-cyan-500",
           downloadUrl: "URL_DEL_MATERIAL",
@@ -126,32 +126,32 @@ const program: Record<string, ScheduleItem[]> = {
         },
         {
           sector: "IGLESIA GLORIOSA",
-          title: "Nombre del taller",
-          speaker: "Bernardo Armiancino",
+          title: "Una iglesia que manifiesta  el reino de Dios",
+          speaker: "Bernardo Affranchino",
           colorClass: "text-emerald-600 border-emerald-500",
-          downloadUrl: "URL_DEL_MATERIAL",
-          enabled: false,
+          downloadUrl: "https://drive.google.com/file/d/19vWyEJlqU5OnE7EL-YRhXJxiXfzNp3dX/view?usp=drive_link",
+          enabled: true,
         },
         {
           sector: "EVANGELIO COMPLETO",
-          title: "Nombre del taller",
+          title: "Una historia de redención",
           speaker: "Fabio Coelho",
           colorClass: "text-blue-600 border-blue-500",
-          downloadUrl: "URL_DEL_MATERIAL",
-          enabled: false,
+          downloadUrl: "https://drive.google.com/file/d/1uuRb31-GVfchkptKAHlGGcFaCXMLxpTl/view?usp=drive_link",
+          enabled: true,
         },
       ],
-      */
+
     },
     { time: "18:00", activity: "Break y Casa de Oración" },
     { time: "19:00", activity: "Adoración" },
     {
       time: "20:00",
       activity: "Plenaria 4",
-      enabled: false,
-      // plenaryName: "Nombre de la plenaria",
-      // speaker: "Gustavo Paiva",
-      // downloadUrl: "URL_DEL_MATERIAL",
+      enabled: true,
+       plenaryName: "Punto de Giro",
+       speaker: "Gustavo Paiva",
+       downloadUrl: "https://drive.google.com/file/d/1OK1NpxJzVWsExiMsOlCf5_s-nBqG3gcK/view?usp=sharing",
     },
     { time: "21:30", activity: "Cierre" },
   ],
