@@ -174,7 +174,7 @@ const program: Record<string, ScheduleItem[]> = {
       enabled: true,
       plenaryName: "Amor que Arde",
       speaker: "Lorisa Miller",
-      downloadUrl: "Uhttps://drive.google.com/file/d/1SAqbHijbV8a9BcCPhE0HcLEComVlEf-w/view?usp=drive_link",
+      downloadUrl: "https://drive.google.com/file/d/1SAqbHijbV8a9BcCPhE0HcLEComVlEf-w/view?usp=drive_link",
     },
     { time: "12:30", activity: "Anuncios" },
     { time: "13:00", activity: "Cierre bloque mañana" },
